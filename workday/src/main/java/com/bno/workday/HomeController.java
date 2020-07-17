@@ -36,4 +36,10 @@ public class HomeController {
 		return "home";
 	}
 	
-}
+	@RequestMapping(value = "/index")
+	public String index(Model model) {
+		
+		return "index";
+	}
+	
+}//class end
