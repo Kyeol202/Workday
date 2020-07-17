@@ -10,14 +10,18 @@ public class UserController {
 	
 	@RequestMapping(value = "/userHome")
 	public String userHome(Model model) {
-		
-		
-		
-		
+
 		return "user/userHome";
 	}
 	
 	
+	@RequestMapping(value = "user/userSignUp")
+	public String userSignUp(Model model) {
+		
+		
+		
+		return "user/userSignUp";
+	}//회원가입
 	
 	
 	
