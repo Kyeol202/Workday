@@ -33,12 +33,12 @@
 $(function(){
 	
 
-	$("#u_email").blur(function() {
+	$("#email").blur(function() {
 		// id = "id_reg" / name = "userId"
-		var u_email = $('#u_email').val();
+		var email = $('#email').val();
 		
 		$.ajax({
-			url : '${pageContext.request.contextPath}/user/idcheck?u_email='+ u_email,
+			url : '${pageContext.request.contextPath}/user/idcheck?email='+ email,
 			type : 'get',
 			dataType : 'text',
 			success : function(data) {
@@ -47,12 +47,12 @@ $(function(){
 				
 				var email = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 				
-				if (u_email == "") {
+				if (email == "") {
 						
 						$("#id_check").text("이메일을 입력해주세요");
 						$("#id_check").css("color", "red");
 						
-					} else if(!email.test($("input[id='u_email']").val())){
+					} else if(!email.test($("input[id='email']").val())){
 	
 							$('#id_check').text('올바르지않은 이메일 형식입니다');
 							$('#id_check').css('color', 'red');
@@ -132,12 +132,12 @@ $(function(){
 	
 	$("input").keyup(function(){
 		
-		var pwd1=$("#u_pwd").val(); 
-		var pwd2=$("#u_pwd2").val();
+		var pwd1=$("#pwd").val(); 
+		var pwd2=$("#pwd2").val();
 		
 		var password = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,15}$/;
 		
-			if(!password.test($("input[id='u_pwd']").val())){
+			if(!password.test($("input[id='pwd']").val())){
 			
 				$('#pwd_check').text('6~15자 영문/숫자/특수문자 포함 입력해주세요');
 				$('#pwd_check').css('color', 'red');
@@ -171,10 +171,10 @@ $(function(){
 // 휴대폰번호 정규식
 $(function(){ 
 	
-	$("#u_name").blur(function(){
+	$("#emp_name").blur(function(){
 		var name = /^[가-힣]{2,6}$/;
 	
-		if (name.test($("input[id='u_name']").val())) {
+		if (name.test($("input[id='emp_name']").val())) {
 	
 			$("#name_check").text('');
 		} else {
@@ -187,10 +187,10 @@ $(function(){
 //이름 정규식
 $(function(){ 
 	
-	$("#u_phone").blur(function(){
+	$("#phone").blur(function(){
 		var phone = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
 
-		if (phone.test($("input[id='u_phone']").val())) {
+		if (phone.test($("input[id='phone']").val())) {
 	
 			$("#phone_check").text('');
 		} else {
@@ -203,14 +203,14 @@ $(function(){
 // onsubmit
 function checkSubmit() {
 	
-	if(form.u_phone.value == "") {
+	if(form.phone.value == "") {
 		$('#phone_check').text('번호를 입력해주세요');
 		$('#phone_check').css('color', 'red');
 		
 		return false;
 	} 
 	
-	if(form.u_name.value == "") {
+	if(form.emp_name.value == "") {
 		$('#name_check').text('이름을 입력해주세요');
 		$('#name_check').css('color', 'red');
 		
@@ -238,22 +238,22 @@ function checkSubmit() {
 	</div>
 	
 	<div class="register-box-body">
-	<p class="login-box-msg">Register a new membership</p>
+	<p class="login-box-msg">회원가입</p>
 	<form action="<%=contextPath%>/user/userSignUpResult" method="post" name="form" onsubmit="return checkSubmit();">
 		<br>
 		<div class="form-group has-feedback">
-			<input type="text" class="form-control" id="u_email" name="u_email" placeholder="E_MAIL">
+			<input type="text" class="form-control" id="email" name="email" placeholder="E_MAIL">
 			<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 			<div id="id_check"></div>
 			
       	</div>
 		<div class="form-group has-feedback">
-        	<input type="password" class="form-control" id="u_pwd" name="u_pwd" maxlength="15" placeholder="PASSWORD">
+        	<input type="password" class="form-control" id="pwd" name="pwd" maxlength="15" placeholder="PASSWORD">
         	<span class="glyphicon glyphicon-lock form-control-feedback"></span>
       	</div>
       	
       	<div class="form-group has-feedback">
-        	<input type="password" class="form-control" id="u_pwd2" name="u_pwd2" maxlength="15" placeholder="CONFIRM PASSWORD">
+        	<input type="password" class="form-control" id="pwd2" name="pwd2" maxlength="15" placeholder="CONFIRM PASSWORD">
         	<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
 			<div id="pwd_check"></div>
 			<div id="pwd_success">비밀번호가 일치합니다</div>
@@ -261,13 +261,13 @@ function checkSubmit() {
       	</div>
       	
       	<div class="form-group has-feedback">
-        	<input type="text" class="form-control" id="u_phone" name="u_phone" placeholder="PHONE NUMBER">
+        	<input type="text" class="form-control" id="phone" name="phone" placeholder="PHONE NUMBER">
         	<span class="glyphicon glyphicon glyphicon-phone form-control-feedback"></span>
 			<div id="phone_check"></div>
       	</div>
       	
       	<div class="form-group has-feedback">
-        	<input type="text" class="form-control" id="u_name" name="u_name" placeholder="NAME">
+        	<input type="text" class="form-control" id="emp_name" name="emp_name" placeholder="NAME">
         	<span class="glyphicon glyphicon glyphicon-user form-control-feedback"></span>
       	</div>
       	

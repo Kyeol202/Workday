@@ -7,6 +7,8 @@ public class EmployeesDto {
 	private String position;			//직급
 	private String phone;			//핸드폰번호
 	private String email;				//이메일
+	private String emp_pw; 		//비밀번호
+	
 	
 	
 	
