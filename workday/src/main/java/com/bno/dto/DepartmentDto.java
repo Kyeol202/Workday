@@ -3,7 +3,7 @@ package com.bno.dto;
 public class DepartmentDto {
 	
 	private int dp_id;				//부서번호
-	private int emp_id;			//사원이름
+	private int u_id;			//사원이름
 	private String dp_name;	//부서이름
 	
 	
@@ -14,10 +14,10 @@ public class DepartmentDto {
 
 
 
-	public DepartmentDto(int dp_id, int emp_id, String dp_name) {
+	public DepartmentDto(int dp_id, int u_id, String dp_name) {
 		super();
 		this.dp_id = dp_id;
-		this.emp_id = emp_id;
+		this.u_id = u_id;
 		this.dp_name = dp_name;
 	}
 
@@ -35,14 +35,14 @@ public class DepartmentDto {
 
 
 
-	public int getEmp_id() {
-		return emp_id;
+	public int getU_id() {
+		return u_id;
 	}
 
 
 
-	public void setEmp_id(int emp_id) {
-		this.emp_id = emp_id;
+	public void setU_id(int u_id) {
+		this.u_id = u_id;
 	}
 
 
@@ -61,9 +61,12 @@ public class DepartmentDto {
 
 	@Override
 	public String toString() {
-		return "DepartmentDto [dp_id=" + dp_id + ", emp_id=" + emp_id + ", dp_name=" + dp_name + "]";
+		return "DepartmentDto [dp_id=" + dp_id + ", u_id=" + u_id + ", dp_name=" + dp_name + "]";
 	}
-	
+
+
+
+
 	
 	
 	
