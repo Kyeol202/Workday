@@ -20,46 +20,47 @@
 			
 			<c:choose>
 				<c:when test="${loginUser != null}">
+					<c:if test="${loginUser.u_position eq '부장' || loginUser.u_position eq '대표이사'}">
 					<li class="myPage treeview">
 						<a href="#">
-							<i class="fa fa-user"></i> <span>마이 페이지</span>
+							<i class="fa fa-user"></i> <span>부서 페이지</span>
 							<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 						</a>
 						<ul class="myGpx treeview-menu">
-							<li><a href="javascript:location.href='<c:url value="/"/>myPage/myUserInfo'">마이 기본 정보</a></li>
+							<li><a href="javascript:location.href='<c:url value="/"/>myPage/myUserInfo'">부서 정보</a></li>
 							<li class="myGpx treeview">
 								<a href="#">
-									<i class="fa fa-circle-o"></i> 마이 GPX 관리
+									<i class="fa fa-circle-o"></i> 부서 출근관리
 									<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 								</a>
 								<ul class="treeview-menu" style="display: none;">
-									<li><a href="javascript:location.href='<c:url value="/"/>myPage/myGpxBoard'">마이 GPX 공유 관리</a></li>
-									<%-- <li><a href="javascript:location.href='<c:url value="/"/>myPage/myGpxRanking'">마이 GPX 랭킹 등록 관리</a></li> --%>
+									<li><a href="javascript:location.href='<c:url value="/"/>myPage/myDepartmentGto'">부서원 출근관리</a></li>
 								</ul>
 							</li>
 							<li class="myCommunity treeview">
 								<a href="#">
-									<i class="fa fa-circle-o"></i> 마이 게시글&댓글 관리
+									<i class="fa fa-circle-o"></i> 부서원 퇴근 및 상태
 									<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 								</a>
 								<ul class="treeview-menu" style="display: none;">
-									<li><a href="javascript:location.href='<c:url value="/"/>myPage/myFreeBoard'">마이 게시글 관리</a></li>
-									<li><a href="javascript:location.href='<c:url value="/"/>myPage/myReply'">마이 댓글 관리</a></li>
+									<li><a href="javascript:location.href='<c:url value="/"/>myPage/myDepartmentOw'">부서 퇴근관리</a></li>
+									<li><a href="javascript:location.href='<c:url value="/"/>myPage/myDepartmentStatus'">부서원 상태</a></li>
 								</ul>
 							</li>
 						</ul>
 					</li>
-				</c:when>
+					</c:if>
+					</c:when>
 			</c:choose>
 			<li class="gpx treeview">
 				<a href="#">
 					<i class="fa fa-map"></i>
-					<span>출퇴근 관리</span>
+					<span>내 출퇴근</span>
 					<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="javascript:location.href='<c:url value="/"/>user/userGto'">출근관리</a></li>
-					<li><a href="javascript:location.href='<c:url value="/"/>user/userOw'">퇴근관리</a></li>
+					<li><a href="javascript:location.href='<c:url value="/"/>user/userGto'">출근 입력</a></li>
+					<li><a href="javascript:location.href='<c:url value="/"/>user/userOw'">퇴근 입력</a></li>
 				</ul>
 			</li>
 			<li class="community treeview">

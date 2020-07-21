@@ -87,14 +87,25 @@ public class UserController {
 				
 				session.setAttribute("loginUser", result);
 			} 
-			else {
-				path = "";
-				
-			}
+
 		}
 		
-		return "";
+		return path;
 	}
+	
+	//로그아웃
+	@RequestMapping(value = "user/userlogout")
+	public String userlogout(HttpSession session) {
+			logger.info("this is a userlogout Method");
+			
+			if(session.getAttribute("loginUser")!=null) {
+				session.removeAttribute("loginUser");
+			}
+		
+		return "redirect:/userHome";
+	}
+	
+	
 	
 	
 	

@@ -1,6 +1,6 @@
 package com.bno.dto;
 
-public class TA_managementDto {
+public class TAManagementDto {
 	
 	private String ymd;			//년월일
 	private int u_id;				//사번
@@ -11,13 +11,13 @@ public class TA_managementDto {
 	
 	
 	
-	public TA_managementDto() {
+	public TAManagementDto() {
 		super();
 	}
 
 
 
-	public TA_managementDto(String ymd, int u_id, String gto, String ow, char status, int workinghour) {
+	public TAManagementDto(String ymd, int u_id, String gto, String ow, char status, int workinghour) {
 		super();
 		this.ymd = ymd;
 		this.u_id = u_id;
