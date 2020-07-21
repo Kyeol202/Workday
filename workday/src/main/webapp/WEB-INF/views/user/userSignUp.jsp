@@ -15,7 +15,7 @@
 }
 
 .form-control-feedback {
-    position: absolute;
+    u_position: absolute;
     top: 0;
     right: 0;
     z-index: 2;
@@ -225,7 +225,7 @@ function checkSubmit() {
       	</div>
       	
       	<div class="form-group has-feedback">
-        	<input type="text" class="form-control" id="position" name="position" maxlength="15" placeholder="POSITION">
+        	<input type="text" class="form-control" id="u_position" name="u_position" maxlength="15" placeholder="u_position">
         	<span class="glyphicon glyphicon-lock form-control-feedback"></span>
       	</div>
       	
@@ -239,9 +239,9 @@ function checkSubmit() {
         <div class="col-xs-6">
           <div class="checkbox icheck">
             <label>
-              <div class="icheckbox_square-blue checked" aria-checked="true" aria-disabled="false" style="position: relative;">
-              	<input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-              	<ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+              <div class="icheckbox_square-blue checked" aria-checked="true" aria-disabled="false" style="u_position: relative;">
+              	<input type="checkbox" style="u_position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+              	<ins class="iCheck-helper" style="u_position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
               </div> <!--  I agree to the <a href="#">terms</a> -->
             </label>
           </div>

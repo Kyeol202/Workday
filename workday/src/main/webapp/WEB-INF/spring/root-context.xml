@@ -23,7 +23,7 @@
 		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml" /><!-- Mybatis 설정 -->
-		<property name="mapperLocations" value="classpath:/mapper/**/*Mapper.xml" /><!-- SQL 작성 -->
+		<property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml" /><!-- SQL 작성 -->
 	</bean>
 		
 		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">

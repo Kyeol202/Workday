@@ -1,29 +1,29 @@
 package com.bno.dto;
 
-public class UserInfoDto {
+public class UserInfo {
 	
-	private int u_id;				//사번
-	private String u_name;		//사원이름
-	private String position;			//직급
+	private int u_id;						//사번
+	private String u_name;				//사원이름
+	private String u_position;			//직급
 	private String u_phone;			//핸드폰번호
 	private String u_email;				//이메일
-	private String u_pwd; 		//비밀번호
-	private String dp_name; 		//부서 이름
+	private String u_pwd; 				//비밀번호
+	private String dp_name; 			//부서 이름
 	
 	
 	
-	public UserInfoDto() {
+	public UserInfo() {
 		super();
 	}
 
 
 
-	public UserInfoDto(int u_id, String u_name, String position, String u_phone, String u_email, String u_pwd,
+	public UserInfo(int u_id, String u_name, String u_position, String u_phone, String u_email, String u_pwd,
 			String dp_name) {
 		super();
 		this.u_id = u_id;
 		this.u_name = u_name;
-		this.position = position;
+		this.u_position = u_position;
 		this.u_phone = u_phone;
 		this.u_email = u_email;
 		this.u_pwd = u_pwd;
@@ -56,14 +56,14 @@ public class UserInfoDto {
 
 
 
-	public String getPosition() {
-		return position;
+	public String getU_position() {
+		return u_position;
 	}
 
 
 
-	public void setPosition(String position) {
-		this.position = position;
+	public void setU_position(String u_position) {
+		this.u_position = u_position;
 	}
 
 
@@ -118,9 +118,12 @@ public class UserInfoDto {
 
 	@Override
 	public String toString() {
-		return "UserInfoDto [u_id=" + u_id + ", u_name=" + u_name + ", position=" + position + ", u_phone=" + u_phone
+		return "UserInfo [u_id=" + u_id + ", u_name=" + u_name + ", u_position=" + u_position + ", u_phone=" + u_phone
 				+ ", u_email=" + u_email + ", u_pwd=" + u_pwd + ", dp_name=" + dp_name + "]";
 	}
+
+
+	
 
 	
 	

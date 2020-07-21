@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="user">
+	
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="UserInfo">
+	INSERT INTO USER_INFO(
+	U_ID,
+	U_EMAIL,
+	U_PWD,
+	U_NAME,
+	U_POSITION,
+	U_PHONE,
+	DP_NAME
+	)
+	VALUES(
+	USER_INFO_SEQ.NEXTVAL,
+	#{u_email},
+	#{u_pwd},
+	#{u_name},
+	#{u_position},
+	#{u_phone},
+	#{dp_name}
+	)
+	
+	</insert>  
+  
+  	<!-- 이메일 중복체크 -->
+  	<select id="idcheck" parameterType="UserInfo" resultType="int">
+  	SELECT COUNT(*)
+  	FROM USER_INFO
+  	WHERE U_EMAIL = #{u_email}
+  	
+  	</select>
+  	
+  	<select id="userSelectOne" parameterType="UserInfo" resultType="UserInfo">
+  		SELECT *
+  		FROM USER_INFO
+  		WHERE U_EMAIL = #{u_email}
+  	
+  	</select>
+  	
+  	
+  	
+  </mapper>
