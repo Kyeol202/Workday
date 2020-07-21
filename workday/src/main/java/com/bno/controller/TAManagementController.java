@@ -31,9 +31,16 @@ public class TAManagementController {
 	public String userGtoCheck(HttpSession session) {
 		
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
+		String path = "";
 		
 		
-		return "";
+		if(user != null) {
+			
+		} else {
+			path = "redirect:/user/userlogin";
+		}
+		
+		return path;
 	}
 	
 	
