@@ -19,8 +19,7 @@
 		
 		
 	})//function end
-	
-	
+
 	
 	</script>
 
@@ -61,7 +60,7 @@
 			<div class="box">
 			<form id="userGtoStart" method="post">
             <div class="box-header">
-            	<input type="hidden" name="u_id" value="${UserInfo.u_id }">
+            	<input type="hidden" name="u_id" value="${loginUser.u_id }">
               <input type="button" id="gtoStart" value="출근" onclick="confirm('출근 하시겠습니까?')"
               class="btn btn-success">
             </div>
@@ -76,12 +75,10 @@
                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
                 	사원 이름</th>
                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
-                	출근 시간
+                	직급
                 </th>
                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">
-                	퇴근 시간</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
-                	근무 시간</th>
+                	출근시간</th>
                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
              		상태</th>
                 </tr>
@@ -94,22 +91,21 @@
                   <td>Win 98+ / OSX.2+</td>
                   <td>1.7</td>
                   <td>A</td>
-                  <td>B</td>
                 </tr></tbody>
               </table></div></div>
               <div class="row"><div class="col-sm-5">
               <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">
-              Showing 1 to 10 of 57 entries</div></div>
+              언제 출근 했을까요~?</div></div>
               <div class="col-sm-7">
               <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
               <ul class="pagination">
               <li class="paginate_button previous disabled" id="example2_previous">
               <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">
-              Previous</a></li>
+              이전</a></li>
               <li class="paginate_button active">
               <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a></li>
               
-              <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div></div>
+              <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">다음</a></li></ul></div></div></div></div>
             </div>
             <!-- /.box-body -->
           </div>

@@ -5,5 +5,23 @@
   
   <mapper namespace="TAManagement">
   
+  <insert id="insertGto" parameterType="TAManagement">
+  	
+INSERT INTO TA_MANAGEMENT(
+    YMD,
+    U_ID,
+    GTO,
+    STATUS
+)
+values(
+    TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
+    #{u_id},
+    TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
+    default)
+  
+  </insert>
+  
+  
+  
   
   </mapper>

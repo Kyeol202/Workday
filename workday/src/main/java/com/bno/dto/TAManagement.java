@@ -1,6 +1,6 @@
 package com.bno.dto;
 
-public class TAManagementDto {
+public class TAManagement {
 	
 	private String ymd;			//년월일
 	private int u_id;				//사번
@@ -11,13 +11,13 @@ public class TAManagementDto {
 	
 	
 	
-	public TAManagementDto() {
+	public TAManagement() {
 		super();
 	}
 
 
 
-	public TAManagementDto(String ymd, int u_id, String gto, String ow, char status, int workinghour) {
+	public TAManagement(String ymd, int u_id, String gto, String ow, char status, int workinghour) {
 		super();
 		this.ymd = ymd;
 		this.u_id = u_id;
@@ -103,11 +103,13 @@ public class TAManagementDto {
 
 	@Override
 	public String toString() {
-		return "TAmanagementDto [ymd=" + ymd + ", u_id=" + u_id + ", gto=" + gto + ", ow=" + ow + ", status=" + status
+		return "TAManagement [ymd=" + ymd + ", u_id=" + u_id + ", gto=" + gto + ", ow=" + ow + ", status=" + status
 				+ ", workinghour=" + workinghour + "]";
 	}
 
-	
+
+
+
 	
 
 	

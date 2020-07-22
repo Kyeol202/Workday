@@ -3,7 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.bno.dto.UserInfo" alias="UserInfo" />
-		<typeAlias type="com.bno.dto.TAManagementDto" alias="TAManagement"/>
+		<typeAlias type="com.bno.dto.TAManagement" alias="TAManagement"/> 
 		
 	</typeAliases>
 </configuration>
