@@ -4,6 +4,7 @@
 	<typeAliases>
 		<typeAlias type="com.bno.dto.UserInfo" alias="UserInfo" />
 		<typeAlias type="com.bno.dto.TAManagement" alias="TAManagement"/> 
-		
+		<typeAlias type="com.bno.dto.SearchDto" alias="searchDto"/>
+		<typeAlias type="com.bno.dto.BoardPager" alias="boardPager"/>
 	</typeAliases>
 </configuration>
