@@ -14,7 +14,6 @@ public interface TAManagementDao {
 	
 
 	
-	//레코드 전체 갯수 가져오기
-	public int selectuserGtoCount(SearchDto searchDto);
+
 	
 }//inter end

@@ -27,12 +27,7 @@ public class TAManagementServiceImpl implements TAManagementService {
 
 
 
-	//레코드 총 갯수 가져오기
-	@Override
-	public int selectuserGtoCount(SearchDto searchDto) {
-		
-		return dao.selectuserGtoCount(searchDto);
-	}
+
 
 
 	

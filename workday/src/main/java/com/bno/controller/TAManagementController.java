@@ -49,7 +49,7 @@ public class TAManagementController {
 			//검색객체 값 넣기
 			SearchDto searchDto = new SearchDto(searchSort, searchVal);
 			//총 레코드 가져오기
-			int nCount = service.selectuserGtoCount(searchDto);
+			int nCount = serviceJoin.selectuserGtoCount(searchDto);
 			//현재 출력 페이지
 			int curPage = cPage;
 			
@@ -64,7 +64,7 @@ public class TAManagementController {
 			List<JoinDto> gtoAllList = serviceJoin.selectGtoAllList(boardPager);
 			
 			model.addAttribute("gtoAllList", gtoAllList);
-			model.addAttribute("boardPager", boardPager);
+//			model.addAttribute("boardPager", boardPager);
 		
 	return "work/ajax/userGto_ajax";	
 	}

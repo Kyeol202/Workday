@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
+import com.bno.dto.SearchDto;
 
 @Repository
 public class JoinDaoImpl implements JoinDao{
@@ -17,7 +18,8 @@ public class JoinDaoImpl implements JoinDao{
 	private SqlSessionTemplate session;
 	
 	private String queryprefix = "Join.";
-
+	
+	//출근 전체 목록 조회
 	@Override
 	public List<JoinDto> selectGtoAllList(BoardPager boardPager) {
 
@@ -30,6 +32,12 @@ public class JoinDaoImpl implements JoinDao{
 	}
 	
 	
+	//레코드 총 갯수 가져오기
+	@Override
+	public int selectuserGtoCount(SearchDto searchDto) {
+				
+		return session.selectOne(queryprefix+"selectuserGtoCount", searchDto);
+	}
 	
 	
 }//class end
