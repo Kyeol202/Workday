@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.bno.dao.TAManagementDao;
 import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.dto.TAManagement;
 
@@ -27,7 +28,7 @@ public class TAManagementServiceImpl implements TAManagementService {
 
 	//전체 목록 조회
 	@Override
-	public List<TAManagement> selectGtoAllList(BoardPager boardPager) {
+	public List<JoinDto> selectGtoAllList(BoardPager boardPager) {
 		
 		return dao.selectGtoAllList(boardPager);
 	}

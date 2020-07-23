@@ -40,7 +40,7 @@ values(
   </choose>
   </sql>
   
-  <select id="selectGtoAllList" resultType="TAManagement" parameterType="com.bno.dto.BoardPager">
+  <select id="selectGtoAllList" resultType="JoinDto" parameterType="com.bno.dto.BoardPager">
   <include refid="pagingHeader"></include>
   	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.GTO, T.STATUS
 	FROM USER_INFO U

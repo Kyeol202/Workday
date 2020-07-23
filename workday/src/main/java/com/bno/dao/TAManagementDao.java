@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.dto.TAManagement;
 
@@ -13,7 +14,7 @@ public interface TAManagementDao {
 	public void insertGto(TAManagement dto);
 	
 	//전체 조회
-	public List<TAManagement> selectGtoAllList(BoardPager boardPager);
+	public List<JoinDto> selectGtoAllList(BoardPager boardPager);
 	
 	
 	//레코드 총 갯수 가져오기

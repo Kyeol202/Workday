@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.dto.TAManagement;
 
@@ -30,9 +31,9 @@ public class TAManagementDaoImpl implements TAManagementDao {
 	}
 
 	@Override
-	public List<TAManagement> selectGtoAllList(BoardPager boardPager) {
+	public List<JoinDto> selectGtoAllList(BoardPager boardPager) {
 		
-		List<TAManagement> selectGtoAllList = new ArrayList<TAManagement>();
+		List<JoinDto> selectGtoAllList = new ArrayList<JoinDto>();
 		
 		
 		selectGtoAllList = session.selectList(queryprefix+"selectGtoAllList", boardPager);
