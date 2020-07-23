@@ -29,15 +29,6 @@ public class TAManagementDaoImpl implements TAManagementDao {
 		
 	}
 	
-	//전체 목록 조회
-	@Override
-	public List<TAManagement> selectAllGtoList(BoardPager boardPager) {
-		List<TAManagement> tamanagementList = 
-				new ArrayList<TAManagement>();
-		System.out.println("전체목록 조회 = "+tamanagementList.toString());
-		tamanagementList = session.selectList(queryprefix+"selectAllGtoList", boardPager);
-		return tamanagementList;
-	}
 	
 	//레코드 총 갯수 가져오기
 	@Override

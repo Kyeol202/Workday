@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.dto.TAManagement;
 import com.bno.dto.UserInfo;
+import com.bno.service.JoinService;
 import com.bno.service.TAManagementService;
 
 @Controller
@@ -22,6 +24,9 @@ public class TAManagementController {
 	
 	@Autowired
 	private TAManagementService service;
+	
+	@Autowired
+	private JoinService serviceJoin;
 	
 	
 	@RequestMapping(value = "user/userGto")
@@ -56,9 +61,9 @@ public class TAManagementController {
 			boardPager.setSearchVal(searchVal);
 			
 			//전체 리스트 출력
-			List<TAManagement> gtoAllList = service.selectAllGtoList(boardPager);
+			List<JoinDto> gtoAllList = serviceJoin.selectGtoAllList(boardPager);
 			
-			model.addAttribute("gtoList", gtoAllList);
+			model.addAttribute("gtoAllList", gtoAllList);
 			model.addAttribute("boardPager", boardPager);
 		
 	return "work/ajax/userGto_ajax";	

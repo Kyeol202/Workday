@@ -2,7 +2,7 @@ package com.bno.dto;
 
 public class TAManagement {
 	
-	private String ymd;			//년월일
+	private int ta_id;				//일련번호
 	private int u_id;				//사번
 	private String gto;			//출근시간
 	private String ow;				//퇴근시간
@@ -17,9 +17,9 @@ public class TAManagement {
 
 
 
-	public TAManagement(String ymd, int u_id, String gto, String ow, char status, int workinghour) {
+	public TAManagement(int ta_id, int u_id, String gto, String ow, char status, int workinghour) {
 		super();
-		this.ymd = ymd;
+		this.ta_id = ta_id;
 		this.u_id = u_id;
 		this.gto = gto;
 		this.ow = ow;
@@ -29,14 +29,14 @@ public class TAManagement {
 
 
 
-	public String getYmd() {
-		return ymd;
+	public int getTa_id() {
+		return ta_id;
 	}
 
 
 
-	public void setYmd(String ymd) {
-		this.ymd = ymd;
+	public void setTa_id(int ta_id) {
+		this.ta_id = ta_id;
 	}
 
 
@@ -103,18 +103,10 @@ public class TAManagement {
 
 	@Override
 	public String toString() {
-		return "TAManagement [ymd=" + ymd + ", u_id=" + u_id + ", gto=" + gto + ", ow=" + ow + ", status=" + status
+		return "TAManagement [ta_id=" + ta_id + ", u_id=" + u_id + ", gto=" + gto + ", ow=" + ow + ", status=" + status
 				+ ", workinghour=" + workinghour + "]";
 	}
 
-
-
-
-	
-
-	
-	
-	
 	
 	
 	

@@ -97,6 +97,9 @@
 			<form id="userGtoStart" method="post">
             <div class="box-header">
             	<input type="hidden" name="u_id" value="${loginUser.u_id }">
+            	<input type="hidden" name="dp_name" value="${loginUser.dp_name }">
+				<input type="hidden" name="u_name" value="${loginUser.u_name }">
+				<input type="hidden" name="u_position" value="${loginUser.u_position }">
               <input type="button" id="gtoStart" value="출근" onclick="confirm('출근 하시겠습니까?')"
               class="btn btn-success">
             </div>

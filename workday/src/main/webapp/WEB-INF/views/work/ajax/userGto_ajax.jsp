@@ -33,15 +33,15 @@
              		상태</th>
                 </tr>
                 </thead>
-                <c:forEach var="gtoList" items="${gtoList }">
+                <c:forEach var="gtoAllList" items="${gtoAllList }">
                
                 <tbody>
                 <tr role="row" class="odd">
-                  <td class="sorting_1">${gtoList.dp_name }</td>
-                  <td>${gtoList.u_name }</td>
-                  <td>${gtoList.u_position }</td>
-                  <td>${gtoList.gto }</td>
-                  <td>${gtoList.status }</td>
+                  <td class="sorting_1">${gtoAllList.dp_name }</td>
+                  <td>${gtoAllList.u_name }</td>
+                  <td>${gtoAllList.u_position }</td>
+                  <td>${gtoAllList.gto }</td>
+                  <td>${gtoAllList.status }</td>
                 </tr>
                 
                 </c:forEach>

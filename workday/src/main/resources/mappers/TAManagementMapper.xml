@@ -17,51 +17,12 @@ values(
     TA_MANAGEMENT_SEQ.NEXTVAL,
     #{u_id},
     TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
-    default)
+    default
+    )
   
   </insert>
   
-  <sql id="pagingHeader">
-  SELECT * FROM (
-  SELECT ROWNUM AS rn, A.* FROM (
-  </sql>
   
-  <sql id="pagingFooter">
-  )A
-  )WHERE rn BETWEEN #{start} AND #{end}
-  </sql>
-  
-  <sql id="search">
-  <choose>
- <when test="searchSort !=''">
- AND ${searchSort} LIKE '%' || #{searchVal} || '%'
- </when> 
-  </choose>
-  </sql>
-  
-  <select id="selectAllGtoList" resultType="TAManagement" parameterType="com.bno.dto.BoardPager">
-  <include refid="pagingHeader"></include>
-  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.GTO, T.STATUS
-	FROM USER_INFO U
-	JOIN TA_MANAGEMENT T
-	ON U.U_ID = T.U_ID
-  	WHERE 1 =1
-  	<include refid="search"></include>
-  	ORDER BY T.GTO
-  	<include refid="pagingFooter"></include>
-  </select>
-  
-  <select id="selectuserGtoCount" parameterType="searchDto" resultType="int">
-  	SELECT COUNT(*)
-  	FROM (
-  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.GTO, T.STATUS
-	FROM USER_INFO U
-	JOIN TA_MANAGEMENT T
-	ON U.U_ID = T.U_ID )
-  	WHERE 1 =1
-  	
-  <include refid="search"></include>
-  </select>
   
   
   </mapper>

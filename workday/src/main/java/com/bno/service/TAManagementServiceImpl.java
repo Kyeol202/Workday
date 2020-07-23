@@ -25,13 +25,7 @@ public class TAManagementServiceImpl implements TAManagementService {
 		dao.insertGto(dto);
 	}
 
-	//전체 조회
-	@Override
-	public List<TAManagement> selectAllGtoList(BoardPager boardPager) {
-		
-		
-		return dao.selectAllGtoList(boardPager);
-	}
+
 
 	//레코드 총 갯수 가져오기
 	@Override
