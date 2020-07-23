@@ -17,7 +17,7 @@ public class Page {
 			
 		return (this.page-1) * pageNum;
 		
-	}//method end
+	}
 
 
 	public int getPage() {
