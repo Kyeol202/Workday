@@ -66,14 +66,12 @@ public class TAManagementController {
 	return "work/ajax/userGto_ajax";	
 	}
 	
-	
+	//출근관리 버튼을 눌렀을 때 로그인 체크
 	@RequestMapping(value = "/user/userGtoCheck")
-	public String userGtoCheck(@RequestParam int u_id, TAManagement dto,
-			HttpSession session) {
+	public String userGtoCheck(@RequestParam int u_id, TAManagement dto, HttpSession session) {
 		
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		String path = "";
-		
 		
 		if(user != null) {
 		
@@ -87,7 +85,30 @@ public class TAManagementController {
 		return path;
 	}
 	
+	//퇴근관리
+	@RequestMapping(value = "user/userOw")
+	public String userOw() {
+		
+		return "work/userOw";
+	}
 	
+	//퇴근관리 버튼을 눌렀을 때 로그인 체크
+	@RequestMapping(value = "user/userOwCheck")
+	public String userOwCheck(@RequestParam int u_id, TAManagement dto, HttpSession session) {
+		
+		UserInfo user = (UserInfo) session.getAttribute("loginUser");
+		String path = "";
+		
+		if(user != null) {
+			service.update(dto);
+			path = "redirect:/user/userOw";
+		}
+		else {
+			path = "redirect:/user/userlogin";
+		}
+
+		return path;
+	}
 	
 	
 	
