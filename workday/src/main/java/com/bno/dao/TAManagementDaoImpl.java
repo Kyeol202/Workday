@@ -28,8 +28,28 @@ public class TAManagementDaoImpl implements TAManagementDao {
 		session.insert(queryprefix+"insertGto", dto);
 		
 	}
-	
 
+	@Override
+	public List<TAManagement> selectGtoAllList(BoardPager boardPager) {
+		
+		List<TAManagement> selectGtoAllList = new ArrayList<TAManagement>();
+		
+		
+		selectGtoAllList = session.selectList(queryprefix+"selectGtoAllList", boardPager);
+		System.out.println("전체목록 조회 = "+selectGtoAllList.toString());
+		
+		return selectGtoAllList;
+	}
+
+	@Override
+	public int selectuserGtoCount(SearchDto searchDto) {
+
+		System.out.println("레코드 총 갯수 Dao"+searchDto);
+		
+		return session.selectOne(queryprefix+"selectuserGtoCount", searchDto);
+	}
+	
+	
 	
 	
 	

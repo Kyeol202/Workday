@@ -13,7 +13,12 @@ public interface TAManagementService {
 	public void insertGto(TAManagement dto);
 	
 
+	//전체조회 출력
+	public List<TAManagement> selectGtoAllList(BoardPager boardPager);
 	
+	
+	//레코드 전체 갯수 가져오기
+	public int selectuserGtoCount(SearchDto searchDto);
 
 	
 	
