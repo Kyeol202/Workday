@@ -20,7 +20,7 @@ public class TAManagementDaoImpl implements TAManagementDao {
 	
 	
 	private String queryprefix = "TAManagement.";
-
+	
 	//출근시간 입력
 	@Override
 	public void insertGto(TAManagement dto) {
@@ -34,6 +34,7 @@ public class TAManagementDaoImpl implements TAManagementDao {
 	public List<TAManagement> selectAllGtoList(BoardPager boardPager) {
 		List<TAManagement> tamanagementList = 
 				new ArrayList<TAManagement>();
+		System.out.println("전체목록 조회 = "+tamanagementList.toString());
 		tamanagementList = session.selectList(queryprefix+"selectAllGtoList", boardPager);
 		return tamanagementList;
 	}
@@ -41,7 +42,7 @@ public class TAManagementDaoImpl implements TAManagementDao {
 	//레코드 총 갯수 가져오기
 	@Override
 	public int selectuserGtoCount(SearchDto searchDto) {
-		
+				
 		return session.selectOne(queryprefix+"selectuserGtoCount", searchDto);
 	}
 	

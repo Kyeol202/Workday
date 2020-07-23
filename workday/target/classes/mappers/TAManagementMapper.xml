@@ -8,13 +8,13 @@
   <insert id="insertGto" parameterType="TAManagement">
   	
 INSERT INTO TA_MANAGEMENT(
-    YMD,
+    TA_ID,
     U_ID,
     GTO,
     STATUS
 )
 values(
-    TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
+    TA_MANAGEMENT_SEQ.NEXTVAL,
     #{u_id},
     TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
     default)
@@ -47,7 +47,7 @@ values(
 	ON U.U_ID = T.U_ID
   	WHERE 1 =1
   	<include refid="search"></include>
-  	ORDER BY GTO
+  	ORDER BY T.GTO
   	<include refid="pagingFooter"></include>
   </select>
   

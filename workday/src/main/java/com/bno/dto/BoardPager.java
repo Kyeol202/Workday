@@ -43,11 +43,13 @@ public class BoardPager {
 		setPageRange();				//
 		setTotBlock();					//전체 페이지 블록 갯수 계산
 		setBlockRange();				//페이지 블록의 시작, 끝 번호 계산
+		
+		//list 시작과 끝값 넣기
+		start = getPageBegin();
+		end = getPageEnd();
 	}
 	
-	//list 시작과 끝값 넣기
-//	start = getPageBegin();
-//	end = getPageEnd();
+
 	
 	
 	public void setBlockRange() {

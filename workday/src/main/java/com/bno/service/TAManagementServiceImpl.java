@@ -30,7 +30,6 @@ public class TAManagementServiceImpl implements TAManagementService {
 	public List<TAManagement> selectAllGtoList(BoardPager boardPager) {
 		
 		
-		
 		return dao.selectAllGtoList(boardPager);
 	}
 

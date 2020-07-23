@@ -17,7 +17,9 @@
             <div class="box-body">
               <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                 <thead>
-                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" 
+                rowspan="1" colspan="1" aria-sort="ascending" 
+                aria-label="Rendering engine: activate to sort column descending">
                  	부서이름	
                 </th>
                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
@@ -31,9 +33,8 @@
              		상태</th>
                 </tr>
                 </thead>
-                
-                
                 <c:forEach var="gtoList" items="${gtoList }">
+               
                 <tbody>
                 <tr role="row" class="odd">
                   <td class="sorting_1">${gtoList.dp_name }</td>
@@ -42,6 +43,7 @@
                   <td>${gtoList.gto }</td>
                   <td>${gtoList.status }</td>
                 </tr>
+                
                 </c:forEach>
                 </tbody>
               </table>
@@ -56,7 +58,7 @@
 			<ul class="pagination">
 				<c:if test="${boardPager.curBlock > 1 }">
 					<li class="paginate_button previous disabled"><a
-							href="javascript:gpxBoardAjaxfn(${boardPager.prevPage})">Previous</a>
+							href="javascript:userGtoAjaxfn(${boardPager.prevPage})">Previous</a>
 					</li>
 				</c:if>
 				<c:forEach var="num" begin="${boardPager.blockBegin }" end="${boardPager.blockEnd }">
@@ -66,13 +68,13 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="paginate_button"><a href="javascript:gpxBoardAjaxfn(${num})">${num}</a></li>
+							<li class="paginate_button"><a href="javascript:userGtoAjaxfn(${num})">${num}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${boardPager.curBlock <= boardPager.totBlock }">
 					<li class="paginate_button next" id="example1_next">
-						<a href="javascript:gpxBoardAjaxfn(${boardPager.nextPage})">Next</a>
+						<a href="javascript:userGtoAjaxfn(${boardPager.nextPage})">Next</a>
 					</li>
 				</c:if>
 			</ul>

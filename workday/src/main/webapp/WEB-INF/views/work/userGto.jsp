@@ -13,13 +13,13 @@
 
 	$(function () {
 		// 페이지 처음 접근시 리스트 표시 좌표
-		gpxBoardAjaxfn(1);	//현재 page =1 ->기본시작, 접근하는 순간 시작
+		userGtoAjaxfn(1);	//현재 page =1 ->기본시작, 접근하는 순간 시작
 	})
 
 	// 리스트 Ajax 처리
-	function gpxBoardAjaxfn(cPage) {
+	function userGtoAjaxfn(cPage) {
 		$.ajax({
-			url: "<c:url value="/ "/>userGto/userGtoAjax",
+			url: "<c:url value="/"/>userGto/userGtoAjax",
 			data: {
 				"cPage": cPage,
 				"searchSort": searchSort,
@@ -36,7 +36,7 @@
 	function searchBoxFn() {
 		searchSort = $('#searchSort').val();
 		searchVal = $('#searchVal').val();
-		gpxBoardAjaxfn(1);
+		userGtoAjaxfn(1);
 	}
 
 	
@@ -111,7 +111,7 @@
 												<form action="javascript:searchBoxFn()">
 													<div class="box-tools">
 														<select class="form-control" name="searchSort" id="searchSort">
-															<option value="g_seq">번호</option>
+															<option value="u_id">번호</option>
 														</select>
 														<div class="input-group input-group-sm" style="width: 150px;">
 															<input type="text" name="searchVal" id="searchVal"

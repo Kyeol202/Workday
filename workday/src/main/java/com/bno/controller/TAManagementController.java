@@ -56,10 +56,10 @@ public class TAManagementController {
 			boardPager.setSearchVal(searchVal);
 			
 			//전체 리스트 출력
-			List<TAManagement> gtoList = service.selectAllGtoList(boardPager);
+			List<TAManagement> gtoAllList = service.selectAllGtoList(boardPager);
 			
-			model.addAttribute("gtoList", gtoList);
-			model.addAttribute("boardPager", boardPager)
+			model.addAttribute("gtoList", gtoAllList);
+			model.addAttribute("boardPager", boardPager);
 		
 	return "work/ajax/userGto_ajax";	
 	}
