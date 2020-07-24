@@ -42,7 +42,7 @@ values(
   
   <select id="selectGtoAllList" resultType="JoinDto" parameterType="com.bno.dto.BoardPager">
   <include refid="pagingHeader"></include>
-  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.GTO, T.STATUS
+  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.GTO, T.STATUS, T.OW, T.WORKINGHOUR
 	FROM USER_INFO U
 	JOIN TA_MANAGEMENT T
 	ON U.U_ID = T.U_ID
@@ -55,7 +55,7 @@ values(
   <select id="selectuserGtoCount" parameterType="searchDto" resultType="int">
   	SELECT COUNT(*)
   	FROM (
-  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.GTO, T.STATUS
+  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.GTO, T.STATUS, T.OW, T.WORKINGHOUR
 	FROM USER_INFO U
 	JOIN TA_MANAGEMENT T
 	ON U.U_ID = T.U_ID )

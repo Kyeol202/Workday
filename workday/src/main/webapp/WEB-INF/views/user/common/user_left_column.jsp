@@ -55,7 +55,7 @@
 			<li class="gpx treeview">
 				<a href="#">
 					<i class="fa fa-map"></i>
-					<span>내 출퇴근</span>
+					<span>출퇴근</span>
 					<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 				</a>
 				<ul class="treeview-menu">

@@ -91,7 +91,7 @@
 							<div class="box-header">
 								<div class="row">
 									<div class="col flexBox" style="justify-content: flex-start; padding: 0 16px;">
-										<h3 class="box-title">내 출근관리</h3>
+										<h3 class="box-title">출근관리</h3>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										
 									</div>
@@ -111,21 +111,19 @@
 				<input type="hidden" name="u_position" value="${loginUser.u_position }">
               <input type="button" id="gtoStart" value="출근" onclick="confirm('출근 하시겠습니까?')"
               class="btn btn-success">
+             </form>
             </div>
-            </form>
-            <div class="box">
-			<form id="userOwStart" method="post">
+            <form id="userOwStart" method="post">
             <div class="box-header">
             	<input type="hidden" name="u_id" value="${loginUser.u_id }">
             	<input type="hidden" name="dp_name" value="${loginUser.dp_name }">
 				<input type="hidden" name="u_name" value="${loginUser.u_name }">
 				<input type="hidden" name="u_position" value="${loginUser.u_position }">
-				<input type="hidden" name="ta_id" value="${paramMap.get('ta_id') }">
+				<input type="hidden" name="ta_id" value="${ta_id }">
               <input type="button" id="owStart" value="퇴근" onclick="confirm('정말 퇴근 하시겠습니까?')"
               class="btn btn-danger">
-            </div>
             </form>
-            
+            </div>
             
             <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 									<div class="row">

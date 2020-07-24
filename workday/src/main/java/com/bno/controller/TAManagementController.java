@@ -70,7 +70,8 @@ public class TAManagementController {
 	
 	//출근관리 버튼을 눌렀을 때 로그인 체크
 	@RequestMapping(value = "/user/userGtoCheck")
-	public String userGtoCheck(@RequestParam int u_id, TAManagement dto, HttpSession session) {
+	public String userGtoCheck(@RequestParam int u_id, 
+			@RequestParam int ta_id, TAManagement dto, HttpSession session) {
 		
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		String path = "";
@@ -96,17 +97,16 @@ public class TAManagementController {
 	
 	//퇴근관리 버튼을 눌렀을 때 로그인 체크
 	@RequestMapping(value = "user/userOwCheck")
-	public String userOwCheck(@RequestParam int u_id,TAManagement dto,
-			HttpSession session, RedirectAttributes redirectAttribute, 
-			@RequestParam HashMap<String, String> paramMap) {
+	public String userOwCheck(@RequestParam(value = "ta_id") int ta_id,
+			HttpSession session, RedirectAttributes redirectAttribute) {
 		
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		String path = "";
 		
 		if(user != null) {
 
-			service.owUpdate(paramMap);
-			redirectAttribute.addAttribute("ta_id", paramMap.get("ta_id"));
+			service.owUpdate(ta_id);
+			redirectAttribute.addAttribute("ta_id", ta_id);
 			path = "redirect:/user/userGtoOw";
 
 		}
@@ -149,6 +149,12 @@ public class TAManagementController {
 	return "work/ajax/userGtoOw_ajax";	
 	}
 	
+	@RequestMapping(value = "user/userGtoSelectOne")
+	public String userGtoSelectOne() {
+		
+		
+		return "work/userGtoSelectOne";
+	}
 	
 	
 }//class end

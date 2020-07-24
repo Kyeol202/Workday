@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
 		session.insert(queryprefix+"insertUser", user);
 	}
 
-
+	//이메일 중복체크
 	@Override
 	public int idcheck(String u_email) throws Exception {
 	
