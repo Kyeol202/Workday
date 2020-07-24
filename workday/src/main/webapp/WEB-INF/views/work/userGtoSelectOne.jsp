@@ -27,21 +27,47 @@
 							<div class="box-header">
 								<div class="row">
 									<div class="col flexBox" style="justify-content: flex-start; padding: 0 16px;">
-										<h3 class="box-title">근태관리</h3>
+										<h3 class="box-title">출근관리</h3>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										
 									</div>
 								</div>
 							</div>
-							
+			<ol class="breadcrumb">
+      			  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    		    <li><a href="#">내 출퇴근</a></li>
+     		   <li class="active">출근 입력</li>
+    		  </ol>
+			<div class="box">
 
+            <form id="userOwStart" method="post">
+            <div class="box-header">
+            	<input type="hidden" name="u_id" value="${loginUser.u_id }">
+            	<input type="hidden" name="dp_name" value="${loginUser.dp_name }">
+				<input type="hidden" name="u_name" value="${loginUser.u_name }">
+				<input type="hidden" name="u_position" value="${loginUser.u_position }">
+				<input type="hidden" name="ta_id" value="${ta_id }">
+              <input type="button" id="owStart" value="퇴근" onclick="confirm('정말 퇴근 하시겠습니까?')"
+              class="btn btn-danger">
+            </form>
+            </div>
+            
 
-
-								
+							</div>
+						</div>
+					</div>
+				</div>
 
 			</section>
 			<!-- /.content -->
 
+            
+            
+            
+            
+            
+            
+          
 
 
 		</div>
