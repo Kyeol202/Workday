@@ -54,10 +54,10 @@ public class TAManagementDaoImpl implements TAManagementDao {
 	
 	//퇴근시간 (update)
 	@Override
-	public void owUpdate(int ta_id) {
-		System.out.println("update = "+ta_id);
+	public void owUpdate(HashMap<String, String> paramMap) {
+		System.out.println("update = "+paramMap);
 		
-		session.update(queryprefix+"owUpdate", ta_id);
+		session.update(queryprefix+"owUpdate", paramMap);
 	}
 	
 	//퇴근 전체 조회

@@ -51,14 +51,19 @@
 		$("#userGtoStart").attr("action", url);
 		$("#userGtoStart").submit();
 	})	
-		
+	
 	$("#owStart").click(function() {
-		var url = "<%=contextPath%>"+"/user/userGtoCheck";
+		var url = "<%=contextPath%>"+"/user/userOwCheck";
 		$("#userOwStart").attr("action", url);
 		$("#userOwStart").submit();
 	})	
 		
 	})//function end
+	
+
+	
+
+	
 
 	
 	</script>
@@ -115,7 +120,7 @@
             	<input type="hidden" name="dp_name" value="${loginUser.dp_name }">
 				<input type="hidden" name="u_name" value="${loginUser.u_name }">
 				<input type="hidden" name="u_position" value="${loginUser.u_position }">
-				<input type="hidden" name="ta_id" value="">
+				<input type="hidden" name="ta_id" value="${paramMap.get('ta_id') }">
               <input type="button" id="owStart" value="퇴근" onclick="confirm('정말 퇴근 하시겠습니까?')"
               class="btn btn-danger">
             </div>

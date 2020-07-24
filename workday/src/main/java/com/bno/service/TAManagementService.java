@@ -21,7 +21,7 @@ public interface TAManagementService {
 	public int selectuserGtoCount(SearchDto searchDto);
 
 	//퇴근시간 (update)
-	public void owUpdate(int ta_id);
+	public void owUpdate(HashMap<String, String> paramMap);
 	
 	//퇴근 전체 조회 출력
 	public List<JoinDto>  selectOwAllList(BoardPager boardPager);

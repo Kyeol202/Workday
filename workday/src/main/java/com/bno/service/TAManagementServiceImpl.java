@@ -43,9 +43,9 @@ public class TAManagementServiceImpl implements TAManagementService {
 	
 	//퇴근시간 (update)
 	@Override
-	public void owUpdate(int ta_id) {
+	public void owUpdate(HashMap<String, String> paramMap) {
 
-		dao.owUpdate(ta_id);
+		dao.owUpdate(paramMap);
 	}
 	
 	//퇴근 전체 목록 조회

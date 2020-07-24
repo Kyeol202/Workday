@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
@@ -38,7 +39,7 @@ public class TAManagementController {
 	public String userGtoAjax(@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "searchSort", defaultValue = "")String searchSort,
 			@RequestParam(value = "searchVal", defaultValue = "")String searchVal,
-			Model model, HttpSession session) {
+			Model model, HttpSession session, RedirectAttributes redirectAttribute, TAManagement dto) {
 		
 			UserInfo user = (UserInfo) session.getAttribute("loginUser");
 			model.addAttribute("user", user);
@@ -62,6 +63,7 @@ public class TAManagementController {
 			
 			model.addAttribute("gtoAllList", gtoAllList);
 			model.addAttribute("boardPager", boardPager);
+			redirectAttribute.addAttribute("ta_id", dto.getTa_id());
 		
 	return "work/ajax/userGtoOw_ajax";	
 	}
@@ -94,14 +96,17 @@ public class TAManagementController {
 	
 	//퇴근관리 버튼을 눌렀을 때 로그인 체크
 	@RequestMapping(value = "user/userOwCheck")
-	public String userOwCheck(@RequestParam int ta_id,TAManagement dto, HttpSession session) {
+	public String userOwCheck(@RequestParam int u_id,TAManagement dto,
+			HttpSession session, RedirectAttributes redirectAttribute, 
+			@RequestParam HashMap<String, String> paramMap) {
 		
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		String path = "";
 		
 		if(user != null) {
 
-			service.owUpdate(ta_id);
+			service.owUpdate(paramMap);
+			redirectAttribute.addAttribute("ta_id", paramMap.get("ta_id"));
 			path = "redirect:/user/userGtoOw";
 
 		}
@@ -116,7 +121,7 @@ public class TAManagementController {
 	public String userOwAjax(@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "searchSort", defaultValue = "")String searchSort,
 			@RequestParam(value = "searchVal", defaultValue = "")String searchVal,
-			Model model, HttpSession session, @RequestParam int ta_id) {
+			Model model, HttpSession session) {
 		
 			UserInfo user = (UserInfo) session.getAttribute("loginUser");
 			model.addAttribute("user", user);
