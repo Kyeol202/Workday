@@ -86,6 +86,7 @@ public class UserController {
 				path = "redirect:/userHome";
 				
 				session.setAttribute("loginUser", result);
+				session.setMaxInactiveInterval(1440*60);
 			} 
 
 		}

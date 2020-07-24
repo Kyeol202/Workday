@@ -19,7 +19,7 @@
 	// 리스트 Ajax 처리
 	function userGtoAjaxfn(cPage) {
 		$.ajax({
-			url: "<c:url value="/"/>userGto/userGtoAjax",
+			url: "<c:url value="/"/>userGtoOw/userGtoOwAjax",
 			data: {
 				"cPage": cPage,
 				"searchSort": searchSort,
@@ -27,7 +27,7 @@
 			},
 			dataType: "html",
 			success: function (data) {
-				$('#userGtoId').html(data);
+				$('#userGtoOwId').html(data);
 			}
 		})
 	}
@@ -52,7 +52,11 @@
 		$("#userGtoStart").submit();
 	})	
 		
-		
+	$("#owStart").click(function() {
+		var url = "<%=contextPath%>"+"/user/userGtoCheck";
+		$("#userOwStart").attr("action", url);
+		$("#userOwStart").submit();
+	})	
 		
 	})//function end
 
@@ -104,6 +108,18 @@
               class="btn btn-success">
             </div>
             </form>
+            <div class="box">
+			<form id="userOwStart" method="post">
+            <div class="box-header">
+            	<input type="hidden" name="u_id" value="${loginUser.u_id }">
+            	<input type="hidden" name="dp_name" value="${loginUser.dp_name }">
+				<input type="hidden" name="u_name" value="${loginUser.u_name }">
+				<input type="hidden" name="u_position" value="${loginUser.u_position }">
+				<input type="hidden" name="ta_id" value="">
+              <input type="button" id="owStart" value="퇴근" onclick="confirm('정말 퇴근 하시겠습니까?')"
+              class="btn btn-danger">
+            </div>
+            </form>
             
             
             <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -131,7 +147,7 @@
 										</div>
 									</div>
 
-									<div id="userGtoId"></div>
+									<div id="userGtoOwId"></div>
 
 								</div>
 							</div>

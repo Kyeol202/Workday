@@ -13,12 +13,20 @@ public interface TAManagementDao {
 	//출근시간 입력
 	public void insertGto(TAManagement dto);
 	
-	//전체 조회
+	//출근 전체 조회
 	public List<JoinDto> selectGtoAllList(BoardPager boardPager);
 	
 	
-	//레코드 총 갯수 가져오기
+	//출근 레코드 총 갯수 가져오기
 	public int selectuserGtoCount(SearchDto searchDto);
 
+	//퇴근시간 (update)
+	public void owUpdate(int ta_id);
+	
+	//퇴근 전체 조회
+	public List<JoinDto> selectOwAllList(BoardPager boardPager);
+	
+	//퇴근 레코드 총 갯수 가져오기
+	public int selectuserOwCount(SearchDto searchDto);
 	
 }//inter end

@@ -14,13 +14,19 @@ public interface TAManagementService {
 	public void insertGto(TAManagement dto);
 	
 
-	//전체조회 출력
+	//출근 전체 조회 출력
 	public List<JoinDto>  selectGtoAllList(BoardPager boardPager);
 	
-	
-	//레코드 전체 갯수 가져오기
+	//출근 레코드 전체 갯수 가져오기
 	public int selectuserGtoCount(SearchDto searchDto);
 
+	//퇴근시간 (update)
+	public void owUpdate(int ta_id);
 	
+	//퇴근 전체 조회 출력
+	public List<JoinDto>  selectOwAllList(BoardPager boardPager);
+	
+	//퇴근 레코드 전체 갯수 가져오기
+	public int selectuserOwCount(SearchDto searchDto);
 	
 }//inter end

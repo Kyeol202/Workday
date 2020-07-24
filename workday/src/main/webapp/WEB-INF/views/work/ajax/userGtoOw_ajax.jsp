@@ -29,6 +29,11 @@
                 </th>
                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">
                 	출근시간</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">
+                	퇴근시간</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
+             		근무시간</th>
+                </tr>
                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
              		상태</th>
                 </tr>
@@ -40,6 +45,8 @@
                   <td class="sorting_1">${gtoAllList.dp_name }</td>
                   <td>${gtoAllList.u_name }</td>
                   <td>${gtoAllList.u_position }</td>
+                  <td>${gtoAllList.gto }</td>
+                  <td>${gtoAllList.gto }</td>
                   <td>${gtoAllList.gto }</td>
                   <td>${gtoAllList.status }</td>
                 </tr>

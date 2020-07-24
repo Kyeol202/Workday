@@ -64,5 +64,36 @@ values(
   <include refid="search"></include>
   </select>
   
+  <update id="owUpdate" parameterType="TAManagement">
+  UPDATE TA_MANAGEMENT
+  SET OW = T_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI)
+  WHERE TA_ID = #{ta_id} AND STATUS = 'Y'
+  </update>
+  
+  <select id="selectOwAllList" resultType="JoinDto" parameterType="com.bno.dto.BoardPager">
+	   <include refid="pagingHeader"></include>
+  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.OW, T.WORKINGHOUR, T.STATUS
+	FROM USER_INFO U
+	JOIN TA_MANAGEMENT T
+	ON U.U_ID = T.U_ID
+  	WHERE 1 =1
+  		<include refid="search"></include>
+  	ORDER BY T.OW
+  		<include refid="pagingFooter"></include>
+  
+  </select>
+  
+  
+  <select id="selectuserOwCount" parameterType="searchDto" resultType="int">
+  	SELECT COUNT(*)
+  	FROM (
+  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.OW, T.WORKINGHOUR, T.STATUS
+	FROM USER_INFO U
+	JOIN TA_MANAGEMENT T
+	ON U.U_ID = T.U_ID )
+  	WHERE 1 =1
+  	
+  <include refid="search"></include>
+  </select>
   
   </mapper>

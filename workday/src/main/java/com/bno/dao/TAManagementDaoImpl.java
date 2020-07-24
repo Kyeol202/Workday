@@ -25,11 +25,12 @@ public class TAManagementDaoImpl implements TAManagementDao {
 	//출근시간 입력
 	@Override
 	public void insertGto(TAManagement dto) {
-		System.out.println("출근시간 입력 ="+dto.toString());
+//		System.out.println("출근시간 입력 ="+dto.toString());
 		session.insert(queryprefix+"insertGto", dto);
 		
 	}
-
+	
+	//출근 전체 조회
 	@Override
 	public List<JoinDto> selectGtoAllList(BoardPager boardPager) {
 		
@@ -37,19 +38,48 @@ public class TAManagementDaoImpl implements TAManagementDao {
 		
 		
 		selectGtoAllList = session.selectList(queryprefix+"selectGtoAllList", boardPager);
-		System.out.println("전체목록 조회 = "+selectGtoAllList.toString());
+//		System.out.println("전체목록 조회 = "+selectGtoAllList.toString());
 		
 		return selectGtoAllList;
 	}
-
+	
+	//출근 총 레코드 갯수
 	@Override
 	public int selectuserGtoCount(SearchDto searchDto) {
 
-		System.out.println("레코드 총 갯수 Dao"+searchDto);
+//		System.out.println("레코드 총 갯수 Dao"+searchDto);
 		
 		return session.selectOne(queryprefix+"selectuserGtoCount", searchDto);
 	}
 	
+	//퇴근시간 (update)
+	@Override
+	public void owUpdate(int ta_id) {
+		System.out.println("update = "+ta_id);
+		
+		session.update(queryprefix+"owUpdate", ta_id);
+	}
+	
+	//퇴근 전체 조회
+	@Override
+	public List<JoinDto> selectOwAllList(BoardPager boardPager) {
+		
+		List<JoinDto> selectOwAllList = new ArrayList<JoinDto>();
+		selectOwAllList = session.selectList(queryprefix+"selectOwAllList", boardPager);
+//		System.out.println("퇴근 전체 리스트 = "+selectOwAllList);
+		return selectOwAllList;
+	}
+	
+	
+	//퇴근 레코드 총 갯수 가져오기
+	@Override
+	public int selectuserOwCount(SearchDto searchDto) {
+//		System.out.println("퇴근 레코드 총 갯수 ="+searchDto.toString());
+		
+		return session.selectOne(queryprefix+"selectuserOwCount", searchDto);
+	}
+	
+
 	
 	
 	

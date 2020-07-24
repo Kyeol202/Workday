@@ -59,8 +59,7 @@
 					<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="javascript:location.href='<c:url value="/"/>user/userGto'">출근 입력</a></li>
-					<li><a href="javascript:location.href='<c:url value="/"/>user/userOw'">퇴근 입력</a></li>
+					<li><a href="javascript:location.href='<c:url value="/"/>user/userGtoOw'">출퇴근 입력</a></li>
 				</ul>
 			</li>
 			<li class="community treeview">

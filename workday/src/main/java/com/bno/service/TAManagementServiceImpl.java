@@ -26,22 +26,44 @@ public class TAManagementServiceImpl implements TAManagementService {
 		dao.insertGto(dto);
 	}
 
-	//전체 목록 조회
+	//출근 전체 목록 조회
 	@Override
 	public List<JoinDto> selectGtoAllList(BoardPager boardPager) {
 		
 		return dao.selectGtoAllList(boardPager);
 	}
 
-	//레코드 총 갯수 가져오기
+	//출근 레코드 총 갯수 가져오기
 	@Override
 	public int selectuserGtoCount(SearchDto searchDto) {
 	
 		return dao.selectuserGtoCount(searchDto);
 	}
+	
+	
+	//퇴근시간 (update)
+	@Override
+	public void owUpdate(int ta_id) {
+
+		dao.owUpdate(ta_id);
+	}
+	
+	//퇴근 전체 목록 조회
+	@Override
+	public List<JoinDto> selectOwAllList(BoardPager boardPager) {
+		
+		return dao.selectOwAllList(boardPager);
+	}
+	
+	//퇴근 전체 레코드 가져오기
+	@Override
+	public int selectuserOwCount(SearchDto searchDto) {
+		
+		return dao.selectuserOwCount(searchDto);
+	}
 
 	
-
+	
 
 
 
