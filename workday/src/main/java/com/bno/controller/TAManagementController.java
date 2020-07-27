@@ -104,15 +104,17 @@ public class TAManagementController {
 	//퇴근관리 버튼을 눌렀을 때 로그인 체크
 	@RequestMapping(value = "user/userOwCheck")
 	public String userOwCheck(@RequestParam("ta_id") int ta_id,
-			HttpSession session, RedirectAttributes redirectAttribute, TAManagement dto) {
+			HttpSession session, TAManagement dto, RedirectAttributes redirectAttribute) {
 		
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		String path = "";
-		
+
 		if(user != null) {
-				service.owUpdate(ta_id);
-				
-			path = "forward:/user/workinghour";
+	
+			service.owUpdate(ta_id);
+			redirectAttribute.addAttribute("ta_id", ta_id);
+
+			path = "redirect:/user/userGtoOwSelectOne";
 
 		}
 		else {
@@ -166,13 +168,17 @@ public class TAManagementController {
 		return "work/userGtoOwSelectOne";
 	}
 	
-	@RequestMapping(value = "user/workinghour")
-	public String Workinghour(int ta_id, HttpSession session, Model model) {
-		
-		service.updateWorkingHour(ta_id);
-		
-		return "redirect:/user/userGtoOw";
-	}
+//	@RequestMapping(value = "user/workinghour")
+//	public String Workinghour(int ta_id, HttpSession session, Model model, TAManagement dto) {
+//		
+//		
+//			
+////			service.updateWorkingHour(ta_id);	
+//		
+//		
+//		
+//		return "redirect:/user/userGtoOw";
+//	}
 	
 	
 }//class end

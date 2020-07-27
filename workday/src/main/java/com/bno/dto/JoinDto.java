@@ -9,7 +9,7 @@ public class JoinDto {
 	private String u_position;				//직급
 	private String gto;						//출근 시간
 	private char status;						//상태
-	private int workinghour;				//근무시간
+	private String workinghour;				//근무시간
 	private String ow;							//퇴근시간
 	
 	
@@ -19,7 +19,7 @@ public class JoinDto {
 
 
 	public JoinDto(int ta_id, int u_id, String dp_name, String u_name, String u_position, String gto, char status,
-			int workinghour, String ow) {
+			String workinghour, String ow) {
 		super();
 		this.ta_id = ta_id;
 		this.u_id = u_id;
@@ -103,12 +103,12 @@ public class JoinDto {
 	}
 
 
-	public int getWorkinghour() {
+	public String getWorkinghour() {
 		return workinghour;
 	}
 
 
-	public void setWorkinghour(int workinghour) {
+	public void setWorkinghour(String workinghour) {
 		this.workinghour = workinghour;
 	}
 
@@ -129,7 +129,6 @@ public class JoinDto {
 				+ ", u_position=" + u_position + ", gto=" + gto + ", status=" + status + ", workinghour=" + workinghour
 				+ ", ow=" + ow + "]";
 	}
-
 
 	
 

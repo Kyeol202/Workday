@@ -7,7 +7,7 @@ public class TAManagement {
 	private String gto;			//출근시간
 	private String ow;				//퇴근시간
 	private char status;			//상태
-	private int workinghour;	//근무시간
+	private String workinghour;	//근무시간
 	
 	
 	
@@ -17,7 +17,7 @@ public class TAManagement {
 
 
 
-	public TAManagement(int ta_id, int u_id, String gto, String ow, char status, int workinghour) {
+	public TAManagement(int ta_id, int u_id, String gto, String ow, char status, String workinghour) {
 		super();
 		this.ta_id = ta_id;
 		this.u_id = u_id;
@@ -89,13 +89,13 @@ public class TAManagement {
 
 
 
-	public int getWorkinghour() {
+	public String getWorkinghour() {
 		return workinghour;
 	}
 
 
 
-	public void setWorkinghour(int workinghour) {
+	public void setWorkinghour(String workinghour) {
 		this.workinghour = workinghour;
 	}
 
@@ -107,6 +107,9 @@ public class TAManagement {
 				+ ", workinghour=" + workinghour + "]";
 	}
 
+
+
+	
 	
 	
 	
