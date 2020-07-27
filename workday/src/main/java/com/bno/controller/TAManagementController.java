@@ -1,5 +1,7 @@
 package com.bno.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -110,7 +112,7 @@ public class TAManagementController {
 		if(user != null) {
 				service.owUpdate(ta_id);
 				
-			path = "forward:/user/userWorkinghour";
+			path = "forward:/user/workinghour";
 
 		}
 		else {
@@ -165,9 +167,9 @@ public class TAManagementController {
 	}
 	
 	@RequestMapping(value = "user/workinghour")
-	public String Workinghour() {
+	public String Workinghour(int ta_id, HttpSession session, Model model) {
 		
-		
+		service.updateWorkingHour(ta_id);
 		
 		return "redirect:/user/userGtoOw";
 	}

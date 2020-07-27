@@ -32,4 +32,7 @@ public interface TAManagementDao {
 	//상세조회
 	public TAManagement userGtoOwSelectOne(int ta_id);
 	
+	//근무시간
+	public TAManagement updateWorkingHour(int ta_id);
+	
 }//inter end

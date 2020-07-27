@@ -68,6 +68,13 @@ public class TAManagementServiceImpl implements TAManagementService {
 		
 		return dao.userGtoOwSelectOne(ta_id);
 	}
+	
+	//근무시간
+	@Override
+	public TAManagement updateWorkingHour(int ta_id) {
+		
+		return dao.updateWorkingHour(ta_id);
+	}
 
 	
 	

@@ -87,6 +87,14 @@ public class TAManagementDaoImpl implements TAManagementDao {
 		return session.selectOne(queryprefix+"userGtoOwSelectOne", ta_id);
 	}
 	
+	//근무시간
+	@Override
+	public TAManagement updateWorkingHour(int ta_id) {
+		System.out.println("ta_id = "+ta_id);
+		
+		return session.selectOne(queryprefix+"updateWorkingHour", ta_id);
+	}
+	
 
 	
 	
