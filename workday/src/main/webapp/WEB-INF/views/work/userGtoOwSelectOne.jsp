@@ -60,7 +60,7 @@ $("#owStart").click(function() {
             	<input type="hidden" name="dp_name" value="${user.dp_name }">
 				<input type="hidden" name="u_name" value="${user.u_name }">
 				<input type="hidden" name="u_position" value="${user.u_position }">
-				<input type="hidden" name="ta_id" value="${GtoOw.ta_id }">
+				<input type="hidden" name="ta_id" value="${TADto.ta_id }">
               <input type="button" id="owStart" value="퇴근" onclick="confirm('정말 퇴근 하시겠습니까?')"
               class="btn btn-danger">
             </form>
@@ -95,10 +95,10 @@ $("#owStart").click(function() {
 
                 <tbody>
                 <tr role="row" class="odd">
-                  <td class="sorting_1">${GtoOw.t.gto }</td>
-                  <td>${GtoOw.u_name }</td>
-                  <td>${GtoOw.gto }</td>
-                  <td>${GtoOw.ow }</td>
+                  <td class="sorting_1">${TADto.gto }</td>
+                  <td>${TADto.ow }</td>
+                  <td>${TADto.workinghour }</td>
+                  <td>${TADto.status }</td>
                 </tr>
 
                 </tbody>

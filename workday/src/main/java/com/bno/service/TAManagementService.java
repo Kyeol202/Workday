@@ -30,6 +30,9 @@ public interface TAManagementService {
 	public int selectuserOwCount(SearchDto searchDto);
 	
 	//상세보기
-	public int userGtoOwSelectOne(int ta_id);
+	public TAManagement userGtoOwSelectOne(int ta_id);
+	
+	//근무시간
+	
 	
 }//inter end

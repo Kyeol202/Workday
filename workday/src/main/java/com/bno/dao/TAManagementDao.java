@@ -30,6 +30,6 @@ public interface TAManagementDao {
 	public int selectuserOwCount(SearchDto searchDto);
 	
 	//상세조회
-	public int userGtoOwSelectOne(int ta_id);
+	public TAManagement userGtoOwSelectOne(int ta_id);
 	
 }//inter end

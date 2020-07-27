@@ -66,7 +66,7 @@ values(
   
   <update id="owUpdate" parameterType="TAManagement">
   UPDATE TA_MANAGEMENT
-  SET OW = T_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI)
+  SET OW = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI')
   WHERE TA_ID = #{ta_id} AND STATUS = 'Y'
   </update>
   
@@ -96,12 +96,10 @@ values(
   <include refid="search"></include>
   </select>
   
-  	<select id="userGtoOwSelectOne" parameterType="int" resultType="JoinDto">  	
-  		SELECT U.U_ID, T.TA_ID, T.GTO, T.OW, T.WORKINGHOUR, T.STATUS
-	FROM USER_INFO U
-	JOIN TA_MANAGEMENT T
-	ON U.U_ID = T.U_ID
-	WHERE T.TA_ID = #{ta_id}
+  	<select id="userGtoOwSelectOne" parameterType="int" resultType="TAManagement">  	
+  	SELECT TA_ID, GTO, OW, WORKINGHOUR, STATUS
+  	FROM TA_MANAGEMENT
+	WHERE TA_ID = #{ta_id}
   	</select>
   
   

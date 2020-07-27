@@ -76,6 +76,7 @@ public class TAManagementController {
 		
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		model.addAttribute("dto", dto.getTa_id());
+
 		String path = "";
 		
 		if(user != null) {
@@ -100,17 +101,16 @@ public class TAManagementController {
 	
 	//퇴근관리 버튼을 눌렀을 때 로그인 체크
 	@RequestMapping(value = "user/userOwCheck")
-	public String userOwCheck(@RequestParam(value = "ta_id") int ta_id,
-			HttpSession session, RedirectAttributes redirectAttribute) {
+	public String userOwCheck(@RequestParam("ta_id") int ta_id,
+			HttpSession session, RedirectAttributes redirectAttribute, TAManagement dto) {
 		
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		String path = "";
 		
 		if(user != null) {
-
-			service.owUpdate(ta_id);
-
-			path = "redirect:/user/userOw";
+				service.owUpdate(ta_id);
+				
+			path = "forward:/user/userWorkinghour";
 
 		}
 		else {
@@ -153,15 +153,23 @@ public class TAManagementController {
 	}
 	
 	@RequestMapping(value = "user/userGtoOwSelectOne")
-	public String userGtoSelectOne(@RequestParam("ta_id") int ta_id, Model model, HttpSession session,
-			JoinDto dto) {
+	public String userGtoSelectOne(int ta_id, Model model, HttpSession session) {
 			
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
-		service.userGtoOwSelectOne(ta_id);
 		model.addAttribute("user", user);
-		model.addAttribute("GtoOw", service.userGtoOwSelectOne(ta_id));
+		
+		TAManagement dto = service.userGtoOwSelectOne(ta_id);
+		model.addAttribute("TADto", dto);
 		
 		return "work/userGtoOwSelectOne";
+	}
+	
+	@RequestMapping(value = "user/workinghour")
+	public String Workinghour() {
+		
+		
+		
+		return "redirect:/user/userGtoOw";
 	}
 	
 	
