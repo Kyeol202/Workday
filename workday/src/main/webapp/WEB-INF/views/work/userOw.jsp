@@ -13,13 +13,13 @@
 
 	$(function () {
 		// 페이지 처음 접근시 리스트 표시 좌표
-		userGtoAjaxfn(1);	//현재 page =1 ->기본시작, 접근하는 순간 시작
+		userOwAjaxfn(1);	//현재 page =1 ->기본시작, 접근하는 순간 시작
 	})
 
 	// 리스트 Ajax 처리
-	function userGtoAjaxfn(cPage) {
+	function userOwAjaxfn(cPage) {
 		$.ajax({
-			url: "<c:url value="/"/>userGtoOw/userGtoOwAjax",
+			url: "<c:url value="/"/>userOw/userOwAjax",
 			data: {
 				"cPage": cPage,
 				"searchSort": searchSort,
@@ -27,7 +27,7 @@
 			},
 			dataType: "html",
 			success: function (data) {
-				$('#userGtoId').html(data);
+				$('#userOwId').html(data);
 			}
 		})
 	}
@@ -36,7 +36,7 @@
 	function searchBoxFn() {
 		searchSort = $('#searchSort').val();
 		searchVal = $('#searchVal').val();
-		userGtoAjaxfn(1);
+		userOwAjaxfn(1);
 	}
 
 	
@@ -46,12 +46,12 @@
 // 	jQuery함수 (출근버튼을 눌렀을 시 TAManagement Insert 되야함)
 	$(document).ready(function() {
 			
-	$("#gtoStart").click(function() {
-		var url = "<%=contextPath%>"+"/user/userGtoCheck";
-		$("#userGtoStart").attr("action", url);
-		$("#userGtoStart").submit();
-	})	
 
+	$("#owStart").click(function() {
+		var url = "<%=contextPath%>"+"/user/userOwCheck";
+		$("#userOwStart").attr("action", url);
+		$("#userOwStart").submit();
+	})	
 		
 	})//function end
 	
@@ -86,7 +86,7 @@
 							<div class="box-header">
 								<div class="row">
 									<div class="col flexBox" style="justify-content: flex-start; padding: 0 16px;">
-										<h3 class="box-title">출근관리</h3>
+										<h3 class="box-title">퇴근관리</h3>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										
 									</div>
@@ -94,21 +94,11 @@
 							</div>
 			<ol class="breadcrumb">
       			  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    		    <li><a href="#">내 출퇴근</a></li>
-     		   <li class="active">출근 입력</li>
+    		    <li><a href="#">내 퇴근</a></li>
+     		   <li class="active">퇴근 입력</li>
     		  </ol>
-			<div class="box">
-			<form id="userGtoStart" method="post">
-            <div class="box-header">
-            	<input type="hidden" name="u_id" value="${loginUser.u_id }">
-            	<input type="hidden" name="dp_name" value="${loginUser.dp_name }">
-				<input type="hidden" name="u_name" value="${loginUser.u_name }">
-				<input type="hidden" name="u_position" value="${loginUser.u_position }">
-              <input type="button" id="gtoStart" value="출근" onclick="confirm('출근 하시겠습니까?')"
-              class="btn btn-success">
-             </form>
-            </div>
-          
+
+           
             
             <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 									<div class="row">
@@ -135,7 +125,7 @@
 										</div>
 									</div>
 
-									<div id="userGtoId"></div>
+									<div id="userOwId"></div>
 
 								</div>
 							</div>

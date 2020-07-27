@@ -38,9 +38,7 @@
     		    <li><a href="#">내 출퇴근</a></li>
      		   <li class="active">출근 입력</li>
     		  </ol>
-			<div class="box">
-
-            <form id="userOwStart" method="post">
+    		   <form id="userOwStart" method="post">
             <div class="box-header">
             	<input type="hidden" name="u_id" value="${loginUser.u_id }">
             	<input type="hidden" name="dp_name" value="${loginUser.dp_name }">
@@ -51,6 +49,7 @@
               class="btn btn-danger">
             </form>
             </div>
+
             
 
 							</div>

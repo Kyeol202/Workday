@@ -29,4 +29,7 @@ public interface TAManagementDao {
 	//퇴근 레코드 총 갯수 가져오기
 	public int selectuserOwCount(SearchDto searchDto);
 	
+	//상세조회
+	public int userGtoOwSelectOne(int ta_id);
+	
 }//inter end

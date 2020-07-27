@@ -26,7 +26,7 @@ public class TAManagementController {
 	private TAManagementService service;
 
 	
-	
+	//출근 입력
 	@RequestMapping(value = "user/userGtoOw")
 	public String userGto() {
 		
@@ -35,6 +35,7 @@ public class TAManagementController {
 		return "work/userGtoOw";
 	}
 	
+	//출근 목록보기
 	@RequestMapping(value = "userGtoOw/userGtoOwAjax")
 	public String userGtoAjax(@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "searchSort", defaultValue = "")String searchSort,
@@ -71,14 +72,16 @@ public class TAManagementController {
 	//출근관리 버튼을 눌렀을 때 로그인 체크
 	@RequestMapping(value = "/user/userGtoCheck")
 	public String userGtoCheck(@RequestParam int u_id, 
-			@RequestParam int ta_id, TAManagement dto, HttpSession session) {
+			TAManagement dto, HttpSession session, RedirectAttributes redirectAttribute, Model model) {
 		
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
+		model.addAttribute("dto", dto.getTa_id());
 		String path = "";
 		
 		if(user != null) {
 		
 		 service.insertGto(dto);
+		 
 		 path = "redirect:/user/userGtoOw";
 			
 		} else {
@@ -92,7 +95,7 @@ public class TAManagementController {
 	@RequestMapping(value = "user/userOw")
 	public String userOw() {
 		
-		return "work/userGtoOw";
+		return "work/userOw";
 	}
 	
 	//퇴근관리 버튼을 눌렀을 때 로그인 체크
@@ -106,8 +109,8 @@ public class TAManagementController {
 		if(user != null) {
 
 			service.owUpdate(ta_id);
-			redirectAttribute.addAttribute("ta_id", ta_id);
-			path = "redirect:/user/userGtoOw";
+
+			path = "redirect:/user/userOw";
 
 		}
 		else {
@@ -146,15 +149,19 @@ public class TAManagementController {
 			model.addAttribute("owAllList", owAllList);
 			model.addAttribute("boardPager", boardPager);
 		
-	return "work/ajax/userGtoOw_ajax";	
+	return "work/ajax/userOw_ajax";	
 	}
 	
-	@RequestMapping(value = "user/userGtoSelectOne")
-	public String userGtoSelectOne() {
+	@RequestMapping(value = "user/userGtoOwSelectOne")
+	public String userGtoSelectOne(@RequestParam("ta_id") int ta_id, Model model, HttpSession session,
+			JoinDto dto) {
+			
+		UserInfo user = (UserInfo) session.getAttribute("loginUser");
+		service.userGtoOwSelectOne(ta_id);
+		model.addAttribute("user", user);
+		model.addAttribute("GtoOw", service.userGtoOwSelectOne(ta_id));
 		
-		
-		
-		return "work/userGtoSelectOne";
+		return "work/userGtoOwSelectOne";
 	}
 	
 	

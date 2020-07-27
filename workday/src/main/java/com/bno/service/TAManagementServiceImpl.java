@@ -61,6 +61,13 @@ public class TAManagementServiceImpl implements TAManagementService {
 		
 		return dao.selectuserOwCount(searchDto);
 	}
+	
+	//상세보기
+	@Override
+	public int userGtoOwSelectOne(int ta_id) {
+		
+		return dao.userGtoOwSelectOne(ta_id);
+	}
 
 	
 	

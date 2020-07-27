@@ -42,13 +42,13 @@ values(
   
   <select id="selectGtoAllList" resultType="JoinDto" parameterType="com.bno.dto.BoardPager">
   <include refid="pagingHeader"></include>
-  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.GTO, T.STATUS, T.OW, T.WORKINGHOUR
+  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, U.U_ID, T.TA_ID
 	FROM USER_INFO U
 	JOIN TA_MANAGEMENT T
 	ON U.U_ID = T.U_ID
   	WHERE 1 =1
   	<include refid="search"></include>
-  	ORDER BY T.GTO
+  	ORDER BY T.TA_ID
   	<include refid="pagingFooter"></include>
   </select>
   
@@ -72,13 +72,13 @@ values(
   
   <select id="selectOwAllList" resultType="JoinDto" parameterType="com.bno.dto.BoardPager">
 	   <include refid="pagingHeader"></include>
-  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.OW, T.WORKINGHOUR, T.STATUS
+  	SELECT U.U_NAME, U.DP_NAME, T.GTO, T.OW, T.TA_ID
 	FROM USER_INFO U
 	JOIN TA_MANAGEMENT T
 	ON U.U_ID = T.U_ID
   	WHERE 1 =1
   		<include refid="search"></include>
-  	ORDER BY T.OW
+  	ORDER BY T.GTO
   		<include refid="pagingFooter"></include>
   
   </select>
@@ -95,5 +95,16 @@ values(
   	
   <include refid="search"></include>
   </select>
+  
+  	<select id="userGtoOwSelectOne" parameterType="int" resultType="JoinDto">  	
+  		SELECT U.U_ID, T.TA_ID, T.GTO, T.OW, T.WORKINGHOUR, T.STATUS
+	FROM USER_INFO U
+	JOIN TA_MANAGEMENT T
+	ON U.U_ID = T.U_ID
+	WHERE T.TA_ID = #{ta_id}
+  	</select>
+  
+  
+  
   
   </mapper>

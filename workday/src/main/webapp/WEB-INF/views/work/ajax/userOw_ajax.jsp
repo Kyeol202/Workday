@@ -31,25 +31,25 @@
                 </th>
                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" 
                 aria-label="Engine version: activate to sort column ascending" style="width:228px;">
-                	사번</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" 
-                aria-label="Engine version: activate to sort column ascending" style="width:202px;">
                 	사원이름</th>
                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" 
+                aria-label="Engine version: activate to sort column ascending" style="width:202px;">
+                	출근시간</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" 
                 aria-label="CSS grade: activate to sort column ascending" style="width:158px;">
-             		직급</th>
+             		퇴근시간</th>
                 </tr>
 
                 </tr>
                 </thead>
-                <c:forEach var="gtoAllList" items="${gtoAllList }">
+                <c:forEach var="owAllList" items="${owAllList }">
                 <tbody>
                 <tr role="row" class="odd">
-                  <td class="sorting_1">${gtoAllList.dp_name }</td>
-                  <td onclick="javascript:location.href='<c:url value ="/"/>user/userGtoOwSelectOne?ta_id=${gtoAllList.ta_id}'">
-                  ${gtoAllList.u_id }</td>
-                  <td>${gtoAllList.u_name }</td>
-                  <td>${gtoAllList.u_position }</td>
+                  <td class="sorting_1">${owAllList.dp_name }</td>
+                  <td onclick="javascript:location.href='<c:url value ="/"/>user/userGtoOwSelectOne?ta_id=${owAllList.ta_id}'">
+                  ${owAllList.u_name }</td>
+                  <td>${owAllList.gto }</td>
+                  <td>${owAllList.ow }</td>
                 </tr>
 
                 </c:forEach>
@@ -66,7 +66,7 @@
 			<ul class="pagination">
 				<c:if test="${boardPager.curBlock > 1 }">
 					<li class="paginate_button previous disabled"><a
-							href="javascript:userGtoAjaxfn(${boardPager.prevPage})">Previous</a>
+							href="javascript:userOwAjaxfn(${boardPager.prevPage})">Previous</a>
 					</li>
 				</c:if>
 				<c:forEach var="num" begin="${boardPager.blockBegin }" end="${boardPager.blockEnd }">
@@ -76,13 +76,13 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="paginate_button"><a href="javascript:userGtoAjaxfn(${num})">${num}</a></li>
+							<li class="paginate_button"><a href="javascript:userOwAjaxfn(${num})">${num}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${boardPager.curBlock <= boardPager.totBlock }">
 					<li class="paginate_button next" id="example1_next">
-						<a href="javascript:userGtoAjaxfn(${boardPager.nextPage})">Next</a>
+						<a href="javascript:userOwAjaxfn(${boardPager.nextPage})">Next</a>
 					</li>
 				</c:if>
 			</ul>

@@ -79,6 +79,14 @@ public class TAManagementDaoImpl implements TAManagementDao {
 		return session.selectOne(queryprefix+"selectuserOwCount", searchDto);
 	}
 	
+	//상세조회
+	@Override
+	public int userGtoOwSelectOne(int ta_id) {
+		System.out.println("상세조회 = "+ta_id);
+		
+		return session.selectOne(queryprefix+"userGtoOwSelectOne", ta_id);
+	}
+	
 
 	
 	
