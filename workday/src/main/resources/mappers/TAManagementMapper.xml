@@ -108,6 +108,7 @@ values(
 	TO_DATE(OW, 'YYYY-MM-DD HH24:MI') -
 	TO_DATE(GTO, 'YYYY-MM'DD HH24:MI')
 	)*24*60
+	FROM TA_MANAGEMENT
 	WHERE TA_ID = #{ta_id} )
 	WHERE TA_ID - #{ta_id}
 	
