@@ -43,18 +43,14 @@
                 </tr>
                 </thead>
                 <c:forEach var="gtoAllList" items="${gtoAllList }">
-                <c:choose>
-                <c:when test="${user.u_id eq gtoAllList.u_id }">
                 <tbody>
                 <tr role="row" class="odd">
                   <td class="sorting_1">${gtoAllList.dp_name }</td>
-                  <td onclick="javascript:location.href='<c:url value ="/"/>user/userGtoOwSelectOne?ta_id=${gtoAllList.ta_id}'">
+                  <td onclick="javascript:location.href='<c:url value ="/"/>admin/adminGtoOwSelectOne?ta_id=${gtoAllList.ta_id}'">
                   ${gtoAllList.u_id }</td>
                   <td>${gtoAllList.u_name }</td>
                   <td>${gtoAllList.u_position }</td>
                 </tr>
-                </c:when>
-                </c:choose>
                 </c:forEach>
                 </tbody>
               </table>
@@ -69,7 +65,7 @@
 			<ul class="pagination">
 				<c:if test="${boardPager.curBlock > 1 }">
 					<li class="paginate_button previous disabled"><a
-							href="javascript:userGtoAjaxfn(${boardPager.prevPage})">Previous</a>
+							href="javascript:adminGtoOwAjaxfn(${boardPager.prevPage})">Previous</a>
 					</li>
 				</c:if>
 				<c:forEach var="num" begin="${boardPager.blockBegin }" end="${boardPager.blockEnd }">
@@ -79,13 +75,13 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="paginate_button"><a href="javascript:userGtoAjaxfn(${num})">${num}</a></li>
+							<li class="paginate_button"><a href="javascript:adminGtoOwAjaxfn(${num})">${num}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${boardPager.curBlock <= boardPager.totBlock }">
 					<li class="paginate_button next" id="example1_next">
-						<a href="javascript:userGtoAjaxfn(${boardPager.nextPage})">Next</a>
+						<a href="javascript:adminGtoOwAjaxfn(${boardPager.nextPage})">Next</a>
 					</li>
 				</c:if>
 			</ul>

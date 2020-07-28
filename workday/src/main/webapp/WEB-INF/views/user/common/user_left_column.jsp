@@ -34,7 +34,7 @@
 									<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 								</a>
 								<ul class="treeview-menu" style="display: none;">
-									<li><a href="javascript:location.href='<c:url value="/"/>myPage/myDepartmentGto'">부서원 출근관리</a></li>
+									<li><a href="javascript:location.href='<c:url value="/"/>myPage/myDepartmentGtoOw'">부서원 출근관리</a></li>
 								</ul>
 							</li>
 							<li class="myCommunity treeview">
@@ -70,7 +70,6 @@
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="javascript:location.href='<c:url value="/"/>user/userStatus'">조퇴/반차/휴가</a></li>
-					<%-- <li><a href="javascript:location.href='<c:url value="/"/>community/qnaBoard'">Q&A</a></li> --%>
 					<li><a href="javascript:location.href='<c:url value="/"/>user/userCal'">달력</a></li>
 				</ul>
 			</li>

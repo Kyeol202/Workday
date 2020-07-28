@@ -42,13 +42,13 @@ values(
   
   <select id="selectGtoAllList" resultType="JoinDto" parameterType="com.bno.dto.BoardPager">
   <include refid="pagingHeader"></include>
-  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, U.U_ID, T.TA_ID
+  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, U.U_ID, T.TA_ID, T.STATUS
 	FROM USER_INFO U
 	JOIN TA_MANAGEMENT T
 	ON U.U_ID = T.U_ID
   	WHERE 1 =1
   	<include refid="search"></include>
-  	ORDER BY T.TA_ID
+  	ORDER BY T.TA_ID DESC
   	<include refid="pagingFooter"></include>
   </select>
   
@@ -78,7 +78,7 @@ values(
 	ON U.U_ID = T.U_ID
   	WHERE 1 =1
   		<include refid="search"></include>
-  	ORDER BY T.GTO
+  	ORDER BY T.GTO DESC
   		<include refid="pagingFooter"></include>
   
   </select>
@@ -97,7 +97,7 @@ values(
   </select>
   
   	<select id="userGtoOwSelectOne" parameterType="int" resultType="TAManagement">  	
-  	SELECT TA_ID, GTO, OW, WORKINGHOUR, STATUS
+  	SELECT TA_ID, GTO, OW, ROUND(WORKINGHOUR, 2) AS WORKINGHOUR, STATUS
   	FROM TA_MANAGEMENT
 	WHERE TA_ID = #{ta_id}
   	</select>
@@ -106,11 +106,11 @@ values(
 	UPDATE TA_MANAGEMENT
 	SET WORKINGHOUR = (SELECT (
 	TO_DATE(OW, 'YYYY-MM-DD HH24:MI') -
-	TO_DATE(GTO, 'YYYY-MM'DD HH24:MI')
-	)*24*60
+	TO_DATE(GTO, 'YYYY-MM-DD HH24:MI')
+	)*24
 	FROM TA_MANAGEMENT
 	WHERE TA_ID = #{ta_id} )
-	WHERE TA_ID - #{ta_id}
+	WHERE TA_ID = #{ta_id}
 	
 	</update>
   

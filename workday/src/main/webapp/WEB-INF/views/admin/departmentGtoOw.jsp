@@ -19,7 +19,7 @@
 	// 리스트 Ajax 처리
 	function adminGtoOwAjaxfn(cPage) {
 		$.ajax({
-			url: "<c:url value="/"/>userGtoOw/userGtoOwAjax",
+			url: "<c:url value="/"/>admin/departmentGtoOwajax",
 			data: {
 				"cPage": cPage,
 				"searchSort": searchSort,
@@ -39,33 +39,22 @@
 		adminGtoOwAjaxfn(1);
 	}
 
-	
-	
-	
-	 
-// 	jQuery함수 (출근버튼을 눌렀을 시 TAManagement Insert 되야함)
-	$(document).ready(function() {
+
+//	jQuery함수 (출근버튼을 눌렀을 시 TAManagement Insert 되야함)
+$(document).ready(function() {
 		
-	$("#gtoStart").click(function() {
-		if(confirm("출근 하시겠습니까?")) {
-		var url = "<%=contextPath%>"+"/user/userGtoCheck";
-		$("#userGtoStart").attr("action", url);
-		$("#userGtoStart").submit();
-		}
-		else return false;
-		
-	})	
-	
 
-		
-	})//function end
+$("#adminInsert").click(function() {
+	if(confirm("입력하시겠습니까?")) {
+	var url = "<%=contextPath%>"+"/admin/adminInsertCheck";
+	$("#adminInsertStart").attr("action", url);
+	$("#adminInsertStart").submit();
+	}
+	else return false;
+})	
 	
+})//function end
 
-	
-
-	
-
-	
 	</script>
 
 
@@ -102,16 +91,10 @@
     		    <li><a href="#">내 출퇴근</a></li>
      		   <li class="active">출근 입력</li>
     		  </ol>
-			<div class="box">
-			<form id="userGtoStart" method="post">
+			<form id="adminInsertStart" method="post">
             <div class="box-header">
-            	<input type="hidden" name="u_id" value="${loginUser.u_id }">
-            	<input type="hidden" name="dp_name" value="${loginUser.dp_name }">
-				<input type="hidden" name="u_name" value="${loginUser.u_name }">
-				<input type="hidden" name="u_position" value="${loginUser.u_position }">
-              <input type="button" id="gtoStart" value="출근" class="btn btn-success">
-             </form>
-            </div>
+              <input type="button" id="adminInsert" value="입력" class="btn btn-info">
+            </form>
           
             
             <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">

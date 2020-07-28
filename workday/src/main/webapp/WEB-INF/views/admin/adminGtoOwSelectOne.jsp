@@ -6,30 +6,6 @@
 
 <%@ include file="../common/head.jsp"%>
 <script>
-//	jQuery함수 (출근버튼을 눌렀을 시 TAManagement Insert 되야함)
-$(document).ready(function() {
-		
-
-$("#owStart").click(function() {
-	if(confirm("퇴근 하시겠습니까?")){
-	var url = "<%=contextPath%>"+"/user/userOwCheck";
-	$("#userOwStart").attr("action", url);
-	$("#userOwStart").submit();
-	}
-	else return false;
-})	
-	
-	$("#gtoUpdate").click(function() {
-	if(alert("반차 및 조퇴 합니다"))) {
-	var url = "<%=contextPath%>"+"/user/userGtoOwUpdate";
-	$("#userGtoUpdate").attr("action", url);
-	$("#userGtoUpdate").submit();
-	}
-	else return false;
-	
-})	
-	
-})//function end
 
 
 	
@@ -73,24 +49,7 @@ $("#owStart").click(function() {
     		    <li><a href="#">내 출퇴근</a></li>
      		   <li class="active">출근 입력</li>
     		  </ol>
-    		   <form id="userOwStart" method="post">
-            <div class="box-header">
-            	<input type="hidden" name="u_id" value="${user.u_id }">
-            	<input type="hidden" name="dp_name" value="${user.dp_name }">
-				<input type="hidden" name="u_name" value="${user.u_name }">
-				<input type="hidden" name="u_position" value="${user.u_position }">
-				<input type="hidden" name="ta_id" value="${TADto.ta_id }">
-              <input type="button" id="owStart" value="퇴근" class="btn btn-danger">
-            </form>
-                 <form id="userGtoUpdate" method="post">
-            	<input type="hidden" name="u_id" value="${user.u_id }">
-            	<input type="hidden" name="dp_name" value="${user.dp_name }">
-				<input type="hidden" name="u_name" value="${user.u_name }">
-				<input type="hidden" name="u_position" value="${user.u_position }">
-				<input type="hidden" name="ta_id" value="${TADto.ta_id }">
-				<input type="hidden" name="status" value="${TADto.status }">
-              <input type="button" id="gtoUpdate" value="수정" class="btn btn-info">
-            </div>
+
             <div class="box-body">
               <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
               <div class="row">
