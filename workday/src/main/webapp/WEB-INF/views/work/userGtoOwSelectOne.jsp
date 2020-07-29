@@ -19,13 +19,16 @@ $("#owStart").click(function() {
 	else return false;
 })	
 	
+	
+	
 	$("#gtoUpdate").click(function() {
-	if(alert("반차 및 조퇴 합니다"))) {
+		if(confirm("수정 하시겠습니까?")) {
 	var url = "<%=contextPath%>"+"/user/userGtoOwUpdate";
 	$("#userGtoUpdate").attr("action", url);
 	$("#userGtoUpdate").submit();
-	}
-	else return false;
+		}
+		else return false;
+	
 	
 })	
 	
@@ -131,6 +134,7 @@ $("#owStart").click(function() {
                   <c:when test="${status eq Y }">정상</c:when>
                   <c:when test="${status eq V}">휴가</c:when>
                   <c:when test="${status eq E }">조퇴</c:when>
+                  <c:when test="${status eq A }">반차</c:when>
                   <c:otherwise>
                   	정보가 없습니다
                   </c:otherwise>

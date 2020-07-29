@@ -160,6 +160,17 @@ public class TAManagementController {
 		return "work/userGtoOwUpdate";
 	}
 	
+	//상태 최종 수정
+	@RequestMapping(value = "user/userStatusUpdate")
+	public String userStatusUpdate(@RequestParam("ta_id") int ta_id, RedirectAttributes redirectAttribute) {
+		
+		service.userStatusUpdate(ta_id);
+		
+		
+		
+		return "redirect:/user/userGtoOwSelectOne";
+	}
+	
 	
 	
 	

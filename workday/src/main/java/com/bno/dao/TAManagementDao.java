@@ -35,4 +35,7 @@ public interface TAManagementDao {
 	//근무시간
 	public TAManagement updateWorkingHour(int ta_id);
 	
+	//상태 수정
+	public void userStatusUpdate(int ta_id);
+	
 }//inter end

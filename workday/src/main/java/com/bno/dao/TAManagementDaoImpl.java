@@ -95,6 +95,16 @@ public class TAManagementDaoImpl implements TAManagementDao {
 		return session.selectOne(queryprefix+"updateWorkingHour", ta_id);
 	}
 	
+	
+	//상태 수정
+	@Override
+	public void userStatusUpdate(int ta_id) {
+		
+		System.out.println("파람값 가져오기 = "+ta_id);
+		
+		session.update(queryprefix+"userStatusUpdate", ta_id);
+	}
+	
 
 	
 	

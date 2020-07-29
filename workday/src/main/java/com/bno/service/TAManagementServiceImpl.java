@@ -75,6 +75,15 @@ public class TAManagementServiceImpl implements TAManagementService {
 		
 		return dao.updateWorkingHour(ta_id);
 	}
+	
+	
+	//상태 수정
+	@Override
+	public void userStatusUpdate(int ta_id) {
+		
+		
+		dao.userStatusUpdate(ta_id);
+	}
 
 	
 	

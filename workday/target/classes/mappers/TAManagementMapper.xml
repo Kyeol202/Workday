@@ -89,7 +89,7 @@ values(
   	FROM (
   	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.OW, T.WORKINGHOUR, T.STATUS
 	FROM USER_INFO U
-	JOIN TA_MANAGEMENT T
+	JOIN TA_MANAGEMENT T 
 	ON U.U_ID = T.U_ID )
   	WHERE 1 =1
   	
@@ -113,6 +113,12 @@ values(
 	WHERE TA_ID = #{ta_id}
 	
 	</update>
+  
+  	<update id="userStatusUpdate" parameterType="TAManagement'">
+  		UPDATE TA_MANAGEMENT
+  		SET STATUS = #{status}
+  		WHERE TA_ID = #{ta_id}
+  	</update>
   
   
   </mapper>

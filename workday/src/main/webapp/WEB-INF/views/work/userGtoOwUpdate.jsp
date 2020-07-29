@@ -8,6 +8,25 @@
 
 
 
+<script>
+//jQuery함수 (출근버튼을 눌렀을 시 TAManagement Insert 되야함)
+$(document).ready(function() {
+		
+$("#userStatusUpdate").click(function() {
+	if(confirm("정말 수정 하시겠습니까?")){
+	var url = "<%=contextPath%>"+"/user/userStatusUpdate";
+	$("#statusUpdate").attr("action", url);
+	$("#statusUpdate").submit();
+	}
+	else return false;
+})	
+
+
+})//function end
+
+</script>
+
+
 
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -67,24 +86,26 @@
                 aria-label="CSS grade: activate to sort column ascending" style="width:158px;">
              		상태</th>
                 </tr>
-
-                </tr>
                 </thead>
-
+                
+				<form id="statusUpdate" method="post">
                 <tbody>
                 <tr role="row" class="odd">
+                	<input type="hidden" name="ta_id" value="${TADto.ta_id }">
                   <td class="sorting_1">${TADto.gto }</td>
                   <td>${TADto.ow }</td>
                   <td>${TADto.workinghour } 시간</td>
                   <td>
 					<select class="form-control">
-                    <option>반차</option>
-                    <option>조퇴</option>
+					<option value="${TADto.status }">정상</option>
+					<option value="A">반차</option>
+                    <option value="E">조퇴</option>
                    </select>
                   </td>
                 </tr>
-
                 </tbody>
+                <input type="button" class="btn btn-warning btn-sm" value="최종수정" id="userStatusUpdate">
+                </form>
               </table>
               </div>
               </div>
