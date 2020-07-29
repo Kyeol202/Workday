@@ -67,7 +67,7 @@ values(
   <update id="owUpdate" parameterType="TAManagement">
   UPDATE TA_MANAGEMENT
   SET OW = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI')
-  WHERE TA_ID = #{ta_id} AND STATUS = 'Y'
+  WHERE TA_ID = #{ta_id}
   </update>
   
   <select id="selectOwAllList" resultType="JoinDto" parameterType="com.bno.dto.BoardPager">
@@ -114,7 +114,7 @@ values(
 	
 	</update>
   
-  	<update id="userStatusUpdate" parameterType="TAManagement'">
+  	<update id="userStatusUpdate" parameterType="TAManagement">
   		UPDATE TA_MANAGEMENT
   		SET STATUS = #{status}
   		WHERE TA_ID = #{ta_id}

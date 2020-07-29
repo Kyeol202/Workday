@@ -6,7 +6,7 @@ public class TAManagement {
 	private int u_id;				//사번
 	private String gto;			//출근시간
 	private String ow;				//퇴근시간
-	private char status;			//상태
+	private String status;			//상태
 	private String workinghour;	//근무시간
 	
 	
@@ -17,7 +17,26 @@ public class TAManagement {
 
 
 
-	public TAManagement(int ta_id, int u_id, String gto, String ow, char status, String workinghour) {
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+
+
+
+	public TAManagement(int ta_id, int u_id, String gto, String ow, String status, String workinghour) {
 		super();
 		this.ta_id = ta_id;
 		this.u_id = u_id;
@@ -26,6 +45,9 @@ public class TAManagement {
 		this.status = status;
 		this.workinghour = workinghour;
 	}
+
+
+
 
 
 
@@ -77,15 +99,6 @@ public class TAManagement {
 
 
 
-	public char getStatus() {
-		return status;
-	}
-
-
-
-	public void setStatus(char status) {
-		this.status = status;
-	}
 
 
 
@@ -100,12 +113,18 @@ public class TAManagement {
 	}
 
 
+	
+
+
+
 
 	@Override
 	public String toString() {
 		return "TAManagement [ta_id=" + ta_id + ", u_id=" + u_id + ", gto=" + gto + ", ow=" + ow + ", status=" + status
 				+ ", workinghour=" + workinghour + "]";
 	}
+
+
 
 
 

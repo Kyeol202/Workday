@@ -98,11 +98,11 @@ public class TAManagementDaoImpl implements TAManagementDao {
 	
 	//상태 수정
 	@Override
-	public void userStatusUpdate(int ta_id) {
+	public void userStatusUpdate(TAManagement dto) { 
 		
-		System.out.println("파람값 가져오기 = "+ta_id);
+		System.out.println("값 가져오기 = "+dto);
 		
-		session.update(queryprefix+"userStatusUpdate", ta_id);
+		 session.selectOne(queryprefix+"userStatusUpdate", dto);
 	}
 	
 

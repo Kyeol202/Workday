@@ -52,6 +52,8 @@ $("#userStatusUpdate").click(function() {
 										<h3 class="box-title">출근관리</h3>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										
+               
+                </form>
 									</div>
 								</div>
 							</div>
@@ -60,7 +62,12 @@ $("#userStatusUpdate").click(function() {
     		    <li><a href="#">내 출퇴근</a></li>
      		   <li class="active">출근 입력</li>
     		  </ol>
-    		  
+    		  <form id="statusUpdate" method="post">
+            <div class="box-header">
+				<input type="hidden" name="ta_id" value="${TADto.ta_id }">
+				<input type="hidden" name="status" value="${TADto.status }">
+               <input type="button" class="btn btn-warning btn-sm" value="최종수정" id="userStatusUpdate">
+            </form>
     		  <div class="box-body">
               <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
               <div class="row">
@@ -88,24 +95,21 @@ $("#userStatusUpdate").click(function() {
                 </tr>
                 </thead>
                 
-				<form id="statusUpdate" method="post">
+
                 <tbody>
                 <tr role="row" class="odd">
-                	<input type="hidden" name="ta_id" value="${TADto.ta_id }">
                   <td class="sorting_1">${TADto.gto }</td>
                   <td>${TADto.ow }</td>
                   <td>${TADto.workinghour } 시간</td>
                   <td>
-					<select class="form-control">
-					<option value="${TADto.status }">정상</option>
+					<select  name="ustatus">
+					<option value="Y">정상</option>
 					<option value="A">반차</option>
                     <option value="E">조퇴</option>
                    </select>
                   </td>
                 </tr>
                 </tbody>
-                <input type="button" class="btn btn-warning btn-sm" value="최종수정" id="userStatusUpdate">
-                </form>
               </table>
               </div>
               </div>

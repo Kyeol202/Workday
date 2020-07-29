@@ -128,20 +128,9 @@ $("#owStart").click(function() {
                   <td class="sorting_1">${TADto.gto }</td>
                   <td>${TADto.ow }</td>
                   <td>${TADto.workinghour } 시간</td>
-                  <td>
-                  <c:set var="status" value="${TADto.status}" />
-                  <c:choose>
-                  <c:when test="${status eq Y }">정상</c:when>
-                  <c:when test="${status eq V}">휴가</c:when>
-                  <c:when test="${status eq E }">조퇴</c:when>
-                  <c:when test="${status eq A }">반차</c:when>
-                  <c:otherwise>
-                  	정보가 없습니다
-                  </c:otherwise>
-                 </c:choose>
+                  <td> ${TADto.status }
                   </td>
                 </tr>
-
                 </tbody>
               </table>
               </div>

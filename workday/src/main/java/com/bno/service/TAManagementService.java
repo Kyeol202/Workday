@@ -36,6 +36,6 @@ public interface TAManagementService {
 	public TAManagement updateWorkingHour(int ta_id);
 	
 	//상태 수정
-	public void userStatusUpdate(int ta_id);
+	public void userStatusUpdate(TAManagement dto);
 	
 }//inter end

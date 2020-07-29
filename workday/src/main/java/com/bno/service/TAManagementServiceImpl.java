@@ -79,10 +79,10 @@ public class TAManagementServiceImpl implements TAManagementService {
 	
 	//상태 수정
 	@Override
-	public void userStatusUpdate(int ta_id) {
+	public void userStatusUpdate(TAManagement dto) {
 		
 		
-		dao.userStatusUpdate(ta_id);
+		 dao.userStatusUpdate(dto); 
 	}
 
 	

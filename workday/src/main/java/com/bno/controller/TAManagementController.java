@@ -135,7 +135,7 @@ public class TAManagementController {
 		
 		TAManagement dto = service.userGtoOwSelectOne(ta_id);
 		model.addAttribute("TADto", dto);
-		System.out.println(dto);
+		System.out.println(dto.toString());
 		
 		return "work/userGtoOwSelectOne";
 	}
@@ -156,19 +156,25 @@ public class TAManagementController {
 		
 		TAManagement dto = service.userGtoOwSelectOne(ta_id);
 		model.addAttribute("TADto", dto);
+		System.out.println(dto);
 		
 		return "work/userGtoOwUpdate";
 	}
 	
+	
 	//상태 최종 수정
 	@RequestMapping(value = "user/userStatusUpdate")
-	public String userStatusUpdate(@RequestParam("ta_id") int ta_id, RedirectAttributes redirectAttribute) {
+	public String userStatusUpdate(TAManagement dto,  Model model,
+			RedirectAttributes redirectAttribute) {
+		dto.getTa_id();
+		dto.getStatus();
+
 		
-		service.userStatusUpdate(ta_id);
+		service.userStatusUpdate(dto);
+		redirectAttribute.addAttribute(dto);
 		
 		
-		
-		return "redirect:/user/userGtoOwSelectOne";
+		return "redirect:/user/workinghour";
 	}
 	
 	
