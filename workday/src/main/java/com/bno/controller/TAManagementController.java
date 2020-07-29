@@ -243,4 +243,26 @@ public class TAManagementController {
 		return "admin/userGtoOwInsert";
 	}
 	
+	
+	//상태 수정(조퇴, 반차)
+		@RequestMapping(value = "admin/userGtoOwUpdate")
+		public String adminGtoOwUpdate(@RequestParam("ta_id") int ta_id, Model model) {
+			
+			TAManagement dto = service.userGtoOwSelectOne(ta_id);
+			model.addAttribute("TADto", dto);
+			System.out.println(dto);
+			
+			return "admin/userGtoOwUpdate";
+		}
+		
+		
+		//삭제
+		@RequestMapping(value = "user/userGtoOwDelete")
+		public String adminGtoOwDelete(@RequestParam("ta_id") int ta_id, RedirectAttributes redirectAttribute) {
+			
+				service.userGtoOwDelete(ta_id);
+			
+			return "redirect:/myPage/myDepartmentGtoOw";
+		}
+	
 }//class end

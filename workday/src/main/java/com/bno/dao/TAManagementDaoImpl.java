@@ -106,6 +106,15 @@ public class TAManagementDaoImpl implements TAManagementDao {
 		 session.selectOne(queryprefix+"userStatusUpdate", dto);
 	}
 	
+	
+	//관리자권한 출퇴근 관리 삭제
+	@Override
+	public void userGtoOwDelete(int ta_id) {
+		
+		session.delete(queryprefix+"userGtoOwDelete", ta_id);
+		
+	}
+	
 
 	
 	

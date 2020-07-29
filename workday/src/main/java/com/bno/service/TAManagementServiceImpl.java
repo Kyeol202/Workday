@@ -84,10 +84,18 @@ public class TAManagementServiceImpl implements TAManagementService {
 		
 		 dao.userStatusUpdate(dto); 
 	}
+	
+	
+	//관리자권한 출퇴근 관리 삭제
+	@Override
+	public void userGtoOwDelete(int ta_id) {
+		
+		dao.userGtoOwDelete(ta_id);
+	}
 
 	
 	
-
+	
 
 
 	

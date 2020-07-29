@@ -38,4 +38,7 @@ public interface TAManagementService {
 	//상태 수정
 	public void userStatusUpdate(TAManagement dto);
 	
+	//관리자권한, 직원출근관리 삭제
+	public void userGtoOwDelete(int ta_id);
+	
 }//inter end

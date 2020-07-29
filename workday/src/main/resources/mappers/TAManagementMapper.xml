@@ -119,6 +119,23 @@ values(
   		SET STATUS = #{status}
   		WHERE TA_ID = #{ta_id}
   	</update>
-  
+  	
+  	
+  	
+  	
+  	<delete id="userGtoOwDelete" parameterType="int">
+  		DELETE FROM TA_MANAGEMENT
+  		WHERE TA_ID = #{ta_id}
+  	</delete>
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
   
   </mapper>

@@ -7,38 +7,26 @@
 <%@ include file="../common/head.jsp"%>
 
 
+
 <script>
-//	jQuery함수 (출근버튼을 눌렀을 시 TAManagement Insert 되야함)
+//jQuery함수 (출근버튼을 눌렀을 시 TAManagement Insert 되야함)
 $(document).ready(function() {
 		
-
-	$("#gtoUpdate").click(function() {
-		if(confirm("수정 하시겠습니까?")) {
-	var url = "<%=contextPath%>"+"/admin/userGtoOwUpdate";
-	$("#userGtoManage").attr("action", url);
-	$("#userGtoManage").submit();
-		}
-		else return false;
-	
-	
-})	
-
-
-$("#gtoDelete").click(function() {
-	if(confirm("정말 삭제 하시겠습니까?")) {
-var url = "<%=contextPath%>"+"/user/userGtoOwDelete";
-$("#userGtoManage").attr("action", url);
-$("#userGtoManage").submit();
+$("#userStatusUpdate").click(function() {
+	if(confirm("정말 수정 하시겠습니까?")){
+	var url = "<%=contextPath%>"+"/user/userStatusUpdate";
+	$("#statusUpdate").attr("action", url);
+	$("#statusUpdate").submit();
 	}
 	else return false;
-
-
 })	
-	
+
+
 })//function end
 
-
 </script>
+
+
 
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
@@ -64,6 +52,8 @@ $("#userGtoManage").submit();
 										<h3 class="box-title">출근관리</h3>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										
+               
+                </form>
 									</div>
 								</div>
 							</div>
@@ -72,20 +62,13 @@ $("#userGtoManage").submit();
     		    <li><a href="#">내 출퇴근</a></li>
      		   <li class="active">출근 입력</li>
     		  </ol>
-    		  
-    		  <div class="box-header">
-                 <form id="userGtoManage" method="post">
-            	<input type="hidden" name="u_id" value="${user.u_id }">
-            	<input type="hidden" name="dp_name" value="${user.dp_name }">
-				<input type="hidden" name="u_name" value="${user.u_name }">
-				<input type="hidden" name="u_position" value="${user.u_position }">
+    		  <form id="statusUpdate" method="post">
+            <div class="box-header">
 				<input type="hidden" name="ta_id" value="${TADto.ta_id }">
-				<input type="hidden" name="status" value="${TADto.status }">
-              <input type="button" id="gtoUpdate" value="수정" class="btn btn-info">
-              <input type="button" id="gtoDelete" class="btn btn-danger" value="삭제" >
-              </form>
-            </div>
-            <div class="box-body">
+<!-- 				<input type="hidden" name="status"> -->
+               <input type="button" class="btn btn-warning btn-sm" value="최종수정" id="userStatusUpdate">
+            </form>
+    		  <div class="box-body">
               <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
               <div class="row">
               <div class="col-sm-6">
@@ -110,9 +93,8 @@ $("#userGtoManage").submit();
                 aria-label="CSS grade: activate to sort column ascending" style="width:158px;">
              		상태</th>
                 </tr>
-
-                </tr>
                 </thead>
+                
 
                 <tbody>
                 <tr role="row" class="odd">
@@ -120,7 +102,12 @@ $("#userGtoManage").submit();
                   <td>${TADto.ow }</td>
                   <td>${TADto.workinghour } 시간</td>
                   <td>
-                 ${TADto.status}
+					<select  name="status">
+					<option value="Y">정상</option>
+					<option value="A">반차</option>
+                    <option value="E">조퇴</option>
+                    <option value="V">휴가</option>
+                   </select>
                   </td>
                 </tr>
                 </tbody>
