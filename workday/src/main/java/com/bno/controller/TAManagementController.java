@@ -172,7 +172,7 @@ public class TAManagementController {
 		service.userStatusUpdate(dto);
 
 		
-		
+//		return "work/userGtoOw";
 		return "forward:/user/userOwCheck";
 	}
 	

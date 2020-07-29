@@ -6,7 +6,7 @@ public class TAManagement {
 	private int u_id;				//사번
 	private String gto;			//출근시간
 	private String ow;				//퇴근시간
-	private String status;			//상태
+	private char status;			//상태
 	private String workinghour;	//근무시간
 	
 	
@@ -18,7 +18,7 @@ public class TAManagement {
 
 
 
-	public String getStatus() {
+	public char getStatus() {
 		return status;
 	}
 
@@ -27,7 +27,7 @@ public class TAManagement {
 
 
 
-	public void setStatus(String status) {
+	public void setStatus(char status) {
 		this.status = status;
 	}
 
@@ -36,7 +36,7 @@ public class TAManagement {
 
 
 
-	public TAManagement(int ta_id, int u_id, String gto, String ow, String status, String workinghour) {
+	public TAManagement(int ta_id, int u_id, String gto, String ow, char status, String workinghour) {
 		super();
 		this.ta_id = ta_id;
 		this.u_id = u_id;

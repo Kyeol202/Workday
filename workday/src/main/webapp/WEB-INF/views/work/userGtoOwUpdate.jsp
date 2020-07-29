@@ -65,7 +65,7 @@ $("#userStatusUpdate").click(function() {
     		  <form id="statusUpdate" method="post">
             <div class="box-header">
 				<input type="hidden" name="ta_id" value="${TADto.ta_id }">
-				<input type="hidden" name="status">
+<!-- 				<input type="hidden" name="status"> -->
                <input type="button" class="btn btn-warning btn-sm" value="최종수정" id="userStatusUpdate">
             </form>
     		  <div class="box-body">
