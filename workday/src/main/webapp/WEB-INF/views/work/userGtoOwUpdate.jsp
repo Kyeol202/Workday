@@ -65,7 +65,7 @@ $("#userStatusUpdate").click(function() {
     		  <form id="statusUpdate" method="post">
             <div class="box-header">
 				<input type="hidden" name="ta_id" value="${TADto.ta_id }">
-				<input type="hidden" name="status" value="${TADto.status }">
+				<input type="hidden" name="status">
                <input type="button" class="btn btn-warning btn-sm" value="최종수정" id="userStatusUpdate">
             </form>
     		  <div class="box-body">
@@ -102,7 +102,7 @@ $("#userStatusUpdate").click(function() {
                   <td>${TADto.ow }</td>
                   <td>${TADto.workinghour } 시간</td>
                   <td>
-					<select  name="ustatus">
+					<select  name="status">
 					<option value="Y">정상</option>
 					<option value="A">반차</option>
                     <option value="E">조퇴</option>

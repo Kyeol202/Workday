@@ -164,17 +164,16 @@ public class TAManagementController {
 	
 	//상태 최종 수정
 	@RequestMapping(value = "user/userStatusUpdate")
-	public String userStatusUpdate(TAManagement dto,  Model model,
-			RedirectAttributes redirectAttribute) {
-		dto.getTa_id();
-		dto.getStatus();
+	public String userStatusUpdate(@RequestParam("ta_id") int ta_id, TAManagement dto, Model model, RedirectAttributes redirectAttribute) {
+
 
 		
+	
 		service.userStatusUpdate(dto);
-		redirectAttribute.addAttribute(dto);
+
 		
 		
-		return "redirect:/user/workinghour";
+		return "forward:/user/userOwCheck";
 	}
 	
 	

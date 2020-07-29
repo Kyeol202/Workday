@@ -102,6 +102,7 @@ public class TAManagementDaoImpl implements TAManagementDao {
 		
 		System.out.println("값 가져오기 = "+dto);
 		
+		
 		 session.selectOne(queryprefix+"userStatusUpdate", dto);
 	}
 	
