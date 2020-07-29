@@ -1,5 +1,7 @@
 package com.bno.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +42,12 @@ public class UserServiceImpl implements UserService {
 	}
 		
 
-	
+	//유저 전체조회
+	@Override
+	public List<UserInfo> selectAllUserList() {
+
+		return dao.selectAllUserList();
+	}
 	
 	
 	

@@ -7,12 +7,12 @@ import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.dto.TAManagement;
+import com.bno.dto.UserInfo;
 
 public interface TAManagementService {
 	
 	//출근시간 입력
 	public void insertGto(TAManagement dto);
-	
 
 	//출근 전체 조회 출력
 	public List<JoinDto>  selectGtoAllList(BoardPager boardPager);

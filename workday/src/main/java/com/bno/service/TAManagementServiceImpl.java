@@ -11,6 +11,7 @@ import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.dto.TAManagement;
+import com.bno.dto.UserInfo;
 
 @Service
 public class TAManagementServiceImpl implements TAManagementService {
@@ -26,6 +27,7 @@ public class TAManagementServiceImpl implements TAManagementService {
 		dao.insertGto(dto);
 	}
 
+	
 	//출근 전체 목록 조회
 	@Override
 	public List<JoinDto> selectGtoAllList(BoardPager boardPager) {

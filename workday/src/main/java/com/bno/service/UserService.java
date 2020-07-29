@@ -1,5 +1,7 @@
 package com.bno.service;
 
+import java.util.List;
+
 import com.bno.dto.UserInfo;
 
 public interface UserService {
@@ -15,6 +17,7 @@ public interface UserService {
 	//상세조회
 	public UserInfo userSelectOne(UserInfo user);
 	
-	
+	//전체조회(페이징 없음)
+	public List<UserInfo> selectAllUserList();
 	
 }//inter end

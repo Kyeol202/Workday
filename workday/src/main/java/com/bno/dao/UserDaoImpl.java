@@ -1,5 +1,7 @@
 package com.bno.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,6 +37,14 @@ public class UserDaoImpl implements UserDao {
 	public UserInfo userSelectOne(UserInfo user) {
 	
 		return session.selectOne(queryprefix+"userSelectOne", user);
+	}
+	
+	
+	//유저 전체 조회
+	@Override
+	public List<UserInfo> selectAllUserList() {
+		
+		return session.selectList(queryprefix+"selectAllUserList");
 	}
 	
 	

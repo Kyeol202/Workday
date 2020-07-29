@@ -177,7 +177,7 @@ public class TAManagementController {
 	}
 	
 	
-	
+//----------------------------------------------------------------------관리자------------------------------------------------------------------//	
 	
 	
 	
@@ -236,7 +236,9 @@ public class TAManagementController {
 	
 	//관리자 부서원 입력
 	@RequestMapping(value = "admin/adminInsertCheck")
-	public String adminUpdateCheck() {
+	public String adminUpdateCheck(HttpSession session) {
+		
+		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		
 		
 		
@@ -265,4 +267,22 @@ public class TAManagementController {
 			return "redirect:/myPage/myDepartmentGtoOw";
 		}
 	
+		
+		//휴가 등록
+		@RequestMapping(value = "userVacation")
+		public String userVacationInsert() {
+			
+			//전체리스트 출력 필요 (조인)??
+			//값을 가져와서 다시 FORM을 통해 INSERT
+			//insert 후 수정, 삭제 만들기
+			
+			return "";
+		}
+		
+		
+		
+		
+		
+		
+		
 }//class end

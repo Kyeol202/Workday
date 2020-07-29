@@ -43,6 +43,10 @@
   	
   	</select>
   	
+  	<select id="selectAllUserList" resultType="UserInfo">
+  	SELECT * 
+  	FROM USER_INFO
   	
+  	</select>
   	
   </mapper>
