@@ -28,10 +28,12 @@
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<%= contextPath %>/dist/css/AdminLTE.min.css">
 	<link rel="stylesheet" href="<%= contextPath %>/dist/css/skins/skin-blue.min.css">
-	
+
 	<!-- datatables style -->
 	<link rel="stylesheet" href="<%= contextPath %>/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-
+	  <!-- fullCalendar -->
+  <link href="<%=contextPath %>/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" >
+  <link href="<%=contextPath %>/bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print" rel="stylesheet" >
 	<!-- Google Font -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   	<link rel="stylesheet" href="<%=contextPath %>/bower_components/select2/dist/css/select2.min.css">
@@ -45,6 +47,8 @@
 	<script src="<%= contextPath %>/bower_components/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap 3.3.7 -->
 	<script src="<%= contextPath %>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="<%=contextPath %>/bower_components/jquery-ui/jquery-ui.min.js"></script>
 	<!-- AdminLTE App -->
 	<script src="<%= contextPath %>/dist/js/adminlte.min.js"></script>
 	<!-- CK Editor -->
@@ -60,11 +64,11 @@
 <script src="<%=contextPath %>/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
 <script src="<%=contextPath %>/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="<%=contextPath %>/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="<%=contextPath %>/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- SlimScroll -->
-<script src="<%=contextPath %>/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- <!-- SlimScroll --> -->
+<%-- <script src="<%=contextPath %>/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script> --%>
 <!-- iCheck 1.0.1 -->
 <script src="<%=contextPath %>/plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
@@ -73,12 +77,7 @@
 <script src="<%=contextPath %>/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<%=contextPath %>/dist/js/demo.js"></script>
-<!-- fullCalendar -->
-<script src="<%=contextPath %>/bower_components/moment/moment.js"></script>
-<script src="<%=contextPath %>/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-	<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+
 	
 
 </head>
