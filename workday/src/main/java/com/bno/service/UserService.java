@@ -20,4 +20,6 @@ public interface UserService {
 	//전체조회(페이징 없음)
 	public List<UserInfo> selectAllUserList();
 	
+
+	
 }//inter end

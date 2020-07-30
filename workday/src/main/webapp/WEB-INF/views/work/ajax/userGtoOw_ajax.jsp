@@ -44,7 +44,7 @@
                 </thead>
                 <c:forEach var="gtoAllList" items="${gtoAllList }">
                 <c:choose>
-                <c:when test="${user.u_id eq gtoAllList.u_id }">
+                <c:when test="${user.u_id eq gtoAllList.u_id || user.dp_name eq '경영지원' }">
                 <tbody>
                 <tr role="row" class="odd">
                   <td class="sorting_1">${gtoAllList.dp_name }</td>

@@ -20,5 +20,6 @@ public interface UserDao {
 	//유저 전체정보
 	public List<UserInfo> selectAllUserList();
 	
+
 	
 }//inter end

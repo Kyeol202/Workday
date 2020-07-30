@@ -12,6 +12,7 @@ import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.dto.TAManagement;
+import com.bno.dto.UserInfo;
 
 @Repository
 public class TAManagementDaoImpl implements TAManagementDao {
@@ -116,7 +117,14 @@ public class TAManagementDaoImpl implements TAManagementDao {
 	}
 	
 
-	
+	//부서운 휴가 등록
+	@Override
+	public void insertUserVacation(TAManagement dto) {
+		
+		System.out.println("사번 가져왔니? = "+dto);
+		
+		session.insert(queryprefix+"insertUserVacation", dto);
+	}
 	
 	
 	

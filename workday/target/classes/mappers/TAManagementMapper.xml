@@ -13,11 +13,11 @@ INSERT INTO TA_MANAGEMENT(
     GTO,
     STATUS
 )
-values(
+VALUES(
     TA_MANAGEMENT_SEQ.NEXTVAL,
     #{u_id},
     TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
-    default
+    DEFAULT
     )
   
   </insert>
@@ -131,7 +131,19 @@ values(
   	
   	
   	
+  	<insert id="insertUserVacation" parameterType="TAManagement">
+  	INSERT INTO TA_MANAGEMENT(
+  	TA_ID,
+  	U_ID,
+  	STATUS )
   	
+  	VALUES (
+  	 TA_MANAGEMENT_SEQ.NEXTVAL,
+  	 #{u_id},
+  	  'V'
+  	)
+  	
+  	</insert>
   	
   	
   	

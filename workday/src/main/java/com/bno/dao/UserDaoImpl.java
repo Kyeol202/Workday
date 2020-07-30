@@ -47,6 +47,8 @@ public class UserDaoImpl implements UserDao {
 		return session.selectList(queryprefix+"selectAllUserList");
 	}
 	
+
+	
 	
 	
 	

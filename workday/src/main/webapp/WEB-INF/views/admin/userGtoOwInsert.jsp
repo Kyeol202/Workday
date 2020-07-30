@@ -69,19 +69,29 @@ $("#userVacationInsert").click(function() {
 	<form id="userVacation" method="post">
 		<br>
 		<div class="form-group has-feedback">
-		<input type="text" class="form-control" value="사번" readonly="readonly">
-        	<select class="form-control" name="u_id">
-                    <option>사번</option>
-                    <option>사번</option>
+		<input type="text" class="form-control" value="부서명" readonly="readonly">
+        	<select class="form-control" name="dp_name">
+                   <option>경영지원</option>
+                    <option>연구소</option>
                   </select>
       	</div>
       	<div class="form-group has-feedback">
-      	<input type="text" class="form-control" value="상태" readonly="readonly">
-        	<select class="form-control" name="status">
-                    <option>상태</option>
-                    <option>상태</option>
+      	<input type="text" class="form-control" value="사번" readonly="readonly">
+        	<select class="form-control" name="u_id">
+					<c:forEach var="userList" items="${userList }">
+                    <option>${userList.u_id }</option>
+                     </c:forEach>
                   </select>
       	</div>
+      	<div class="form-group has-feedback">
+      	<input type="text" class="form-control" value="이름" readonly="readonly">
+        	<select class="form-control" name="u_name">
+                    <c:forEach var="userList" items="${userList }">
+                    <option>${userList.u_name }</option>
+                    </c:forEach>
+                  </select>
+      	</div>
+      	</form>
       	</div>
 		<div class="row">
         <div class="col-xs-6">

@@ -96,7 +96,12 @@ public class TAManagementServiceImpl implements TAManagementService {
 	}
 
 	
-	
+	//부서원 휴가 등록
+	@Override
+	public void insertUserVacation(TAManagement dto) {
+		
+		dao.insertUserVacation(dto);
+	}
 	
 
 

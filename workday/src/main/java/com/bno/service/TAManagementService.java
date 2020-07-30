@@ -41,4 +41,6 @@ public interface TAManagementService {
 	//관리자권한, 직원출근관리 삭제
 	public void userGtoOwDelete(int ta_id);
 	
+	//부서원 휴가 등록
+	public void insertUserVacation(TAManagement  dto);
 }//inter end

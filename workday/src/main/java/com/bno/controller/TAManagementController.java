@@ -20,13 +20,16 @@ import com.bno.dto.SearchDto;
 import com.bno.dto.TAManagement;
 import com.bno.dto.UserInfo;
 import com.bno.service.TAManagementService;
+import com.bno.service.UserService;
 
 @Controller
 public class TAManagementController {
 	
 	@Autowired
-	private TAManagementService service;
+	private TAManagementService TAservice;
 
+	@Autowired
+	private UserService UserService;
 	
 	//출근 입력
 	@RequestMapping(value = "user/userGtoOw")
@@ -49,7 +52,7 @@ public class TAManagementController {
 			//검색객체 값 넣기
 			SearchDto searchDto = new SearchDto(searchSort, searchVal);
 			//총 레코드 가져오기
-			int nCount = service.selectuserGtoCount(searchDto);
+			int nCount = TAservice.selectuserGtoCount(searchDto);
 			//현재 출력 페이지
 			int curPage = cPage;
 			
@@ -61,7 +64,7 @@ public class TAManagementController {
 			boardPager.setSearchVal(searchVal);
 			
 			//전체 리스트 출력
-			List<JoinDto> gtoAllList = service.selectGtoAllList(boardPager);
+			List<JoinDto> gtoAllList = TAservice.selectGtoAllList(boardPager);
 			
 			model.addAttribute("gtoAllList", gtoAllList);
 			model.addAttribute("boardPager", boardPager);
@@ -82,7 +85,7 @@ public class TAManagementController {
 		
 		if(user != null) {
 		
-		 service.insertGto(dto);
+			TAservice.insertGto(dto);
 		 
 		 path = "redirect:/user/userGtoOw";
 			
@@ -110,7 +113,7 @@ public class TAManagementController {
 	
 		if(user != null) {
 	
-			service.owUpdate(ta_id);
+			TAservice.owUpdate(ta_id);
 			redirectAttribute.addAttribute("ta_id", ta_id);
 			
 			path = "redirect:/user/workinghour";
@@ -133,7 +136,7 @@ public class TAManagementController {
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		model.addAttribute("user", user);
 		
-		TAManagement dto = service.userGtoOwSelectOne(ta_id);
+		TAManagement dto = TAservice.userGtoOwSelectOne(ta_id);
 		model.addAttribute("TADto", dto);
 		System.out.println(dto.toString());
 		
@@ -145,7 +148,7 @@ public class TAManagementController {
 	public String Workinghour(@RequestParam("ta_id") int ta_id, HttpSession session, 
 			Model model, TAManagement dto) {
 		
-			service.updateWorkingHour(ta_id);
+		TAservice.updateWorkingHour(ta_id);
 		
 		return "work/userGtoOw";
 	}
@@ -154,7 +157,7 @@ public class TAManagementController {
 	@RequestMapping(value = "user/userGtoOwUpdate")
 	public String userGtoOwUpdate(@RequestParam("ta_id") int ta_id, Model model) {
 		
-		TAManagement dto = service.userGtoOwSelectOne(ta_id);
+		TAManagement dto = TAservice.userGtoOwSelectOne(ta_id);
 		model.addAttribute("TADto", dto);
 		System.out.println(dto);
 		
@@ -169,7 +172,7 @@ public class TAManagementController {
 
 		
 	
-		service.userStatusUpdate(dto);
+		TAservice.userStatusUpdate(dto);
 
 		
 //		return "work/userGtoOw";
@@ -182,7 +185,7 @@ public class TAManagementController {
 	
 	
 	//부서 출퇴근관리
-	@RequestMapping(value = "myPage/myDepartmentGtoOw")
+	@RequestMapping(value = "admin/DepartmentGtoOw")
 	public String myDepartmentGtoOw() {
 		
 		return "admin/departmentGtoOw";
@@ -201,7 +204,7 @@ public class TAManagementController {
 		//검색객체 값 넣기
 		SearchDto searchDto = new SearchDto(searchSort, searchVal);
 		//총 레코드 가져오기
-		int nCount = service.selectuserGtoCount(searchDto);
+		int nCount = TAservice.selectuserGtoCount(searchDto);
 		//현재 출력 페이지
 		int curPage = cPage;
 		
@@ -213,7 +216,7 @@ public class TAManagementController {
 		boardPager.setSearchVal(searchVal);
 		
 		//전체 리스트 출력
-		List<JoinDto> gtoAllList = service.selectGtoAllList(boardPager);
+		List<JoinDto> gtoAllList = TAservice.selectGtoAllList(boardPager);
 		
 		model.addAttribute("gtoAllList", gtoAllList);
 		model.addAttribute("boardPager", boardPager);
@@ -228,21 +231,10 @@ public class TAManagementController {
 	@RequestMapping(value = "admin/adminGtoOwSelectOne")
 	public String adminGtoOwSelectOne(int ta_id, Model model, HttpSession session) {
 		
-		TAManagement dto = service.userGtoOwSelectOne(ta_id);
+		TAManagement dto = TAservice.userGtoOwSelectOne(ta_id);
 		model.addAttribute("TADto", dto);
 		
 		return "admin/adminGtoOwSelectOne";
-	}
-	
-	//관리자 부서원 입력
-	@RequestMapping(value = "admin/adminInsertCheck")
-	public String adminUpdateCheck(HttpSession session) {
-		
-		UserInfo user = (UserInfo) session.getAttribute("loginUser");
-		
-		
-		
-		return "admin/userGtoOwInsert";
 	}
 	
 	
@@ -250,7 +242,7 @@ public class TAManagementController {
 		@RequestMapping(value = "admin/userGtoOwUpdate")
 		public String adminGtoOwUpdate(@RequestParam("ta_id") int ta_id, Model model) {
 			
-			TAManagement dto = service.userGtoOwSelectOne(ta_id);
+			TAManagement dto = TAservice.userGtoOwSelectOne(ta_id);
 			model.addAttribute("TADto", dto);
 			System.out.println(dto);
 			
@@ -262,23 +254,37 @@ public class TAManagementController {
 		@RequestMapping(value = "user/userGtoOwDelete")
 		public String adminGtoOwDelete(@RequestParam("ta_id") int ta_id, RedirectAttributes redirectAttribute) {
 			
-				service.userGtoOwDelete(ta_id);
+			TAservice.userGtoOwDelete(ta_id);
 			
-			return "redirect:/myPage/myDepartmentGtoOw";
+			return "redirect:/admin/DepartmentGtoOw";
 		}
 	
 		
-		//휴가 등록
-		@RequestMapping(value = "userVacation")
-		public String userVacationInsert() {
+	
+		//관리자 부서원 입력
+		@RequestMapping(value = "admin/adminInsertCheck")
+		public String adminUpdateCheck(HttpSession session, Model model) {
 			
-			//전체리스트 출력 필요 (조인)??
-			//값을 가져와서 다시 FORM을 통해 INSERT
-			//insert 후 수정, 삭제 만들기
+			UserInfo user = (UserInfo) session.getAttribute("loginUser");
+			List<UserInfo> userList = UserService.selectAllUserList();
 			
-			return "";
+			model.addAttribute("userList", userList);
+			
+			return "admin/userGtoOwInsert";
 		}
+	
 		
+	//휴가 등록
+		@RequestMapping(value = "admin/userVacation")
+		public String userVacationInsert(@RequestParam("u_id") int u_id, TAManagement dto) {
+			
+			
+			TAservice.insertUserVacation(dto); 
+
+	
+			
+			return "redirect:/admin/DepartmentGtoOw";
+		}
 		
 		
 		

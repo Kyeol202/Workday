@@ -7,6 +7,7 @@ import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.dto.TAManagement;
+import com.bno.dto.UserInfo;
 
 public interface TAManagementDao {
 		
@@ -40,5 +41,8 @@ public interface TAManagementDao {
 	
 	//관리자권한 출퇴근 관리 삭제
 	public void userGtoOwDelete(int ta_id);
+	
+	//부서원 휴가 등록
+	public void insertUserVacation(TAManagement dto);
 	
 }//inter end
