@@ -67,7 +67,7 @@
 <script src="<%=contextPath %>/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="<%=contextPath %>/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- <!-- SlimScroll --> -->
+<!-- <!-- SlimScroll -->
 <%-- <script src="<%=contextPath %>/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script> --%>
 <!-- iCheck 1.0.1 -->
 <script src="<%=contextPath %>/plugins/iCheck/icheck.min.js"></script>
