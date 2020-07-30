@@ -34,7 +34,7 @@
 
 	<!-- Google Font -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+  	<link rel="stylesheet" href="<%=contextPath %>/bower_components/select2/dist/css/select2.min.css">
 	
 	<%-- <%@ include file="plugin_js.jsp" %> --%>
 	
@@ -55,7 +55,27 @@
 	<script src="<%= contextPath %>/bower_components/chart.js/Chart.js"></script>
 	<!-- FastClick -->
 	<script src="<%= contextPath %>/bower_components/fastclick/lib/fastclick.js"></script>
-
+	<!-- date-range-picker -->
+<script src="<%=contextPath %>/bower_components/moment/min/moment.min.js"></script>
+<script src="<%=contextPath %>/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="<%=contextPath %>/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="<%=contextPath %>/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll -->
+<script src="<%=contextPath %>/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="<%=contextPath %>/plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<script src="<%=contextPath %>/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<%=contextPath %>/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<%=contextPath %>/dist/js/demo.js"></script>
+<!-- fullCalendar -->
+<script src="<%=contextPath %>/bower_components/moment/moment.js"></script>
+<script src="<%=contextPath %>/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 	<!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->

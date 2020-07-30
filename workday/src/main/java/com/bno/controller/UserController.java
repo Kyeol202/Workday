@@ -108,6 +108,11 @@ public class UserController {
 		return "redirect:/userHome";
 	}
 	
+	@RequestMapping(value = "user/userCal")
+	public String userCal() {
+		
+		return "user/userCalender";
+	}
 	
 	
 }//class end
