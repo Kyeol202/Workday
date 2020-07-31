@@ -32,8 +32,10 @@
 	<!-- datatables style -->
 	<link rel="stylesheet" href="<%= contextPath %>/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 	  <!-- fullCalendar -->
-  <link href="<%=contextPath %>/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" >
-  <link href="<%=contextPath %>/bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print" rel="stylesheet" >
+  <link href="<%=contextPath %>/css/fullCalendar.css" rel="stylesheet" >
+  <link href="<%=contextPath %>/css/daygrid.css" rel="stylesheet" >
+  <link href="<%=contextPath %>/css/timegrid.css" rel="stylesheet" >
+  
 	<!-- Google Font -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   	<link rel="stylesheet" href="<%=contextPath %>/bower_components/select2/dist/css/select2.min.css">
@@ -44,7 +46,7 @@
 	
 	<!-- REQUIRED JS SCRIPTS -->
 	<!-- jQuery 3 -->
-	<script src="<%= contextPath %>/bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=contextPath%>/js/jquery-3.3.1.min.js"></script>
 	<!-- Bootstrap 3.3.7 -->
 	<script src="<%= contextPath %>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<!-- jQuery UI 1.11.4 -->
@@ -77,7 +79,11 @@
 <script src="<%=contextPath %>/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<%=contextPath %>/dist/js/demo.js"></script>
-
+<!-- full Calendar -->
+<script type="text/javascript" src="<c:url value='/js/fullCalendar.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/daygrid.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/timegrid.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/interaction.js'/>"></script>
 	
 
 </head>
