@@ -20,6 +20,7 @@ public interface UserService {
 	//전체조회(페이징 없음)
 	public List<UserInfo> selectAllUserList();
 	
-
+	//마이페이지 정보 수정
+	public void userInfoUpdate(UserInfo user);
 	
 }//inter end

@@ -49,6 +49,15 @@ public class UserServiceImpl implements UserService {
 		return dao.selectAllUserList();
 	}
 
+	
+	//마이페이지 정보 수정
+	@Override
+	public void userInfoUpdate(UserInfo user) {
+		
+		dao.userInfoUpdate(user);
+		
+	}
+
 
 	
 	

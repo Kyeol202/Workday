@@ -49,4 +49,12 @@
   	
   	</select>
   	
+  	<update id="userInfoUpdate">
+  		UPDATE USER_INFO
+  		SET U_PWD = #{u_pwd},
+  		U_POSITION = #{u_position},
+  		U_PHONE = #{u_phone}
+  		WHERE U_ID = #{u_id}
+  	</update>
+  	
   </mapper>

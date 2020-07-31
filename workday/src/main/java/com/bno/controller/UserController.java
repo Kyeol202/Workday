@@ -115,4 +115,26 @@ public class UserController {
 	}
 	
 	
+	//마이페이지
+	@RequestMapping(value = "myPage/myUserInfo")
+	public String myUserInfo() {
+		
+		
+		return "user/userMyUserInfo";
+	}
+	
+	
+	//마이페이지 수정
+	@RequestMapping(value = "user/userInfoUpdate")
+	public String userInfoUpdate(UserInfo user, HttpSession session) {
+	
+		service.userInfoUpdate(user);
+		
+		session.invalidate();
+		
+		return "redirect:/user/userlogin";
+	}
+	
+	
+	
 }//class end

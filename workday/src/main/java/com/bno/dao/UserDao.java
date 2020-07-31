@@ -20,6 +20,7 @@ public interface UserDao {
 	//유저 전체정보
 	public List<UserInfo> selectAllUserList();
 	
-
+	//마이페이지 정보 수정
+	public void userInfoUpdate(UserInfo user);
 	
 }//inter end

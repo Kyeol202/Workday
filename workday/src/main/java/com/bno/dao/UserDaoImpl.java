@@ -47,6 +47,14 @@ public class UserDaoImpl implements UserDao {
 		return session.selectList(queryprefix+"selectAllUserList");
 	}
 	
+	
+	//마이페이지 정보 수정
+	@Override
+	public void userInfoUpdate(UserInfo user) {
+		System.out.println("user정보 Get = "+user);
+		session.update(queryprefix+"userInfoUpdate", user);
+	}
+	
 
 	
 	
