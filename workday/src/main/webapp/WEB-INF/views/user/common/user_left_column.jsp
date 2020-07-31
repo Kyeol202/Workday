@@ -37,15 +37,7 @@
 									<li><a href="javascript:location.href='<c:url value="/"/>admin/DepartmentGtoOw'">부서원 출퇴근관리</a></li>
 								</ul>
 							</li>
-							<li class="myCommunity treeview">
-								<a href="#">
-									<i class="fa fa-circle-o"></i> 부서원 상태
-									<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-								</a>
-								<ul class="treeview-menu" style="display: none;">
-									<li><a href="javascript:location.href='<c:url value="/"/>myPage/myDepartmentStatus'">부서원 상태</a></li>
-								</ul>
-							</li>
+
 						</ul>
 					</li>
 					</c:if>

@@ -6,6 +6,12 @@
 <%String contextPath = request.getContextPath(); %>
  
  
+ <style>
+ .userList {
+	text-align: center;
+	
+}
+</style>
  
  
  
@@ -13,47 +19,49 @@
  
  
  
-  <!-- /.box-header -->
-            <div class="box-body">
-              <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-              <div class="row">
-              <div class="col-sm-6">
-              </div><div class="col-sm-6">
-              </div></div>
-              <div class="row">
-              <div class="col-sm-12">
-              <table id="example2" class="table table-bordered table-hover dataTable" role="grid" >
-                <thead>
-                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" 
-                rowspan="1" colspan="1" aria-sort="ascending" 
-                aria-label="Rendering engine: activate to sort column descending" style="width:185px;">
-                 	부서명	
-                </th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" 
-                aria-label="Engine version: activate to sort column ascending" style="width:228px;">
-                	사번</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" 
-                aria-label="Engine version: activate to sort column ascending" style="width:202px;">
-                	사원이름</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" 
-                aria-label="CSS grade: activate to sort column ascending" style="width:158px;">
-             		직급</th>
-                </tr>
-
-                </tr>
-                </thead>
-                <c:forEach var="userAllList" items="${userAllList }">
-                <tbody>
-                <tr role="row" class="odd">
-                  <td class="sorting_1">${userAllList.dp_name }</td>
-                  <td onclick="javascript:location.href='<c:url value ="/"/>user/userGtoOwSelectOne?u_id=${userAllList.u_id}'">
+<section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            
+          <div class="box-body">
+          	<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+          		<div class="row"><div class="col-sm-6"></div>
+          			<div class="col-sm-6"></div>
+          		</div>
+          		<div class="row">
+          		<div class="col-sm-12">
+          <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+			<thead>
+				<c:choose>
+					<c:when test="${fn:length(userAllList)>0 }">
+						<tr role="row"> 
+							<th class="userList" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">부서</th>
+							<th class="userList" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">사번</th>
+							<th class="userList" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">직급</th>
+							<th class="userList" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">이름</th>
+							<th class="userList" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">이메일</th>
+							<th class="userList" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">핸드폰번호</th>
+						</tr>
+					</c:when>
+				</c:choose>
+			</thead>
+		
+			<tbody>
+				<c:forEach var="userAllList" items="${userAllList}">
+					<tr role="row" class="odd">
+						<td>${userAllList.dp_name }</td>
+						<td onclick="javascript:location.href='<c:url value ="/"/>admin/userInfoSelectOne?u_id=${userAllList.u_id }'">
                   ${userAllList.u_id }</td>
-                  <td>${userAllList.u_name }</td>
-                  <td>${userAllList.u_position }</td>
-                </tr>
-                </c:forEach>
-                </tbody>
-              </table>
+						<td>${userAllList.u_position }</td>
+						<td>${userAllList.u_name }</td>
+						<td>${userAllList.u_email }</td>
+						<td>${userAllList.u_phone }</td>
+					</tr>
+			
+				</c:forEach>
+			</tbody>
+		</table>
               </div>
               </div>
 <div class="row">

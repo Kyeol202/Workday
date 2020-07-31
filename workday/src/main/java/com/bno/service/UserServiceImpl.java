@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 	//상세조회	
 	@Override
 	public UserInfo userSelectOne(UserInfo user) {
-		
+		 
 		
 		return dao.userSelectOne(user);
 	}
@@ -69,12 +69,36 @@ public class UserServiceImpl implements UserService {
 
 	//전체 유저 목록 가져오기(검색포함)
 	@Override
-	public List<JoinDto> userAllList(BoardPager boardPager) {
+	public List<UserInfo> userAllList(BoardPager boardPager) {
 		
 		return dao.userAllList(boardPager);
 	}
 
 	
+	
+	//유저 정보 상세보기
+	@Override
+	public UserInfo userInfoSelectOne(int u_id) {
+		
+		return dao.userInfoSelectOne(u_id);
+	}
+
+
+	//관리자가 유저 정보 수정
+	@Override
+	public void userInfoUpdateOk(UserInfo user) {
+		
+		dao.userInfoUpdateOk(user);
+	}
+
+
+	@Override
+	public void userInfoDelete(int u_id) {
+	
+		dao.userInfoDelete(u_id);
+	}
+
+
 	
 	
 	

@@ -125,6 +125,7 @@ public class UserController {
 	public String myUserInfo() {
 		
 		
+		
 		return "user/userMyUserInfo";
 	}
 	
@@ -173,7 +174,7 @@ public class UserController {
 			boardPager.setSearchVal(searchVal);
 			
 			//전체 리스트 출력
-			List<JoinDto> userAllList = service.userAllList(boardPager);
+			List<UserInfo> userAllList = service.userAllList(boardPager);
 			
 			model.addAttribute("userAllList", userAllList);
 			model.addAttribute("boardPager", boardPager);
@@ -184,6 +185,35 @@ public class UserController {
 	}
 	
 	
+	//유저 정보 상세보기
+	@RequestMapping(value = "admin/userInfoSelectOne")
+	public String userInfoSelectOne(@RequestParam("u_id") int u_id, Model model) {
+		
+			UserInfo userInfo = service.userInfoSelectOne(u_id);
+			model.addAttribute("userInfo", userInfo);
+		
+		return "admin/adminUserInfoUpdateForm";
+	}
+	
+	//관리자가 유저 정보 수정
+	@RequestMapping(value = "admin/userInfoUpdateOk")
+	public String userInfoUpdateOk(UserInfo user, RedirectAttributes redirectAttribute) {
+		
+		service.userInfoUpdateOk(user);
+
+		
+		return "admin/myDepartmentInfo";
+	}
+	
+	
+	//유저 삭제
+	@RequestMapping(value = "admin/userInfoDelete")
+	public String userInfoDelete(@RequestParam("u_id")int u_id) {
+		
+		service.userInfoDelete(u_id);
+		
+		return "admin/myDepartmentInfo";
+	}
 	
 	
 }//class end

@@ -30,6 +30,15 @@ public interface UserService {
 	public int selectUserCount(SearchDto searchDto);
 	
 	//유저 전체 목록 가져오기(검색포함)
-	public List<JoinDto> userAllList(BoardPager boardPager);
+	public List<UserInfo> userAllList(BoardPager boardPager);
+	
+	//유저 정보 상세보기
+	public UserInfo userInfoSelectOne(int u_id);
+	
+	//관리자가 유저 정보 수정
+	public void userInfoUpdateOk(UserInfo user);
+	
+	//유저 삭제
+	public void userInfoDelete(int u_id);
 	
 }//inter end

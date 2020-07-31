@@ -4,18 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="user">
-	
-	
-	
-		<sql id="pagingHeader">
-  SELECT * FROM (
-  SELECT ROWNUM AS rn, A.* FROM (
+ 	
+ 	  		<sql id="pagingHeader">
+  SELECT * 
+  FROM (
+  SELECT ROWNUM AS rn, A.* 
+  FROM (
   </sql>
   
   <sql id="pagingFooter">
   )A
   )WHERE rn BETWEEN #{start} AND #{end}
   </sql>
+ 
+	
 	
 	  <sql id="search">
   	<choose>
@@ -79,30 +81,47 @@
   	
   	<select id="selectUserCount" parameterType="searchDto" resultType="int">
   	SELECT COUNT(*)
-  	FROM (
-  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.GTO, T.STATUS, T.OW, T.WORKINGHOUR
-	FROM USER_INFO U
-	JOIN TA_MANAGEMENT T
-	ON U.U_ID = T.U_ID )
+  	FROM USER_INFO
   	WHERE 1 =1
   	<include refid="search"></include>
   	
   	</select>
   	
-  	<select id="userAllList" parameterType="boardPager" resultType="JoinDto" >
+  	
+  	<select id="userAllList" parameterType="boardPager" resultType="UserInfo" >
 	<include refid="pagingHeader"></include>
-	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, U.U_ID
-	FROM USER_INFO U
-	JOIN TA_MANAGEMENT T
-	ON U.U_ID = T.U_ID
-  	WHERE 1 =1
-  	<include refid="search"></include>
-  	ORDER BY U_ID DESC
-  	<include refid="pagingFooter"></include>
-  	
+	SELECT *
+	FROM USER_INFO
+	WHERE 1 = 1
+	<include refid="search"></include>
+	ORDER BY U_ID
+	<include refid="pagingFooter"></include>
+
+  	</select>
+	
+	
+<!-- 	유저 상세보기 -->
+  	<select id="userInfoSelectOne" resultType="UserInfo" parameterType="int">
+  		SELECT U_EMAIL, U_NAME, U_POSITION, U_PHONE, U_ID, DP_NAME
+  		FROM USER_INFO
+  		WHERE U_ID = #{u_id}
   	
   	</select>
   	
+<!--   	관리자가 유저 정보 수정 -->
+	<update id="userInfoUpdateOk" parameterType="UserInfo">
+		UPDATE USER_INFO
+		SET U_EMAIL = #{u_email},
+		U_PHONE = #{u_phone},
+		U_POSITION = #{u_position}
+		WHERE U_ID = #{u_id}
+	
+	</update>
   	
+<!--   	유저 삭제 -->
+	<delete id="userInfoDelete" parameterType="int">
+		DELETE FROM USER_INFO
+		WHERE U_ID = #{u_id}	
+	</delete>
   	
   </mapper>

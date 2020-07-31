@@ -132,7 +132,7 @@ $(document).ready(function(){
 			</div>
 			
 			<div class="register-box-body">
-    			<p class="login-box-msg">회원 정보 수정</p>
+    			<p class="login-box-msg">직원 정보 수정</p>
 				<form action="<%=contextPath %>/user/userInfoUpdate" method="post">
 					<input type="hidden" name="u_id" value="${loginUser.u_id }">
 						<div class="form-group has-feedback">
@@ -159,7 +159,7 @@ $(document).ready(function(){
 							<div id = "nick_check"></div>
 						</div>
 						<br>
-						<button type="submit" class="btn btn-block btn-primary" id="submit">회원정보수정</button>
+						<button type="submit" class="btn btn-block btn-primary" id="submit">직원정보수정</button>
 						<button type="button" class="btn btn-block btn-primary" id="cancle">취소</button>
 				</form>
 			</div>
