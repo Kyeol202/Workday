@@ -2,6 +2,9 @@ package com.bno.service;
 
 import java.util.List;
 
+import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
+import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
 
 public interface UserService {
@@ -22,5 +25,11 @@ public interface UserService {
 	
 	//마이페이지 정보 수정
 	public void userInfoUpdate(UserInfo user);
+	
+	//유저 전체 레코드 갯수 가져오기
+	public int selectUserCount(SearchDto searchDto);
+	
+	//유저 전체 목록 가져오기(검색포함)
+	public List<JoinDto> userAllList(BoardPager boardPager);
 	
 }//inter end

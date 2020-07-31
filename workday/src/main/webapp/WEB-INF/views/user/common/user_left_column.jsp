@@ -27,7 +27,7 @@
 							<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 						</a>
 						<ul class="myGpx treeview-menu">
-							<li><a href="javascript:location.href='<c:url value="/"/>myPage/myUserInfo'">부서 정보</a></li>
+							<li><a href="javascript:location.href='<c:url value="/"/>myPage/myDepartment'">부서 정보</a></li>
 							<li class="myGpx treeview">
 								<a href="#">
 									<i class="fa fa-circle-o"></i> 부서 출근관리

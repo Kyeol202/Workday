@@ -1,10 +1,15 @@
 package com.bno.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
+import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
 
 @Repository
@@ -53,6 +58,26 @@ public class UserDaoImpl implements UserDao {
 	public void userInfoUpdate(UserInfo user) {
 		System.out.println("user정보 Get = "+user);
 		session.update(queryprefix+"userInfoUpdate", user);
+	}
+	
+	
+	//유저 전체 레코드 갯수 가져오기
+	@Override
+	public int selectUserCount(SearchDto searchDto) {
+			
+		System.out.println("레코드 총 갯수 = "+searchDto);
+		
+		return session.selectOne(queryprefix+"selectUserCount", searchDto);
+	}
+	
+	
+	//유저 전체 목록 가져오기(검색포함)
+	@Override
+	public List<JoinDto> userAllList(BoardPager boardPager) {
+		List<JoinDto> userAllList = new ArrayList<JoinDto>();
+		userAllList = session.selectList(queryprefix+"userAllList", boardPager);
+		System.out.println("유저 전체 목록 ="+userAllList);
+		return userAllList;
 	}
 	
 

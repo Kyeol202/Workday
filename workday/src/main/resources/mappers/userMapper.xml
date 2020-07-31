@@ -5,6 +5,26 @@
   
   <mapper namespace="user">
 	
+	
+	
+		<sql id="pagingHeader">
+  SELECT * FROM (
+  SELECT ROWNUM AS rn, A.* FROM (
+  </sql>
+  
+  <sql id="pagingFooter">
+  )A
+  )WHERE rn BETWEEN #{start} AND #{end}
+  </sql>
+	
+	  <sql id="search">
+  	<choose>
+ 	<when test="searchSort !=''">
+ 	AND ${searchSort} LIKE '%' || #{searchVal} || '%'
+ 	</when> 
+  	</choose>
+  	</sql>
+	
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="UserInfo">
 	INSERT INTO USER_INFO(
@@ -56,5 +76,33 @@
   		U_PHONE = #{u_phone}
   		WHERE U_ID = #{u_id}
   	</update>
+  	
+  	<select id="selectUserCount" parameterType="searchDto" resultType="int">
+  	SELECT COUNT(*)
+  	FROM (
+  	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, T.GTO, T.STATUS, T.OW, T.WORKINGHOUR
+	FROM USER_INFO U
+	JOIN TA_MANAGEMENT T
+	ON U.U_ID = T.U_ID )
+  	WHERE 1 =1
+  	<include refid="search"></include>
+  	
+  	</select>
+  	
+  	<select id="userAllList" parameterType="boardPager" resultType="JoinDto" >
+	<include refid="pagingHeader"></include>
+	SELECT U.U_NAME, U.DP_NAME, U.U_POSITION, U.U_ID
+	FROM USER_INFO U
+	JOIN TA_MANAGEMENT T
+	ON U.U_ID = T.U_ID
+  	WHERE 1 =1
+  	<include refid="search"></include>
+  	ORDER BY U_ID DESC
+  	<include refid="pagingFooter"></include>
+  	
+  	
+  	</select>
+  	
+  	
   	
   </mapper>

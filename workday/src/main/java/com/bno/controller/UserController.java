@@ -12,7 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
+import com.bno.dto.SearchDto;
+import com.bno.dto.TAManagement;
 import com.bno.dto.UserInfo;
 import com.bno.service.UserService;
 
@@ -134,6 +139,50 @@ public class UserController {
 		
 		return "redirect:/user/userlogin";
 	}
+	
+	
+	//부서정보
+	@RequestMapping(value = "myPage/myDepartment")
+	public String myDepartment() {
+		
+		
+		return "admin/myDepartmentInfo";
+	}
+	
+	//부서원 전체 목록
+	@RequestMapping(value = "admin/myDepartmentInfoAjax")
+	public String myDepartmentInfoAjax(@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "searchSort", defaultValue = "")String searchSort,
+			@RequestParam(value = "searchVal", defaultValue = "")String searchVal,
+			Model model, HttpSession session, RedirectAttributes redirectAttribute, UserInfo user) {
+		
+			
+			
+			//검색객체 값 넣기
+			SearchDto searchDto = new SearchDto(searchSort, searchVal);
+			//총 레코드 가져오기
+			int nCount = service.selectUserCount(searchDto);
+			//현재 출력 페이지
+			int curPage = cPage;
+			
+			//페이지 객체에 값 저장(nCount : 리스트 총 레코드 갯수 / curPage : 현재 출력 페이지)
+			BoardPager boardPager = new BoardPager(nCount, curPage);
+			
+			//페이지 객체에 검색 정보 저장
+			boardPager.setSearchSort(searchSort);
+			boardPager.setSearchVal(searchVal);
+			
+			//전체 리스트 출력
+			List<JoinDto> userAllList = service.userAllList(boardPager);
+			
+			model.addAttribute("userAllList", userAllList);
+			model.addAttribute("boardPager", boardPager);
+			
+			
+			
+		return "admin/ajax/myDepartmentInfo_ajax";
+	}
+	
 	
 	
 	

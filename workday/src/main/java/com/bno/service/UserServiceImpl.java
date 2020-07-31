@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bno.dao.UserDao;
-import com.bno.dao.UserDaoImpl;
+import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
+import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
 
 @Service
@@ -58,7 +60,21 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	//유저 전체 레코드 갯수 가져오기
+	@Override
+	public int selectUserCount(SearchDto searchDto) {
+		
+		return dao.selectUserCount(searchDto);
+	}
 
+	//전체 유저 목록 가져오기(검색포함)
+	@Override
+	public List<JoinDto> userAllList(BoardPager boardPager) {
+		
+		return dao.userAllList(boardPager);
+	}
+
+	
 	
 	
 	
