@@ -20,6 +20,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	      center: 'title',
 	      right: ''
 	    },
+	    editable: true,
+	    droppable: true, // this allows things to be dropped onto the calendar
+	    drop: function(info) {
+	      // is the "remove after drop" checkbox checked?
+	      if (checkbox.checked) {
+	        // if so, remove the element from the "Draggable Events" list
+	        info.draggedEl.parentNode.removeChild(info.draggedEl);
+	      }
+	    },
+	    locale: 'ko'
 	  });
 	  calendar.render();
 	});
