@@ -6,11 +6,69 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%@ include file="../common/head.jsp"%>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#external-events {
+  z-index: 2;
+  top: 20px;
+  left: 20px;
+  width: 150px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  background: #eee;
+}
+.demo-topbar + #external-events { /* will get stripped out */
+  top: 60px;
+}
+#external-events .fc-event {
+  margin: 1em 0;
+  cursor: move;
+}
+#calendar-container {
+  position: relative;
+  z-index: 1;
+  margin-left: 200px;
+}
+#calendar {
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+
+</style>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-	  var calendarEl = document.getElementById('calendar');
-	  
+
+	var calendarEl = document.getElementById('calendar');
+	var Draggable = FullCalendarInteraction.Draggable;
+	
+	var containerEl = document.getElementById('external-events');
+	var calendarEl = document.getElementById('calendar');
+	var checkbox = document.getElementById('drop-remove');
+	
+//--------------------------------------------------------------------------		
+	
+	new Draggable(containerEl, {
+		itemSelector : '.fc-event',
+		eventData : function(eventEl) {
+			return {
+				title : eventEl.innerText
+			};
+		}
+		
+	});
+	
+    
+
+	
 	  var calendar = new FullCalendar.Calendar(calendarEl, {
 	    plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
 	    defaultView: 'dayGridMonth',
@@ -34,6 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	  calendar.render();
 	});
     
+
+    
  </script>  
 
 <!-- Page specific script -->
@@ -56,24 +116,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			<!-- Main content -->
 			<section class="content container-fluid">
-
+	
+			<div id="external-events">
+			<p>
+			<strong>Draggable Events</strong>
+			</p>
+    <div class="fc-event">My Event 1</div>
+    <div class="fc-event">My Event 2</div>
+    <div class="fc-event">My Event 3</div>
+    <div class="fc-event">My Event 4</div>
+    <div class="fc-event">My Event 5</div>
+    <p>
+      <input type="checkbox" id="drop-remove">
+      <label for="drop-remove">remove after drop</label>
+    </p>
+  </div>
+	
+	
+	
+	
         <!-- /.col -->
         <div class="col-md-9">
           <div class="box box-primary">
             <div class="box-body no-padding">
               <!-- THE CALENDAR -->
               <div id="calendar"></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /. box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+				
+				<div>
+				<button class="add-button" type="button" onclick="click_add();">일정추가</button>
+				</div>
+				
+				
+				
+				
     </section>
-    <!-- /.content -->
-  </div>
+
   <!-- /.content-wrapper -->
 
 
