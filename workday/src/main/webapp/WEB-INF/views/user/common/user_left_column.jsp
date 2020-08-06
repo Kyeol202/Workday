@@ -20,7 +20,7 @@
 			
 			<c:choose>
 				<c:when test="${loginUser != null}">
-					<c:if test="${loginUser.u_position eq '부장' || loginUser.u_position eq '대표이사'}">
+					<c:if test="${loginUser.u_position eq '대표이사'}">
 					<li class="myPage treeview">
 						<a href="#">
 							<i class="fa fa-user"></i> <span>부서 페이지</span>
@@ -34,7 +34,7 @@
 									<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 								</a>
 								<ul class="treeview-menu" style="display: none;">
-									<li><a href="javascript:location.href='<c:url value="/"/>admin/DepartmentGtoOw'">부서원 출퇴근관리</a></li>
+									<li><a href="javascript:location.href='<c:url value="/"/>user/userWorkList'">부서원 출퇴근관리</a></li>
 								</ul>
 							</li>
 
@@ -50,7 +50,7 @@
 					<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="javascript:location.href='<c:url value="/"/>user/userGtoOw'">출퇴근 입력</a></li>
+					<li><a href="javascript:location.href='<c:url value="/"/>user/userWorkList'">출퇴근 입력</a></li>
 				</ul>
 			</li>
 			<li class="community treeview">
@@ -61,7 +61,6 @@
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="javascript:location.href='<c:url value="/"/>user/userStatus'">조퇴/반차/휴가</a></li>
-					<li><a href="javascript:location.href='<c:url value="/"/>user/userCal'">달력</a></li>
 				</ul>
 			</li>
 

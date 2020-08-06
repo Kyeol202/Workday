@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WorkRecord">
+
+	
+	<insert id="userWorkIn" parameterType="WorkRecord">
+	INSERT INTO WORK_RECORD(
+	W_ID,
+	U_ID,
+	D_ID,
+	W_IN,
+	W_STATUS
+	)
+	VALUES(
+	WORK_RECORD_SEQ.NEXTVAL,
+	#{u_id},
+	#{d_id},
+	TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
+	DEFAULT
+	)
+	</insert>
+	
+	
+	
+</mapper>

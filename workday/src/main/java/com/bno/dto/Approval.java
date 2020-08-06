@@ -2,7 +2,7 @@ package com.bno.dto;
 
 public class Approval {
 	
-	private int apv_id;
+	private int apv_id;					
 	private int u_id;
 	private int d_id;
 	private String apv_div;

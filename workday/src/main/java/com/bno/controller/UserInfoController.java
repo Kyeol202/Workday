@@ -30,6 +30,37 @@ public class UserInfoController {
 		return "user/userHome";
 	}
 	
+	//사용자 로그인 화면
+	@RequestMapping(value = "user/userlogin")
+	public String userlogin(Model model) {
+		logger.info("this is userlogin method");
+		
+		
+		
+		return "user/user_login";
+	}
+	
+	//사용자 로그인
+	@RequestMapping(value = "user/userloginEnd")
+	public String userloginEnd(Model model, UserInfo user, HttpSession session) {
+		logger.info("this is a userloginEnd method");
+		
+		UserInfo result = service.userSelectOne(user);
+		String path = "";
+		
+		if(result !=null) {
+			if(user.getU_pwd().equals(result.getU_pwd())) {
+				path = "redirect:/userHome";
+				
+				session.setAttribute("loginUser", result);
+				
+			}
+		}
+		
+		return path;
+	}
+	
+
 	
 	
 	

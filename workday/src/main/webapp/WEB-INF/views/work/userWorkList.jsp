@@ -5,15 +5,26 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%@ include file="../common/head.jsp"%>
+<script>
+//jQuery 함수
+
+$(document).ready(function() {
+	
+	$("#userWorkIn").click(function() {
+		var url = "<%=contextPath%>"+"/user/userWorkIn";
+		$("#userWorkInCheck").attr("action", url);
+		$("#userWorkInCheck").submit();
+	})
+	
+});
 
 
-
-
+</script>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 
 		<!-- Main Header -->
-		<%@ include file="../user/common/user_main_header.jsp" %>
+		<%@ include file="../user/common/user_main_header.jsp" %> 
 
 		<!-- Left side column. contains the logo and sidebar -->
 		<%@ include file="../user/common/user_left_column.jsp" %>
@@ -36,13 +47,19 @@
 									</div>
 								</div>
 							</div>
-			<div>
-			<img src="<c:url value='/img/inout.jpg'/>">
-			<br>
-			<input type="button" class="btn btn-success" value="근태관리" id="workList" 
-			onclick="javascript:location.href='<c:url value = '/'/>user/userWorkList'">
-			</div>
-
+							<div>
+							<form id="userWorkInCheck" method="post">
+							<input type="hidden" name="u_id" value="${loginUser.u_id }">
+							<input type="hidden" name="d_id" value="${loginUser.d_id }">
+							<input type="hidden" name="u_name" value="${loginUser.u_name }">
+							<input type="hidden" name="u_position" value="${loginUser.u_position }">
+							<input type="button" class="btn btn-success" id="userWorkIn" value="출근">					
+							</form>
+							</div>
+							
+							
+							
+							
 
 								
 

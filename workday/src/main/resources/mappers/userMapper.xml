@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<select id="userSelectOne" parameterType="UserInfo" resultType="UserInfo">
+		SELECT * 
+		FROM USER_INFO 
+		WHERE U_EMAIL = #{u_email} AND U_PWD = #{u_pwd}
+	</select>
+	
+	
+	
+</mapper>
