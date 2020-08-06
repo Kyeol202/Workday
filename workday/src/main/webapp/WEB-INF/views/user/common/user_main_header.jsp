@@ -11,8 +11,8 @@
 			<!-- Logo -->
 			<a href="javascript:location.href='<c:url value="/"/>userHome'" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini"><b>WORK</b>DAY</span> <!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>WORK</b>DAY</span>
+				<span class="logo-mini"><b>Wrok</b>Record</span> <!-- logo for regular state and mobile devices -->
+				<span class="logo-lg"><b>Wrok</b>Record</span>
 			</a>
 
 			<!-- Header Navbar -->
