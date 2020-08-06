@@ -14,12 +14,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>WorkDay</title>
 	
-	<!-- favicon.ico -->
-	<link rel="shortcut icon" href="<c:url value='/'/>img/favicon.ico" type="image/x-icon">
-
-	<!-- FullCalendar -->
-	<link rel="stylesheet" href="<%=contextPath%>/fullcalendar/dist/fullcalendar.css">
-	<link rel="stylesheet" href="<%=contextPath%>/fullcalendar/dist/fullcalendar.print.min.css">	
+	
 	
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

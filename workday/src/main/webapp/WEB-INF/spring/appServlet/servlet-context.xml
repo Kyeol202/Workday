@@ -22,11 +22,7 @@
 	<resources mapping="/css/**" location="/resources/css/" />
 	
 	
-	<!-- fullCalendar파일 저장 경로 설정 -->
-	<resources mapping="/fullcalendar/**" location="/resources/calendar/fullcalendar/"></resources>
-	<resources mapping="/jquery/**" location="/resources/calendar/jquery/"></resources>
-	<resources mapping="/moment/**" location="/resources/calendar/moment/"></resources>
-	<resources mapping="/interaction/**" location="/resources/calendar/interaction/" />
+
 		<!-- js파일 저장 경로 설정 -->
 	<resources mapping="/js/**" location="/resources/js/" />
 	
