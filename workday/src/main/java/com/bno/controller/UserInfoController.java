@@ -60,7 +60,24 @@ public class UserInfoController {
 		return path;
 	}
 	
-
+	@RequestMapping(value = "user/userlogout")
+	public String userlogOut(HttpSession session) {
+		
+		logger.info("this is a userlogOut method");
+		if(session.getAttribute("loginUser") !=null) {
+			session.removeAttribute("loginUser");
+		}
+		
+		return "redirect:/userHome";
+	}
+	
+	
+	@RequestMapping(value ="user/userSignUp")
+	public String userSignUp() {
+		
+		return "user/user_SignUp";
+	}
+	
 	
 	
 	

@@ -29,9 +29,6 @@
 								<li>
 									<button type="button" class="btn btn-sm bg-gray color-palette" onclick="javascript:location.href='<c:url value="/"/>user/userlogin'" style="margin: 10px">Login</button>
 								</li>
-								<li>
-									<button type="button" class="btn btn-sm bg-gray color-palette" onclick="javascript:location.href='<c:url value="/"/>user/userSignUp'" style="margin: 10px">Sign Up</button>
-								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="user user-menu">
@@ -41,6 +38,9 @@
 									</a>
 								</li>
 								<li>
+									<c:if test="${loginUser.u_id eq 1 }">
+									<button type="button" class="btn btn-sm bg-gray color-palette" onclick="javascript:location.href='<c:url value="/"/>user/userSignUp'" style="margin: 10px">Sign Up</button>
+									</c:if>
 									<button type="button" class="btn btn-sm bg-gray color-palette" onclick="javascript:location.href='<c:url value="/"/>myPage/myUserInfo'" style="margin: 10px">Mypage</button>
 									<button type="button" class="btn btn-sm bg-gray color-palette" onclick="javascript:location.href='<c:url value="/"/>user/userlogout'" style="margin: 10px">Logout</button>
 								</li>

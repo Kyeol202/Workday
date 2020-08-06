@@ -37,6 +37,15 @@ public class WorkRecordController {
 		return "work/userWorkList";
 	}
 	
+	//근태관리 리스트
+	@RequestMapping(value = "user/userworkListAjax")
+	public String userworkListAjax() {
+		
+		
+		
+		return "";
+	}
+	
 	
 	
 }//class end
