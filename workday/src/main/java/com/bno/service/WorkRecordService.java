@@ -12,11 +12,11 @@ public interface WorkRecordService {
 	//사용자 출근 입력
 	public void userWorkIn(WorkRecord dto);
 	
-	//사용자 총 레코드 가져오기
+	//출퇴근 총 레코드 가져오기
 	public int selectUserCount(SearchDto searchDto);
 	
-	//사용자 전체 조회
-	public List<UserInfo> selectUserAllList(BoardPager boardPager);
+	//전체 출퇴근 조회
+	public List<WorkRecord> selectUserAllList(BoardPager boardPager);
 	
 	
 }//interface end

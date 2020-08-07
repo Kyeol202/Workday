@@ -12,11 +12,11 @@ public interface WorkRecordDao {
 	//사용자 출근 입력
 	public void userWorkIn(WorkRecord dto);
 	
-	//사용자 전체 레코드 갯수
+	//출퇴근 전체 레코드 갯수
 	public int selectUserCount(SearchDto searchDto);
 	
-	//사용자 전체 조회
-	public List<UserInfo> selectUserAllList(BoardPager boardPager);
+	//출퇴근 전체 조회
+	public List<WorkRecord> selectUserAllList(BoardPager boardPager);
 	
 	
 }//interface end

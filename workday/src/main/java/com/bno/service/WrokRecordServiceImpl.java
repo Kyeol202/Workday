@@ -26,16 +26,16 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 		dao.userWorkIn(dto);
 	}
 
-	//사용자 전체 레코드 갯수
+	//출퇴근 전체 레코드 갯수
 	@Override
 	public int selectUserCount(SearchDto searchDto) {
 		
 		return dao.selectUserCount(searchDto);
 	}
 
-	//사용자 전체 리스트
+	//출퇴근 전체 리스트
 	@Override
-	public List<UserInfo> selectUserAllList(BoardPager boardPager) {
+	public List<WorkRecord> selectUserAllList(BoardPager boardPager) {
 	
 		return dao.selectUserAllList(boardPager);
 	}

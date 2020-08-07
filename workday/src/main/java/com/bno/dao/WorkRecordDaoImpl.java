@@ -29,20 +29,20 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 		session.insert(queryprefix+"userWorkIn", dto);
 	}
 
-	//사용자 전체 레코드 갯수
+	//출퇴근 전체 레코드 갯수
 	@Override
 	public int selectUserCount(SearchDto searchDto) {
 		
 		return session.selectOne(queryprefix+"selectUserCount", searchDto);
 	}
 
-	//사용자 전체 조회
+	//출퇴근 전체 조회
 	@Override
-	public List<UserInfo> selectUserAllList(BoardPager boardPager) {
+	public List<WorkRecord> selectUserAllList(BoardPager boardPager) {
 		
-		List<UserInfo> AllUserList = new ArrayList<UserInfo>();
+		List<WorkRecord> AllUserList = new ArrayList<WorkRecord>();
 		AllUserList = session.selectList(queryprefix+"selectUserAllList", boardPager);
-		
+		System.out.println("전체 리스트 = "+AllUserList);
 		return AllUserList;
 	}
 	

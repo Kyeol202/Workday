@@ -9,7 +9,6 @@ public interface UserInfoService {
 	
 	//이메일 중복 체크
 	public int emailCheck(String u_email);
-
 	
 	//사용자 등록
 	public void userInsert(UserInfo user);

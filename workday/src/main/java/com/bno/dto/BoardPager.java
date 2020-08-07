@@ -30,7 +30,7 @@ public class BoardPager {
     // 검색 변수 추가
     private String searchSort;
     private String searchVal;
-   private int u_seq;
+   private int u_id;
     
     
     // 생성자
@@ -197,12 +197,12 @@ public class BoardPager {
       this.totBlock = totBlock;
    }
 
-    public int getU_seq() {
-      return u_seq;
+    public int getu_id() {
+      return u_id;
    }
 
-   public void setU_seq(int u_seq) {
-      this.u_seq = u_seq;
+   public void setu_id(int u_id) {
+      this.u_id = u_id;
    }
 
    @Override
@@ -211,7 +211,7 @@ public class BoardPager {
             + totPage + ", totBlock=" + totBlock + ", curBlock=" + curBlock + ", prevBlock=" + prevBlock
             + ", nextBlock=" + nextBlock + ", pageBegin=" + pageBegin + ", pageEnd=" + pageEnd + ", blockBegin="
             + blockBegin + ", blockEnd=" + blockEnd + ", start=" + start + ", end=" + end + ", searchSort="
-            + searchSort + ", searchVal=" + searchVal + ", u_seq=" + u_seq + "]";
+            + searchSort + ", searchVal=" + searchVal + ", u_id=" + u_id + "]";
    }
 
 }

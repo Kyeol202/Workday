@@ -4,7 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="WorkRecord">
-
+	
+	<sql id="pagingHeader">
+	SELECT *
+	FROM (
+	SELECT ROWNUM AS rn, A.*
+	FROM (
+	</sql>
+	
+	<sql id="pagingFooter">
+	) A
+	)WHERE rn BETWEEN #{start} AND #{end}
+	</sql>
+	
+	<sql id="search">
+		<choose>
+		<when test="searchSort !=''">
+		AND ${searchSort} LIKE '%' || #{searchVal} || '%'
+		</when>
+		</choose>
+	</sql>
 	
 	<insert id="userWorkIn" parameterType="WorkRecord">
 	INSERT INTO WORK_RECORD(
@@ -23,7 +42,24 @@
 	)
 	</insert>
 	
-
+	<select id="selectUserAllList" resultType="WorkRecord" parameterType="BoardPager">
+		<include refid="pagingHeader"></include>
+		SELECT W.W_ID, W.W_IN, W.W_OUT, W.W_TIME, W.D_ID, U.U_ID, U.U_NAME
+		FROM WORK_RECORD W
+		JOIN USER_INFO U
+		ON U.U_ID = W.U_ID
+		ORDER BY W.W_IN
+		WHERE 1 = 1
+		<include refid="search"></include>
+		<include refid="pagingFooter"></include>
+	</select>
+	
+	<select id="selectUserCount" parameterType="SearchDto" resultType="int">
+	SELECT COUNT(*)
+	FROM WORK_RECORD
+	WHERE 1 = 1
+	<include refid="search"></include>
+	</select>
 	
 	
 	
