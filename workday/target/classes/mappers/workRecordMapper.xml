@@ -46,9 +46,9 @@
 		FROM WORK_RECORD W
 		JOIN USER_INFO U
 		ON U.U_ID = W.U_ID
-		ORDER BY W.W_IN
 		WHERE 1 = 1
 		<include refid="search"></include>
+		ORDER BY W.W_IN
 		<include refid="pagingFooter"></include>
 	</select>
 	
