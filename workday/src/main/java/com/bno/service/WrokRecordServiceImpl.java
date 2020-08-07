@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.bno.dao.WorkRecordDao;
 import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
-import com.bno.dto.UserInfo;
 import com.bno.dto.WorkRecord;
 
 @Service
@@ -35,7 +35,7 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 
 	//출퇴근 전체 리스트
 	@Override
-	public List<WorkRecord> selectUserAllList(BoardPager boardPager) {
+	public List<JoinDto> selectUserAllList(BoardPager boardPager) {
 	
 		return dao.selectUserAllList(boardPager);
 	}

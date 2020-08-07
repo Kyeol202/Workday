@@ -6,15 +6,13 @@
 <mapper namespace="WorkRecord">
 	
 	<sql id="pagingHeader">
-	SELECT *
-	FROM (
-	SELECT ROWNUM AS rn, A.*
-	FROM (
+	SELECT * FROM (
+	SELECT ROWNUM AS rn, A.* FROM (
 	</sql>
 	
 	<sql id="pagingFooter">
-	) A
-	)WHERE rn BETWEEN #{start} AND #{end}
+	)  A
+	) WHERE rn BETWEEN #{start} AND #{end}
 	</sql>
 	
 	<sql id="search">
@@ -42,7 +40,7 @@
 	)
 	</insert>
 	
-	<select id="selectUserAllList" resultType="WorkRecord" parameterType="BoardPager">
+	<select id="selectUserAllList" resultType="JoinDto" parameterType="BoardPager">
 		<include refid="pagingHeader"></include>
 		SELECT W.W_ID, W.W_IN, W.W_OUT, W.W_TIME, W.D_ID, U.U_ID, U.U_NAME
 		FROM WORK_RECORD W

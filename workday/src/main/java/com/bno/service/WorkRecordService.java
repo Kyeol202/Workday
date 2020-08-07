@@ -3,6 +3,7 @@ package com.bno.service;
 import java.util.List;
 
 import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
 import com.bno.dto.WorkRecord;
@@ -16,7 +17,7 @@ public interface WorkRecordService {
 	public int selectUserCount(SearchDto searchDto);
 	
 	//전체 출퇴근 조회
-	public List<WorkRecord> selectUserAllList(BoardPager boardPager);
+	public List<JoinDto> selectUserAllList(BoardPager boardPager);
 	
 	
 }//interface end

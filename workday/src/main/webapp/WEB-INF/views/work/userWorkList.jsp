@@ -18,7 +18,7 @@
 	// 리스트 Ajax 처리
 	function workListAjaxfn(cPage) {
 		$.ajax({
-			url: "<c:url value="/ "/>user/userworkListAjax",
+			url: "<c:url value="/"/>user/userworkListAjax",
 			data: {
 				"cPage": cPage,
 				"searchSort": searchSort,

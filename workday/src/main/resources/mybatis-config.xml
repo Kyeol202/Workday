@@ -8,6 +8,7 @@
 		<typeAlias type="com.bno.dto.Approval" alias="Approval"/>
 		<typeAlias type="com.bno.dto.BoardPager" alias="BoardPager"/>
 		<typeAlias type="com.bno.dto.SearchDto" alias="SearchDto"/>
+		<typeAlias type="com.bno.dto.JoinDto" alias="JoinDto"/>
 
 	</typeAliases>
 </configuration>

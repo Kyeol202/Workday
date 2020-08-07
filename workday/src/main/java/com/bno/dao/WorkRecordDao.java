@@ -3,8 +3,8 @@ package com.bno.dao;
 import java.util.List;
 
 import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
-import com.bno.dto.UserInfo;
 import com.bno.dto.WorkRecord;
 
 public interface WorkRecordDao {
@@ -16,7 +16,7 @@ public interface WorkRecordDao {
 	public int selectUserCount(SearchDto searchDto);
 	
 	//출퇴근 전체 조회
-	public List<WorkRecord> selectUserAllList(BoardPager boardPager);
+	public List<JoinDto> selectUserAllList(BoardPager boardPager);
 	
 	
 }//interface end

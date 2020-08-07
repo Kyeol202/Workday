@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
-import com.bno.dto.UserInfo;
 import com.bno.dto.WorkRecord;
 
 @Repository
@@ -38,9 +38,9 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 
 	//출퇴근 전체 조회
 	@Override
-	public List<WorkRecord> selectUserAllList(BoardPager boardPager) {
+	public List<JoinDto> selectUserAllList(BoardPager boardPager) {
 		
-		List<WorkRecord> AllUserList = new ArrayList<WorkRecord>();
+		List<JoinDto> AllUserList = new ArrayList<JoinDto>();
 		AllUserList = session.selectList(queryprefix+"selectUserAllList", boardPager);
 		System.out.println("전체 리스트 = "+AllUserList);
 		return AllUserList;
