@@ -4,13 +4,42 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
-
+	
+<!-- 	 -->
 	<select id="userSelectOne" parameterType="UserInfo" resultType="UserInfo">
 		SELECT * 
 		FROM USER_INFO 
 		WHERE U_EMAIL = #{u_email} AND U_PWD = #{u_pwd}
 	</select>
+<!-- 	이메일 중복체크 -->
+	<select id="emailCheck" parameterType="UserInfo" resultType="int">
+	SELECT COUNT(*)
+	FROM USER_INFO
+	WHERE U_EMAIL = #{u_email}	
+	</select>
+
+<!-- 	사용자 등록 -->
+	<insert id="userInsert" parameterType="UserInfo">
+	INSERT INTO USER_INFO(
+	U_ID,
+	D_ID,
+	U_EMAIL,
+	U_PWD,
+	U_NAME,
+	U_POSITION,
+	U_PHONE
+	)	
+	VALUES(
+	USER_INFO_SEQ.NEXTVAL,
+	#{d_id},
+	#{u_email},
+	#{u_pwd},
+	#{u_name},
+	#{u_position},
+	#{u_phone}
+	)
 	
+	</insert>
 	
 	
 </mapper>

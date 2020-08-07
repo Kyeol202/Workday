@@ -29,6 +29,9 @@
 
 </style>
 <script>
+//사번 중복체크
+
+
 // 아이디 유효성 검사(1 = 중복 / 0 != 중복)
 $(function(){
 	
@@ -38,7 +41,7 @@ $(function(){
 		var u_email = $('#u_email').val();
 		
 		$.ajax({
-			url : '${pageContext.request.contextPath}/user/idcheck?u_email='+ u_email,
+			url : '${pageContext.request.contextPath}/user/emailCheck?u_email='+ u_email,
 			type : 'get',
 			dataType : 'text',
 			success : function(data) {
@@ -49,23 +52,23 @@ $(function(){
 				
 				if (u_email == "") {
 						
-						$("#id_check").text("이메일을 입력해주세요");
-						$("#id_check").css("color", "red");
+						$("#email_check").text("이메일을 입력해주세요");
+						$("#email_check").css("color", "red");
 						
 					} else if(!email.test($("input[id='u_email']").val())){
 	
-							$('#id_check').text('올바르지않은 이메일 형식입니다');
-							$('#id_check').css('color', 'red');
+							$('#email_check').text('올바르지않은 이메일 형식입니다');
+							$('#email_check').css('color', 'red');
 										
 							
 						} else if(data == '1'){
 							
-						$('#id_check').text("이미 사용중인 이메일입니다.");
-						$('#id_check').css('color', 'red');
+						$('#email_check').text("이미 사용중인 이메일입니다.");
+						$('#email_check').css('color', 'red');
 						
 						} else {
-							$('#id_check').text("사용가능한 이메일입니다.");
-							$('#id_check').css('color', 'blue');
+							$('#email_check').text("사용가능한 이메일입니다.");
+							$('#email_check').css('color', 'blue');
 					}
 							
 					
@@ -122,7 +125,8 @@ $(function(){
 			
 	}); 
 });
-// 휴대폰번호 정규식
+
+// 이름 정규식
 $(function(){ 
 	
 	$("#u_name").blur(function(){
@@ -138,7 +142,7 @@ $(function(){
 	}); 
 });
 
-//이름 정규식
+//휴대폰번호 정규식
 $(function(){ 
 	
 	$("#u_phone").blur(function(){
@@ -153,6 +157,8 @@ $(function(){
 		}		
 	}); 
 });
+
+
 
 // onsubmit
 function checkSubmit() {
@@ -180,14 +186,14 @@ function checkSubmit() {
 <body class="hold-transition register-page skin-blue sidebar-mini">
 	
 	<!-- Main Header -->
-		<%@ include file="../user/common/user_main_footer.jsp" %>
+
 
     <!-- Left side column. contains the logo and sidebar -->
     <%@ include file="../user/common/user_left_column.jsp" %>
     
     <div class="register-box">
 	<div class="register-logo">
-	<a href="/nsrecord/userHome">
+	<a href="#">
 		<b>Work</b>Record</a>
 	</div>
 	
@@ -196,22 +202,18 @@ function checkSubmit() {
 	<form action="<%=contextPath%>/user/userSignUpResult" method="post" name="form" onsubmit="return checkSubmit();">
 		<br>
 		<div class="form-group has-feedback">
-			<input type="text" class="form-control" id="u_email" name="u_email" placeholder="E_MAIL">
+			<input type="text" class="form-control" id="u_email" name="u_email" placeholder="이메일">
 			
-			<div id="id_check"></div>
-      	</div>
-      	      	<div class="form-group has-feedback">
-        	<input type="text" class="form-control" id="u_id" name="u_id" placeholder="사번">
-        
+			<div id="email_check"></div>
       	</div>
       	
 		<div class="form-group has-feedback">
-        	<input type="password" class="form-control" id="u_pwd" name="u_pwd" maxlength="15" placeholder="PASSWORD">
+        	<input type="password" class="form-control" id="u_pwd" name="u_pwd" maxlength="15" placeholder="비밀번호">
         	
       	</div>
       	
       	<div class="form-group has-feedback">
-        	<input type="password" class="form-control" id="u_pwd2" name="u_pwd2" maxlength="15" placeholder="CONFIRM PASSWORD">
+        	<input type="password" class="form-control" id="u_pwd2" name="u_pwd2" maxlength="15" placeholder="비밀번호 확인">
         	
 			<div id="pwd_check"></div>
 			<div id="pwd_success">비밀번호가 일치합니다</div>
@@ -219,20 +221,23 @@ function checkSubmit() {
       	</div>
       	
       	<div class="form-group has-feedback">
-        	<input type="text" class="form-control" id="u_phone" name="u_phone" placeholder="PHONE NUMBER">
+        	<input type="text" class="form-control" id="u_phone" name="u_phone" placeholder="핸드폰번호">
         	
 			<div id="phone_check"></div>
       	</div>
       	
       	<div class="form-group has-feedback">
-        	<input type="text" class="form-control" id="u_name" name="u_name" placeholder="NAME">
+        	<input type="text" class="form-control" id="u_name" name="u_name" placeholder="이름">
         	
       	</div>
       	
       	<div class="form-group has-feedback">
-        	<input type="text" class="form-control" id="d_id" name="d_id" placeholder="부서">
+        	<input type="text" class="form-control" id="d_id" name="d_id" placeholder="부서코드">
         	
       	</div>
+      	<div class="form-group has-feedback">
+        	<input type="text" class="form-control" id="u_position" name="u_position" placeholder="직급">
+        	</div>
 		<div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
@@ -255,12 +260,12 @@ function checkSubmit() {
 					
 		
 	</form>
-	
+			
 	</div>
 	
 	
 	</div>
-	 
+	 <%@ include file="../user/common/user_main_footer.jsp" %>
 </body>
 
 </html>

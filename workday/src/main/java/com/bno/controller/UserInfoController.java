@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bno.dto.UserInfo;
 import com.bno.service.UserInfoService;
@@ -20,13 +21,12 @@ public class UserInfoController {
 	@Autowired
 	private UserInfoService service;
 	
+	
+	//사용자 홈 화면
 	@RequestMapping(value = "userHome")
 	public String userHome(Model model, HttpSession session) {
 		logger.info("this is userHome method");
-		
-		
-		
-		
+
 		return "user/userHome";
 	}
 	
@@ -60,6 +60,7 @@ public class UserInfoController {
 		return path;
 	}
 	
+	//로그아웃
 	@RequestMapping(value = "user/userlogout")
 	public String userlogOut(HttpSession session) {
 		
@@ -71,11 +72,36 @@ public class UserInfoController {
 		return "redirect:/userHome";
 	}
 	
-	
+	//사용자 등록 화면
 	@RequestMapping(value ="user/userSignUp")
 	public String userSignUp() {
 		
 		return "user/user_SignUp";
+	}
+	
+	//이메일 중복체크
+	@RequestMapping(value = "user/emailCheck")
+	public String emailCheck(@RequestParam("u_email") String u_email) {
+		
+		int result = service.emailCheck(u_email);
+		String msg;
+		if(result > 0) {
+			msg = "1";
+		}
+		else msg = "0";
+		
+		return msg;
+	}
+
+	
+	//사용자 등록
+	@RequestMapping(value = "user/userSignUpResult")
+	public String userSignUpResult(UserInfo user) {
+		logger.info("this is a userSignUpResult method");
+		
+		service.userInsert(user);
+		
+		return "redirect:/user/userSignUp";
 	}
 	
 	
