@@ -44,12 +44,19 @@
 
 $(document).ready(function() {
 	
+	
 	$("#userWorkIn").click(function() {
+		var confirmWork = confirm('출근 하시겠습니까?');
+		
+		if(confirmWork == true) {
 		var url = "<%=contextPath%>"+"/user/userWorkIn";
 		$("#userWorkInCheck").attr("action", url);
 		$("#userWorkInCheck").submit();
+		}
+		else false;
 	})
-	
+
+
 });
 
 
@@ -90,6 +97,8 @@ $(document).ready(function() {
 							<input type="button" class="btn btn-success" id="userWorkIn" value="출근">					
 							</form>
 							</div>
+							
+
 <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 									<div class="row">
 										<div class="col-sm-6"></div>

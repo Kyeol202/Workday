@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<table id="gpxBoard" class="table table-bordered table-hover dataTable" role="grid">
-								<thead>※자세한 내용은 제목을 클릭하세요※
+								<thead>※관리자 화면입니다※
 													<tr role="row">
 														<th class="sorting_asc" tabindex="0" aria-controls="example1"
 															rowspan="1" colspan="1" aria-sort="ascending"

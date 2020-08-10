@@ -21,5 +21,10 @@ public interface WorkRecordDao {
 	//사용자 상세보기
 	public WorkRecord workRecordSelectOne(int w_id);
 	
+	//사용자 퇴근
+	public void userWorkOut(int w_id);
+	
+	//사용자 근무시간 계산
+	public WorkRecord updateWTime(int w_id);
 	
 }//interface end

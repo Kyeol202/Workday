@@ -6,18 +6,22 @@
 
 <%@ include file="../common/head.jsp"%>
 <script>
-//   jQuery함수 (출근버튼을 눌렀을 시 TAManagement Insert 되야함)
+
 $(document).ready(function() {
-      
 
-$("#workOut").click(function() {
-   var url = "<%=contextPath%>"+"/user/userOwCheck";
-   $("#userWOut").attr("action", url);
-   $("#userWOut").submit();
-})   
-   
-})//function end
-
+	$("#workOut").click(function() {
+		var confirmWork = confirm('퇴근 하시겠습니까?');
+		
+		if(confirmWork == true) {
+		var url = "<%=contextPath%>"+"/user/userWorkOut";
+		$("#userWorkOutCheck").attr("action", url);
+		$("#userWorkOutCheck").submit();
+		}
+		else false;
+		
+	});
+	
+});
 
 </script>
 
@@ -54,15 +58,14 @@ $("#workOut").click(function() {
               <li><a href="#">내 출퇴근</a></li>
               <li class="active">출근 입력</li>
             </ol>
-             <form id="userWOut" method="post">
+             <form id="userWorkOutCheck" method="post">
             <div class="box-header">
                <input type="hidden" name="u_id" value="${user.u_id }">
                <input type="hidden" name="d_id" value="${user.d_id }">
             <input type="hidden" name="u_name" value="${user.u_name }">
             <input type="hidden" name="u_position" value="${user.u_position }">
-            <input type="hidden" name="ta_id" value="${TADto.ta_id }">
-              <input type="button" id="workOut" value="퇴근" onclick="confirm('정말 퇴근 하시겠습니까?')"
-              class="btn btn-danger">
+            <input type="hidden" name="w_id" value="${workRecord.w_id }">
+              <input type="button" id="workOut" value="퇴근" class="btn btn-danger">
             </form>
             <div class="box-body">
               <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -88,6 +91,9 @@ $("#workOut").click(function() {
                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" 
                 aria-label="CSS grade: activate to sort column ascending" style="width:158px;">
                    상태</th>
+                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" 
+                aria-label="CSS grade: activate to sort column ascending" style="width:158px;">
+                   이유</th>
                 </tr>
 
                 </tr>
@@ -95,10 +101,11 @@ $("#workOut").click(function() {
 
                 <tbody>
                 <tr role="row" class="odd">
-                  <td class="sorting_1">${TADto.gto }</td>
-                  <td>${TADto.ow }</td>
-                  <td>${TADto.workinghour }</td>
-                  <td>${TADto.status }</td>
+                  <td class="sorting_1">${workRecord.w_in }</td>
+                  <td>${workRecord.w_out }</td>
+                  <td>${workRecord.w_time }</td>
+                  <td>${workRecord.w_status }</td>
+                  <td>${workRecord.w_reason }</td>
                 </tr>
 
                 </tbody>

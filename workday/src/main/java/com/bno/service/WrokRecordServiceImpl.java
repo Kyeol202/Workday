@@ -47,6 +47,20 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 		return dao.workRecordSelectOne(w_id);
 	}
 	
+	//사용자 퇴근
+	@Override
+	public void userWorkOut(int w_id) {
+		
+		dao.userWorkOut(w_id);
+	}
+	
+	//사용자 근무시간 계산
+	@Override
+	public WorkRecord updateWTime(int w_id) {
+		
+		return dao.updateWTime(w_id);
+	}
+	
 	
 	
 	

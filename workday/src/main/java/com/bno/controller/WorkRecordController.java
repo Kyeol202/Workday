@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
@@ -40,11 +41,20 @@ public class WorkRecordController {
 	
 	//사용자 출근
 	@RequestMapping(value = "user/userWorkIn")
-	public String userWorkIn(WorkRecord dto) {
+	public String userWorkIn(HttpSession session, WorkRecord dto) {
+	logger.info("this is a userWorkIn method");
+		UserInfo user = (UserInfo) session.getAttribute("loginUser");
+		String path = "";
 		
-		service.userWorkIn(dto);
+		if(user != null) {
+			service.userWorkIn(dto);
+			path = "redirect:/user/userWorkList";
+		}
+		else path = "redirect:/user/userlogin";
 		
-		return "work/userWorkList";
+		
+		
+		return path;
 	}
 	
 	//근태관리 리스트
@@ -91,11 +101,42 @@ public class WorkRecordController {
 			UserInfo user = (UserInfo) session.getAttribute("loginUser");
 			model.addAttribute(user);
 			
+			WorkRecord workRecord = service.workRecordSelectOne(w_id);
+			model.addAttribute("workRecord", workRecord);
+			System.out.println(workRecord);
 			
 			
 			return "work/userWorkRecordSelectOne";
 		}
 	
+		
+		//사용자 퇴튼
+		@RequestMapping(value ="user/userWorkOut")
+		public String userWorkOut(int w_id, HttpSession session, RedirectAttributes redirectAttribute) {
+			
+			UserInfo user = (UserInfo) session.getAttribute("loginUser");
+			String path = "";
+			if(user != null) {
+				service.userWorkOut(w_id);
+				redirectAttribute.addAttribute(w_id);
+				path = "redirect:/user/userwTime";
+			}
+			else path = "redirect:/user/userlogin";
+			
+			
+			
+			
+			return path;
+		}
+		
+		//사용자 근무 시간
+		@RequestMapping(value = "user/userwTime")
+		public String userwTime(int w_id) {
+			
+//			service.updateWTime(w_id);
+			
+			return "work/userWorkList";
+		}
 	
 	
 }//class end

@@ -25,7 +25,7 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 	@Override
 	public void userWorkIn(WorkRecord dto) {
 		
-		System.out.println("사용자 정보 = "+dto);
+//		System.out.println("사용자 정보 = "+dto);
 		session.insert(queryprefix+"userWorkIn", dto);
 	}
 
@@ -42,16 +42,33 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 		
 		List<JoinDto> AllUserList = new ArrayList<JoinDto>();
 		AllUserList = session.selectList(queryprefix+"selectUserAllList", boardPager);
-		System.out.println("전체 리스트 = "+AllUserList);
+//		System.out.println("전체 리스트 = "+AllUserList);
 		return AllUserList;
 	}
 	
 	//사용자 상세보기
 	@Override
 	public WorkRecord workRecordSelectOne(int w_id) {
-		
+//			System.out.println("상세조회 = "+w_id);
 		return session.selectOne(queryprefix+"workRecordSelectOne", w_id);
 	}
+	
+	
+	//사용자 퇴근
+	@Override
+	public void userWorkOut(int w_id) {
+		System.out.println("w_id = "+w_id);
+		session.update(queryprefix+"userWorkOut", w_id);
+	}
+	
+	//사용자 근무시간 계산
+	@Override
+	public WorkRecord updateWTime(int w_id) {
+		System.out.println("w_id = "+w_id);
+		return session.selectOne(queryprefix+"updateWTime", w_id);
+	}
+	
+	
 	
 	
 	

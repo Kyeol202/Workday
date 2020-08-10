@@ -48,7 +48,7 @@
 		ON U.U_ID = W.U_ID
 		WHERE 1 = 1
 		<include refid="search"></include>
-		ORDER BY W.W_IN
+		ORDER BY W.W_IN DESC
 		<include refid="pagingFooter"></include>
 	</select>
 	
@@ -60,9 +60,27 @@
 	</select>
 	
 	<select id="workRecordSelectOne" parameterType="int" resultType="WorkRecord">
-	SELECT 
+	SELECT W_IN, W_OUT, W_TIME, W_STATUS, W_REASON, W_ID
+	FROM WORK_RECORD
+	WHERE W_ID = #{w_id}
 	</select>
 	
+	<update id="userWorkOut" parameterType="WorkRecord">
+	UPDATE WORK_RECORD
+	SET W_OUT = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI')
+	WHERE W_ID = #{w_id}
 	
+	</update>
+	
+	<update id="updateWTime" parameterType="WorkRecord">
+	UPDATE WORK_RECORD
+	SET W_TIME = (SELECT (
+	TO_DATE(W_IN, 'YYYY-MM-DD HH24:MI') -
+	TO_DATE(W_OUT, 'YYYY-MM-DD HH24:MI')
+	)*24*60
+	FROM WORK_RECORD
+	WHERE W_ID = #{w_id} )
+	WHERE W_ID = #{w_id}
+	</update>
 	
 </mapper>
