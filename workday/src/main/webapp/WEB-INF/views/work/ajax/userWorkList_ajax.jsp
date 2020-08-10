@@ -36,17 +36,22 @@
 															rowspan="1" colspan="1"
 															aria-label="CSS grade: activate to sort column ascending"
 															style="width: 115px;">근무시간</th>
+															<th class="sorting" tabindex="0" aria-controls="example1"
+															rowspan="1" colspan="1"
+															aria-label="CSS grade: activate to sort column ascending"
+															style="width: 115px;">근무상태</th>
 													</tr>
 												</thead>
 			<tbody>
 				<c:forEach var="workAllList" items="${workAllList }">
 					<tr role="row">
 						<td class="">${workAllList.u_id }</td>
-						<td onclick="javascript:location.href='<c:url value="/ "/>gpx/gpxCount?g_seq=${workAllList.u_id }'">
-						<td>${workAllList.u_name }</td>
+						<td onclick="javascript:location.href='<c:url value="/"/>user/WorkRecordSelectOne?w_id=${workAllList.w_id }'">${workAllList.u_name }</td>
+						<td>${workAllList.d_id }</td>
 						<td>${workAllList.w_in }</td>
 						<td>${workAllList.w_out }</td>
 						<td>${workAllList.w_time }</td>
+						<td>${workAllList.w_status }</td>
 					</tr>
 
 				</c:forEach>

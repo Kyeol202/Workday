@@ -1,6 +1,7 @@
 package com.bno.service;
 
 import com.bno.dto.UserInfo;
+import com.bno.dto.WorkRecord;
 
 public interface UserInfoService {
 	
@@ -13,5 +14,6 @@ public interface UserInfoService {
 	//사용자 등록
 	public void userInsert(UserInfo user);
 	
+
 	
 }//interface end

@@ -46,6 +46,13 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 		return AllUserList;
 	}
 	
+	//사용자 상세보기
+	@Override
+	public WorkRecord workRecordSelectOne(int w_id) {
+		
+		return session.selectOne(queryprefix+"workRecordSelectOne", w_id);
+	}
+	
 	
 	
 	

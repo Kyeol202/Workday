@@ -40,6 +40,13 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 		return dao.selectUserAllList(boardPager);
 	}
 	
+	//상세조회
+	@Override
+	public WorkRecord workRecordSelectOne(int w_id) {
+		
+		return dao.workRecordSelectOne(w_id);
+	}
+	
 	
 	
 	

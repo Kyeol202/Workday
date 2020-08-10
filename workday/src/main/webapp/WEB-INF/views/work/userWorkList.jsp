@@ -26,7 +26,7 @@
 			},
 			dataType: "html",
 			success: function (data) {
-				$('#user_ workList').html(data);
+				$('#user_workList').html(data);
 			}
 		})
 	}
@@ -116,7 +116,7 @@ $(document).ready(function() {
 										</div>
 									</div>
 
-									<div id="user_ workList"></div>
+									<div id="user_workList"></div>
 
 								</div>
 							</div>

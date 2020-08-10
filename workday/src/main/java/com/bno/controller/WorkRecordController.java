@@ -84,6 +84,18 @@ public class WorkRecordController {
 		return "work/ajax/userWorkList_ajax";
 	}
 	
+		//사용자 근무 상세보기
+		@RequestMapping(value = "user/WorkRecordSelectOne")
+		public String WorkRecordSelectOne(int w_id, Model model, HttpSession session) {
+			
+			UserInfo user = (UserInfo) session.getAttribute("loginUser");
+			model.addAttribute(user);
+			
+			
+			
+			return "work/userWorkRecordSelectOne";
+		}
+	
 	
 	
 }//class end

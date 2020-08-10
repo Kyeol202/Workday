@@ -19,5 +19,8 @@ public interface WorkRecordService {
 	//전체 출퇴근 조회
 	public List<JoinDto> selectUserAllList(BoardPager boardPager);
 	
+	//상세조회
+	public WorkRecord workRecordSelectOne(int w_id);
+	
 	
 }//interface end

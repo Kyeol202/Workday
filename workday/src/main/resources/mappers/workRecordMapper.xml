@@ -42,7 +42,7 @@
 	
 	<select id="selectUserAllList" resultType="JoinDto" parameterType="BoardPager">
 		<include refid="pagingHeader"></include>
-		SELECT W.W_ID, W.W_IN, W.W_OUT, W.W_TIME, W.D_ID, U.U_ID, U.U_NAME
+		SELECT W.W_ID, W.W_IN, W.W_OUT, W.W_TIME, W.D_ID, U.U_ID, U.U_NAME,W_STATUS
 		FROM WORK_RECORD W
 		JOIN USER_INFO U
 		ON U.U_ID = W.U_ID
@@ -59,7 +59,9 @@
 	<include refid="search"></include>
 	</select>
 	
-	
+	<select id="workRecordSelectOne" parameterType="int" resultType="WorkRecord">
+	SELECT 
+	</select>
 	
 	
 	

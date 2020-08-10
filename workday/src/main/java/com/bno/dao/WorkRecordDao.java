@@ -18,5 +18,8 @@ public interface WorkRecordDao {
 	//출퇴근 전체 조회
 	public List<JoinDto> selectUserAllList(BoardPager boardPager);
 	
+	//사용자 상세보기
+	public WorkRecord workRecordSelectOne(int w_id);
+	
 	
 }//interface end
