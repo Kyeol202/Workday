@@ -103,7 +103,7 @@ public class WorkRecordController {
 			
 			WorkRecord workRecord = service.workRecordSelectOne(w_id);
 			model.addAttribute("workRecord", workRecord);
-			System.out.println(workRecord);
+//			System.out.println(workRecord);
 			
 			
 			return "work/userWorkRecordSelectOne";
@@ -112,14 +112,14 @@ public class WorkRecordController {
 		
 		//사용자 퇴튼
 		@RequestMapping(value ="user/userWorkOut")
-		public String userWorkOut(int w_id, HttpSession session, RedirectAttributes redirectAttribute) {
+		public String userWorkOut(@RequestParam("w_id")int w_id, HttpSession session) {
 			
 			UserInfo user = (UserInfo) session.getAttribute("loginUser");
 			String path = "";
 			if(user != null) {
 				service.userWorkOut(w_id);
-				redirectAttribute.addAttribute(w_id);
-				path = "redirect:/user/userwTime";
+				
+				path = "forward:/user/userwTime";
 			}
 			else path = "redirect:/user/userlogin";
 			
@@ -133,9 +133,9 @@ public class WorkRecordController {
 		@RequestMapping(value = "user/userwTime")
 		public String userwTime(int w_id) {
 			
-//			service.updateWTime(w_id);
+			service.updateWTime(w_id);
 			
-			return "work/userWorkList";
+			return "redirect:/user/userWorkList";
 		}
 	
 	

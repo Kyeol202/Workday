@@ -75,8 +75,8 @@
 	<update id="updateWTime" parameterType="WorkRecord">
 	UPDATE WORK_RECORD
 	SET W_TIME = (SELECT (
-	TO_DATE(W_IN, 'YYYY-MM-DD HH24:MI') -
-	TO_DATE(W_OUT, 'YYYY-MM-DD HH24:MI')
+	TO_DATE(W_OUT, 'YYYY-MM-DD HH24:MI') -
+	TO_DATE(W_IN, 'YYYY-MM-DD HH24:MI')
 	)*24*60
 	FROM WORK_RECORD
 	WHERE W_ID = #{w_id} )
