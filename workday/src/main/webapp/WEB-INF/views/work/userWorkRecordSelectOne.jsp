@@ -67,6 +67,30 @@ $(document).ready(function() {
             <input type="hidden" name="w_id" value="${workRecord.w_id }">
               <input type="button" id="workOut" value="퇴근" class="btn btn-danger">
             </form>
+			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-warning">
+                조퇴
+              </button>
+              
+              <div class="modal modal-warning fade" id="modal-warning" style="display: none;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">X</span></button>
+                <h4 class="modal-title">조퇴 사유</h4>
+              </div>
+              <div class="modal-body">
+                <p><input type="text" placeholder="조퇴 사유 입력"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-outline">저장</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
             <div class="box-body">
               <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
               <div class="row">
