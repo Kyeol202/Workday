@@ -21,6 +21,11 @@ $(document).ready(function() {
 		
 	});
 	
+	$("#UpdateReason").click(function() {
+		
+		$(".modal-body").html("<input type ='text' class='form-control' value='조퇴 사유를 입력하세요.' />");
+	});
+	
 });
 
 </script>
@@ -80,11 +85,11 @@ $(document).ready(function() {
                 <h4 class="modal-title">조퇴 사유</h4>
               </div>
               <div class="modal-body">
-                <p><input type="text" placeholder="조퇴 사유 입력"></p>
+                <p>조퇴 사유를 입력하세요.</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-outline">저장</button>
+                <button type="button" class="btn btn-outline" id="UpdateReason">조퇴사유 입력하기</button>
               </div>
             </div>
             <!-- /.modal-content -->
