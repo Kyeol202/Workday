@@ -53,6 +53,21 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return dao.selectAdminUserList(boardPager);
 	}
 	
+	//사용자 상세보기
+	@Override
+	public UserInfo adminUserSelectOne(int u_id) {
+		
+		return dao.adminUserSelectOne(u_id);
+	}
+	
+	
+	//사용자 정보 수정(관리자)
+	@Override
+	public UserInfo adminUserUpdateResult(UserInfo uDto) {
+	
+		return dao.adminUserUpdateResult(uDto);
+	}
+	
 	
 	
 	

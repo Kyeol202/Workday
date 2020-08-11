@@ -82,20 +82,13 @@ $(document).ready(function() {
 							<div class="box-header">
 								<div class="row">
 									<div class="col flexBox" style="justify-content: flex-start; padding: 0 16px;">
-										<h3 class="box-title">근태관리</h3>
+										<h3 class="box-title">사용자 목록</h3>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										
 									</div>
 								</div>
 							</div>
 							<div>
-							<form id="userWorkInCheck" method="post">
-							<input type="hidden" name="u_id" value="${loginUser.u_id }">
-							<input type="hidden" name="d_id" value="${loginUser.d_id }">
-							<input type="hidden" name="u_name" value="${loginUser.u_name }">
-							<input type="hidden" name="u_position" value="${loginUser.u_position }">
-							<input type="button" class="btn btn-success" id="userWorkIn" value="출근">					
-							</form>
 							</div>
 							
 

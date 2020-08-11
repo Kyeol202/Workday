@@ -36,6 +36,10 @@
 															rowspan="1" colspan="1"
 															aria-label="CSS grade: activate to sort column ascending"
 															style="width: 115px;">핸드폰번호</th>
+															<th class="sorting" tabindex="0" aria-controls="example1"
+															rowspan="1" colspan="1"
+															aria-label="CSS grade: activate to sort column ascending"
+															style="width: 115px;">재직</th>
 													</tr>
 												</thead>
 			<tbody>
@@ -43,10 +47,16 @@
 					<tr role="row">
 						<td class="">${adminUserAllList.u_id }</td>
 						<td onclick="javascript:location.href='<c:url value="/"/>admin/adminUserSelectOne?u_id=${adminUserAllList.u_id }'">${adminUserAllList.u_name }</td>
-						<td>${adminUserAllList.d_id }</td>
+						<c:if test="${adminUserAllList.d_id eq 1 }">
+						<td>경영지원</td>
+						</c:if>
+						<c:if test="${adminUserAllList.d_id eq 2 }">
+						<td>연구소</td>
+						</c:if>
 						<td>${adminUserAllList.u_email }</td>
 						<td>${adminUserAllList.u_position }</td>
 						<td>${adminUserAllList.u_phone }</td>
+						<td>${adminUserAllList.u_status }</td>
 					</tr>
 
 				</c:forEach>

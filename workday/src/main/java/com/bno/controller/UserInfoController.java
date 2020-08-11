@@ -112,7 +112,6 @@ public class UserInfoController {
 //------------------------------------------------------------------관리자-----------------------------------------------------	
 	
 	//부서원 리스트
-	//출근리스트화면
 	@RequestMapping(value = "admin/adminUserList")
 	public String userWorkList() {
 		
@@ -162,6 +161,46 @@ public class UserInfoController {
 	}
 	
 	
+	//사용자 상세보기
+	@RequestMapping(value = "admin/adminUserSelectOne")
+	public String adminUserSelectOne(int u_id, Model model, HttpSession session) {
+		
+		UserInfo user = (UserInfo) session.getAttribute("loginUser");
+		
+		UserInfo userInfo = service.adminUserSelectOne(u_id);
+		model.addAttribute("userInfo", userInfo);
+		
+		return "admin/adminUserSelectOne";
+	}
+	
+	
+	//사용자 정보 수정 Form
+	@RequestMapping(value = "admin/adminUserUpdate")
+	public String adminUserUpdate(int u_id, Model model) {
+		
+		UserInfo userInfo = service.adminUserSelectOne(u_id);
+		model.addAttribute("userInfo", userInfo);
+		
+		
+		return "admin/adminUserUpdateForm";
+	}
+	
+	//사용자 정보 수정 Result
+	@RequestMapping(value = "admin/adminUserUpdateResult")
+	public String adminUserUpdateResult(UserInfo uDto) {
+		
+		service.adminUserUpdateResult(uDto);
+		
+		return "redirect:/admin/adminUserList";
+	}
+	
+	
+	//사용자 정보 삭제
+	@RequestMapping(value = "admin/adminUserDelete")
+	public String adminUserDelete() {
+		
+		return "";
+	}
 	
 	
 }//class end

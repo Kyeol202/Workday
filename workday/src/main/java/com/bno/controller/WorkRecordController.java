@@ -104,7 +104,7 @@ public class WorkRecordController {
 			
 			WorkRecord workRecord = service.workRecordSelectOne(w_id);
 			model.addAttribute("workRecord", workRecord);
-//			System.out.println(workRecord);
+			System.out.println(workRecord);
 			
 			
 			return "work/userWorkRecordSelectOne";
@@ -142,13 +142,12 @@ public class WorkRecordController {
 		//사용자 상태 업데이트(조퇴)
 		@RequestMapping(value = "user/userStatusReasonUpdate")
 		public String userStatusReasonUpdate(WorkRecord wDto, RedirectAttributes redirectAttribute) {
-			
-			
-			
+
 			service.statusReasonUpdate(wDto);
-			redirectAttribute.addAttribute("wDto", wDto.getW_id());
+			service.userWorkOut(wDto.getW_id());
+			service.updateWTime(wDto.getW_id());
 			
-			return "redirect:/user/userWorkOut";
+			return "redirect:/user/userWorkList";
 		}
 	
 	

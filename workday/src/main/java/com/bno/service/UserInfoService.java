@@ -24,4 +24,10 @@ public interface UserInfoService {
 	//사용자 전체 조회
 	public List<UserInfo> selectAdminUserList(BoardPager boardPager);
 	
+	//사용자 상세보기
+	public UserInfo adminUserSelectOne(int u_id);
+	
+	//사용자 정보 수정(관리자)
+	public UserInfo adminUserUpdateResult(UserInfo uDto);
+	
 }//interface end

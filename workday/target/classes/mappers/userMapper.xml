@@ -79,4 +79,25 @@
 	<include refid="pagingFooter"></include>
 	</select>
 	
+<!-- 	사용자 상세보기 -->
+	<select id="adminUserSelectOne" parameterType="int" resultType="UserInfo">
+	SELECT U_ID, D_ID, U_EMAIL, U_PWD, U_NAME, U_POSITION, U_PHONE, U_STATUS
+	FROM USER_INFO
+	WHERE U_ID = #{u_id}
+	
+	</select>
+
+<!-- 사용자 정보 수정(관리자) -->
+	<update id="adminUserUpdateResult" parameterType="UserInfo">
+	UPDATE USER_INFO
+	SET U_EMAIL = #{u_email}, 
+	U_PHONE = #{u_phone}, 
+	D_ID = #{d_id},
+	U_POSITION = #{u_position}
+	WHERE U_ID = #{u_id}
+	</update>	
+		
+		
+		
+		
 </mapper>

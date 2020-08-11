@@ -10,7 +10,8 @@
 <div class="row">
 	<div class="col-sm-12">
 		<table id="gpxBoard" class="table table-bordered table-hover dataTable" role="grid">
-								<thead>※관리자 화면입니다※
+								<thead>※출퇴근 시간을 지킵시다※<br>
+							                         ※퇴근 하려면 이름을 클릭하세요※
 													<tr role="row">
 														<th class="sorting_asc" tabindex="0" aria-controls="example1"
 															rowspan="1" colspan="1" aria-sort="ascending"
@@ -46,12 +47,23 @@
 				<c:forEach var="workAllList" items="${workAllList }">
 					<tr role="row">
 						<td class="">${workAllList.u_id }</td>
-						<td onclick="javascript:location.href='<c:url value="/"/>user/WorkRecordSelectOne?w_id=${workAllList.w_id }'">${workAllList.u_name }</td>
-						<td>${workAllList.d_id }</td>
+						<td onclick="javascript:location.href='<c:url value="/"/>user/WorkRecordSelectOne?w_id=${workAllList.w_id }'">
+						${workAllList.u_name }</td>
+						<c:if test="${workAllList.d_id eq 1 }">
+						<td>경영지원</td>
+						</c:if>
+						<c:if test="${workAllList.d_id eq 2 }">
+						<td>연구소</td>
+						</c:if>
 						<td>${workAllList.w_in }</td>
 						<td>${workAllList.w_out }</td>
-						<td>${workAllList.w_time }</td>
-						<td>${workAllList.w_status }</td>
+						<td>${workAllList.w_time }분</td>
+						<c:if test="${workAllList.w_status eq 'Y' }">
+						<td>정상출근</td>
+						</c:if>
+						<c:if test="${workAllList.w_status eq 'E' }">
+						<td>조퇴</td>
+						</c:if>
 					</tr>
 
 				</c:forEach>
