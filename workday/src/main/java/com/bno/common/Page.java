@@ -12,7 +12,7 @@ public class Page {
 		this.pageNum = 10;
 	}
 
-
+	//Getter & Setter
 	public int getPageStart() {
 			
 		return (this.page-1) * pageNum;
