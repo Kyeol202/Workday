@@ -172,7 +172,7 @@ public class UserInfoController {
 		
 		return "admin/adminUserSelectOne";
 	}
-	
+	 
 	
 	//사용자 정보 수정 Form
 	@RequestMapping(value = "admin/adminUserUpdate")
