@@ -28,5 +28,8 @@ public interface WorkRecordService {
 	//사용자 근무시간
 	public WorkRecord updateWTime(int w_id);
 	
+	//사용자 상태변경 및 조퇴사유
+	public WorkRecord statusReasonUpdate(WorkRecord wDto);
+	
 	
 }//interface end

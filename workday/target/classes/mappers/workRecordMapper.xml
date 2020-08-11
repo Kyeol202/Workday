@@ -83,4 +83,10 @@
 	WHERE W_ID = #{w_id}
 	</update>
 	
+	<update id="statusReasonUpdate" parameterType="WorkRecord">
+	UPDATE WORK_RECORD
+	SET W_STATUS = #{w_status}, W_REASON = #{w_reason}
+	WHERE W_ID = #{w_id}
+	</update>
+	
 </mapper>

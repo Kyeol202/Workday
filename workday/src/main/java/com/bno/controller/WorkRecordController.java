@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.bno.common.CheckNull;
 import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
@@ -136,6 +137,18 @@ public class WorkRecordController {
 			service.updateWTime(w_id);
 			
 			return "redirect:/user/userWorkList";
+		}
+		
+		//사용자 상태 업데이트(조퇴)
+		@RequestMapping(value = "user/userStatusReasonUpdate")
+		public String userStatusReasonUpdate(WorkRecord wDto, RedirectAttributes redirectAttribute) {
+			
+			
+			
+			service.statusReasonUpdate(wDto);
+			redirectAttribute.addAttribute("wDto", wDto.getW_id());
+			
+			return "redirect:/user/userWorkOut";
 		}
 	
 	

@@ -107,8 +107,8 @@ $(document).ready(function() {
 												<form action="javascript:searchBoxFn()">
 													<div class="box-tools">
 														<select class="form-control" name="searchSort" id="searchSort">
-															<option value="d_id">부서코드</option>
-															<option value="u_name">이름</option>
+															<option value="w.d_id">부서코드</option>
+															<option value="u.u_name">이름</option>
 														</select>
 														<div class="input-group input-group-sm" style="width: 150px;">
 															<input type="text" name="searchVal" id="searchVal"

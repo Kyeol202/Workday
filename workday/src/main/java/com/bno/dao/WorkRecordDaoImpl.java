@@ -57,15 +57,24 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 	//사용자 퇴근
 	@Override
 	public void userWorkOut(int w_id) {
-		System.out.println("w_id = "+w_id);
+//		System.out.println("w_id = "+w_id);
 		session.update(queryprefix+"userWorkOut", w_id);
 	}
 	
 	//사용자 근무시간 계산
 	@Override
 	public WorkRecord updateWTime(int w_id) {
-		System.out.println("w_id = "+w_id);
+//		System.out.println("w_id = "+w_id);
 		return session.selectOne(queryprefix+"updateWTime", w_id);
+	}
+	
+	
+	//사용자 상태 및 조퇴사유
+	@Override
+	public WorkRecord statusReasonUpdate(WorkRecord wDto) {
+	System.out.println("wDto = "+wDto);
+	
+	return session.selectOne(queryprefix+"statusReasonUpdate", wDto);	
 	}
 	
 	

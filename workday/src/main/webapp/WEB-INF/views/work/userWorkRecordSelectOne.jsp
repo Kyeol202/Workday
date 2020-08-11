@@ -17,13 +17,19 @@ $(document).ready(function() {
 		$("#userWorkOutCheck").attr("action", url);
 		$("#userWorkOutCheck").submit();
 		}
-		else false;
-		
+		else false;		
 	});
 	
-	$("#UpdateReason").click(function() {
+
+	$("#statusReasonUpdate").click(function() {
+		var confirmE = confirm('조퇴 하시겠습니까?');
 		
-		$(".modal-body").html("<input type ='text' class='form-control' value='조퇴 사유를 입력하세요.' />");
+		if(confirmE == true) {
+		var url = "<%=contextPath%>"+"/user/userStatusReasonUpdate";
+		$("#statusReasonUpdateForm").attr("action", url);
+		$("#statusReasonUpdateForm").submit();
+		}
+		else false;		
 	});
 	
 });
@@ -76,26 +82,37 @@ $(document).ready(function() {
                 조퇴
               </button>
               
-              <div class="modal modal-warning fade" id="modal-warning" style="display: none;">
+              <div class="modal modal-warning fade" id="modal-warning">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">X</span></button>
-                <h4 class="modal-title">조퇴 사유</h4>
+                <h4 class="modal-title">조퇴사유 입력</h4>
               </div>
-              <div class="modal-body">
-                <p>조퇴 사유를 입력하세요.</p>
+              <form id="statusReasonUpdateForm" method="post">
+              <div class="modal-body"> 
+                <p class="reasonText" readonly>조퇴사유를 입력하세요</p>
+                <input type="text" class="form-control" placeholder="조퇴사유" name="w_reason" value="${ workRecord.w_reason}">
+                <input type="hidden" name="w_id" value="${workRecord.w_id }">
+                <select class="form-control" name="w_status" value=${workRecord.w_status }>
+                    <option value="Y">정상출근</option>
+                    <option value="E">조퇴</option>
+                  </select>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-outline" id="UpdateReason">조퇴사유 입력하기</button>
+<!--                 <button type="button" class="btn btn-outline" id="reasonText">조퇴사유 입력</button> -->
+                <button type="button" class="btn btn-default" id="statusReasonUpdate">저장</button>
               </div>
             </div>
             <!-- /.modal-content -->
           </div>
+                  </form>
           <!-- /.modal-dialog -->
+
         </div>
+
             <div class="box-body">
               <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
               <div class="row">

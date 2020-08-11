@@ -27,4 +27,7 @@ public interface WorkRecordDao {
 	//사용자 근무시간 계산
 	public WorkRecord updateWTime(int w_id);
 	
+	//사용자 상태 및 조퇴시유
+	public WorkRecord statusReasonUpdate(WorkRecord wDto);
+	
 }//interface end

@@ -61,6 +61,13 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 		return dao.updateWTime(w_id);
 	}
 	
+	//사용자 상태 및 조퇴사유
+	@Override
+	public WorkRecord statusReasonUpdate(WorkRecord wDto) {
+//		System.out.println(wDto);
+		return dao.statusReasonUpdate(wDto);
+	}
+	
 	
 	
 	

@@ -1,9 +1,13 @@
 package com.bno.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bno.dto.BoardPager;
+import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
 
 @Repository
@@ -37,6 +41,22 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	public void userInsert(UserInfo user) {
 	System.out.println("사용자 등록 값 = "+user.toString());
 	session.insert(queryprefix+"userInsert", user);
+	}
+	
+	
+	//사용자 총 레코드
+	@Override
+	public int selectUserListCount(SearchDto searchDto) {
+		
+		return session.selectOne(queryprefix+"selectUserListCount", searchDto);
+	}
+	
+	
+	//사용자 전체 리스트
+	@Override
+	public List<UserInfo> selectAdminUserList(BoardPager boardPager) {
+		
+		return session.selectList(queryprefix+"selectAdminUserList", boardPager);
 	}
 	
 	
