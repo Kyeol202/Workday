@@ -59,11 +59,12 @@ public class WorkRecordController {
 		String late = currentTime.format(cal.getTime());
 		System.out.println(today);
 		
+		//근태관리 출근 날짜 리스트 출력
 		List<WorkRecord> inOutList = service.inOutAllList(wDto);
 		for(int i =0; i < inOutList.size(); i++) {
 			
 			System.out.println(inOutList.get(i).getW_in());
-			
+			//유저 세션이 null이 아니고 출근날짜 리스트에 출근시간이 null이면 출근 insert
 			if(user != null) {
 				if(inOutList.get(i).getW_in() == null ){
 					
