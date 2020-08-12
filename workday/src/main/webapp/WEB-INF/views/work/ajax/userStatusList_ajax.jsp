@@ -6,6 +6,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%String contextPath = request.getContextPath(); %>
 
+<!-- 머지여부 테스트 -->
+
 <div class="row">
 	<div class="col-sm-12">
 		<table id="gpxBoard" class="table table-bordered table-hover dataTable" role="grid">
