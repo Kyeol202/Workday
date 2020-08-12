@@ -86,6 +86,16 @@
 	WHERE U_ID = #{u_id}
 	
 	</select>
+	
+<!-- 	사용자 정보 수정(사용자) -->
+	<update id="myPageUserInfo" parameterType="UserInfo">
+	UPDATE USER_INFO
+	SET U_PWD = #{u_pwd},
+	U_PHONE = #{u_phone}
+	WHERE U_ID = #{u_id}
+	
+	</update>
+	
 
 <!-- 사용자 정보 수정(관리자) -->
 	<update id="adminUserUpdateResult" parameterType="UserInfo">
@@ -97,7 +107,19 @@
 	WHERE U_ID = #{u_id}
 	</update>	
 		
-		
-		
+<!-- 	사용자 숨김(퇴사) -->
+	<update id="adminUserRun" parameterType="UserInfo">
+	UPDATE USER_INFO
+	SET U_STATUS = 'N'
+	WHERE U_ID = #{u_id}
+	
+	</update>
+	
+<!-- 사용자 정보 완전삭제(Delete) -->
+	<delete id="adminUserDelete" parameterType="int">
+	DELETE FROM USER_INFO
+	WHERE U_ID = #{u_id} AND U_STATUS = 'N'
+	
+	</delete>
 		
 </mapper>
