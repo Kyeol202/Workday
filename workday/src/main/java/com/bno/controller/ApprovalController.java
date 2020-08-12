@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bno.dto.UserInfo;
 import com.bno.dto.Approval;
 import com.bno.dto.BoardPager;
+import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.service.ApprovalService;
 
@@ -37,7 +38,7 @@ public class ApprovalController {
 	}
 	
 	//결재 정보 접수
-	@RequestMapping(value = "user/approvalIn")
+	@RequestMapping(value = "user/userRequest")
 	public String userWorkIn(HttpSession session, Approval dto) {
 	logger.info("this is a approvalIn method");
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
@@ -47,7 +48,7 @@ public class ApprovalController {
 			service.approvalIn(dto);
 			path = "redirect:/user/userStatus";
 		}
-		else path = "redirect:/user/userlogin";
+		else path = "redirect:/user/userHome";
 		
 		
 		
@@ -82,7 +83,7 @@ public class ApprovalController {
 		boardPager.setSearchVal(searchVal);
 		
 		//전체 리스트 출력
-		List<Approval> statusAllList = service.selectAllApprovalList(boardPager);
+		List<JoinDto> statusAllList = service.selectAllApprovalList(boardPager);
 		model.addAttribute("statusAllList", statusAllList);
 		model.addAttribute("boardPager", boardPager);
 		
@@ -90,5 +91,26 @@ public class ApprovalController {
 		
 		return "work/ajax/userStatusList_ajax";
 	}
+	
+	// 결재 신청 화면
+	@RequestMapping(value = "user/userStatusRequest")
+	public String userStatusRequest() {
+		
+		
+		
+		return"work/userStatusRequest";
+	}
+	
+	// 결재 신청 등록
+	@RequestMapping(value = "user/userRequest")
+	public String userRequest(Approval request) {
+		logger.info("this is a userRequest method");
+		
+		service.userRequestInsert(request);
+		
+		return "user/userStatusRequest";
+	}
+	
+	
 	
 }//class end

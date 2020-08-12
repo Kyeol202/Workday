@@ -14,7 +14,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>WorkDay</title>
 	
-	
+	<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
 	
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

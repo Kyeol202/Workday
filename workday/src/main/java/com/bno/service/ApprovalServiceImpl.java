@@ -33,7 +33,7 @@ public class ApprovalServiceImpl implements ApprovalService{
 
 	// 결재정보 전체 조회
 	@Override
-	public List<Approval> selectAllApprovalList(BoardPager boardPager) {
+	public List<JoinDto> selectAllApprovalList(BoardPager boardPager) {
 		// TODO Auto-generated method stub
 		return dao.selectAllApprovalList(boardPager);
 	}
