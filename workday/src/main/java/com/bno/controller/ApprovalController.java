@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bno.dto.UserInfo;
 import com.bno.dto.Approval;
 import com.bno.dto.BoardPager;
-import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.service.ApprovalService;
 
@@ -83,7 +82,7 @@ public class ApprovalController {
 		boardPager.setSearchVal(searchVal);
 		
 		//전체 리스트 출력
-		List<JoinDto> statusAllList = service.selectAllApprovalList(boardPager);
+		List<Approval> statusAllList = service.selectAllApprovalList(boardPager);
 		model.addAttribute("statusAllList", statusAllList);
 		model.addAttribute("boardPager", boardPager);
 		

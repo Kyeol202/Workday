@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.bno.dto.Approval;
 import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
+import com.bno.dto.SearchDto;
 
 @Repository
 public class ApprovalDaoImpl implements ApprovalDao {
@@ -27,11 +28,18 @@ public class ApprovalDaoImpl implements ApprovalDao {
 		session.insert(queryprefix+"approvalIn", dto);
 	}
 
+	// 결재정보 전체 레코드 갯수
+	@Override
+	public int selectStatusCount(SearchDto searchDto) {
+		// TODO Auto-generated method stub
+		return session.selectOne(queryprefix+"selectUserCount", searchDto);
+	}
+
 	// 결재정보 전체 조회
 	@Override
-	public List<JoinDto> selectAllApprovalList(BoardPager boardPager) {
-		List<JoinDto> AllApprovalList = new ArrayList<JoinDto>();
-		AllApprovalList = session.selectList(queryprefix+"selectUserAllList", boardPager);
+	public List<Approval> selectAllApprovalList(BoardPager boardPager) {
+		List<Approval> AllApprovalList = new ArrayList<Approval>();
+		AllApprovalList = session.selectList(queryprefix+"selectAllApprovalList", boardPager);
 //		System.out.println("전체 리스트 = "+AllUserList);
 		return AllApprovalList;
 	}
@@ -49,7 +57,8 @@ public class ApprovalDaoImpl implements ApprovalDao {
 		System.out.println("apv_id = "+apv_id);
 		return session.selectOne(queryprefix+"updateStatus", apv_id);
 	}
-	
+
+
 	
 	
 	
