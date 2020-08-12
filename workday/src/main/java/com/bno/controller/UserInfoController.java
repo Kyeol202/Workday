@@ -195,12 +195,66 @@ public class UserInfoController {
 	}
 	
 	
-	//사용자 정보 삭제
-	@RequestMapping(value = "admin/adminUserDelete")
-	public String adminUserDelete() {
+	//사용자 숨김(퇴사)
+	@RequestMapping(value = "admin/adminUserRun")
+	public String adminUserRun(UserInfo uDto) {
 		
-		return "";
+		service.adminUserRun(uDto);
+		
+		return "redirect:/admin/adminUserList";
 	}
+	
+	//숨겨진 사용자 정보
+	@RequestMapping(value = "admin/adminRunUserList")
+	public String adminRunUserList() {
+		
+		return "admin/adminRunUserList";
+	}
+	
+	//숨겨진 사용자 모든 정보
+	@RequestMapping(value = "admin/adminRunUserListAjax")
+	public String adminRunUserListAjax(@RequestParam(value = "cPage", defaultValue = "1")int cPage,
+			@RequestParam(value = "searchSort", defaultValue = "")String searchSort,
+			@RequestParam(value ="searchVal", defaultValue = "") String searchVal,
+			Model model, HttpSession session) {
+		logger.info("this is a adminUserList method");
+		
+		//검색 객체 값 넣기
+				SearchDto searchDto = new SearchDto(searchSort, searchVal);
+				
+				//총 레코드 가져오기
+				int nCount = service.selectUserListCount(searchDto);
+				
+				//현재 출력 페이지
+				int curPage = cPage;
+				
+				//페이지 객체에 값 저장
+				BoardPager boardPager = new BoardPager(nCount, curPage);
+				
+				//페이지 겍체에 검색 정보 저장
+				boardPager.setSearchSort(searchSort);
+				boardPager.setSearchVal(searchVal);
+				
+				//전체 리스트 출력
+				List<UserInfo> adminRunUserAllList = service.selectAdminUserList(boardPager);
+				model.addAttribute("adminRunUserAllList", adminRunUserAllList);
+				model.addAttribute("boardPager", boardPager);
+		
+		
+		
+		
+		return "admin/ajax/adminRunUserList_ajax";
+	}
+	
+	//사용자 정보 완전 삭제(Delete)
+	@RequestMapping(value = "admin/adminUserDelete")
+	public String adminUserDelete(int u_id) {
+		
+		service.adminUserDelete(u_id);
+		
+		return "redirect:/admin/adminRunUserList";
+	}
+	
 	
 	
 }//class end

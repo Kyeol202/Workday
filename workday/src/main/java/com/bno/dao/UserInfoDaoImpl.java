@@ -76,6 +76,22 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	}
 	
 	
+	//사용자 숨김(퇴사)
+	@Override
+	public UserInfo adminUserRun(UserInfo uDto) {
+		
+		return session.selectOne(queryprefix+"adminUserRun", uDto);
+	}
+	
+	
+	//사용자 정보 완전 삭제(Delete)
+	@Override
+	public void adminUserDelete(int u_id) {
+		
+		session.delete(queryprefix+"adminUserDelete", u_id);
+	}
+	
+	
 	
 	
 	

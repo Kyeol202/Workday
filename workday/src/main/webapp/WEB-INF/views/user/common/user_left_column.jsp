@@ -28,6 +28,7 @@
 						</a>
 						<ul class="myGpx treeview-menu">
 							<li><a href="javascript:location.href='<c:url value="/"/>admin/adminUserList'">부서 정보</a></li>
+							<li><a href="javascript:location.href='<c:url value="/"/>admin/adminRunUserList'">퇴사자 정보</a></li>
 							<li class="myGpx treeview">
 								<a href="#">
 									<i class="fa fa-circle-o"></i> 부서 출근관리

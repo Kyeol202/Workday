@@ -69,6 +69,23 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 	
 	
+	//사용자 숨김(퇴사)
+	@Override
+	public UserInfo adminUserRun(UserInfo uDto) {
+		
+		return dao.adminUserRun(uDto);
+	}
+	
+	
+	//사용자 정보 완전삭제(Delete)
+	@Override
+	public void adminUserDelete(int u_id) {
+		
+		dao.adminUserDelete(u_id);
+	}
+	
+	
+	
 	
 	
 	

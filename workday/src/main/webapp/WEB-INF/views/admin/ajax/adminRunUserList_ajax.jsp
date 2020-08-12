@@ -43,27 +43,27 @@
 													</tr>
 												</thead>
 			<tbody>
-				<c:forEach var="adminUserAllList" items="${adminUserAllList }">
+				<c:forEach var="adminRunUserAllList" items="${adminRunUserAllList }">
 				<c:choose>
-					<c:when test="${adminUserAllList.u_status eq 'Y' }">
+					<c:when test="${adminRunUserAllList.u_status eq 'N' }">
 					<tr role="row">
-						<td>${adminUserAllList.u_id }</td>
-						<td onclick="javascript:location.href='<c:url value="/"/>admin/adminUserSelectOne?u_id=${adminUserAllList.u_id }'">${adminUserAllList.u_name }</td>
-						<td>${adminUserAllList.d_id }</td>
-						<td>${adminUserAllList.u_email }</td>
-						<td>${adminUserAllList.u_position }</td>
-						<td>${adminUserAllList.u_phone }</td>
-						<td>${adminUserAllList.u_status }</td>
+						<td>${adminRunUserAllList.u_id }</td>
+						<td onclick="javascript:location.href='<c:url value="/"/>admin/adminUserSelectOne?u_id=${adminRunUserAllList.u_id }'">${adminRunUserAllList.u_name }</td>
+						<td>${adminRunUserAllList.d_id }</td>
+						<td>${adminRunUserAllList.u_email }</td>
+						<td>${adminRunUserAllList.u_position }</td>
+						<td>${adminRunUserAllList.u_phone }</td>
+						<td>${adminRunUserAllList.u_status }</td>
 					</tr>
 					</c:when>
 					<c:otherwise>
-					<td hidden>${adminUserAllList.u_id }</td>
-						<td hidden>${adminUserAllList.u_name }</td>
-						<td hidden>${adminUserAllList.d_id }</td>
-						<td hidden>${adminUserAllList.u_email }</td>
-						<td hidden>${adminUserAllList.u_position }</td>
-						<td hidden>${adminUserAllList.u_phone }</td>
-						<td hidden>${adminUserAllList.u_status }</td>
+					<td hidden>${adminRunUserAllList.u_id }</td>
+						<td hidden>${adminRunUserAllList.u_name }</td>
+						<td hidden>${adminRunUserAllList.d_id }</td>
+						<td hidden>${adminRunUserAllList.u_email }</td>
+						<td hidden>${adminRunUserAllList.u_position }</td>
+						<td hidden>${adminRunUserAllList.u_phone }</td>
+						<td hidden>${adminRunUserAllList.u_status }</td>
 					</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -81,7 +81,7 @@
 			<ul class="pagination">
 				<c:if test="${boardPager.curBlock > 1 }">
 					<li class="paginate_button previous disabled"><a
-							href="javascript:adminUserListAjaxfn(${boardPager.prevPage})">Previous</a>
+							href="javascript:adminRunUserListAjaxfn(${boardPager.prevPage})">Previous</a>
 					</li>
 				</c:if>
 				<c:forEach var="num" begin="${boardPager.blockBegin }" end="${boardPager.blockEnd }">
@@ -91,13 +91,13 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="paginate_button"><a href="javascript:adminUserListAjaxfn(${num})">${num}</a></li>
+							<li class="paginate_button"><a href="javascript:adminRunUserListAjaxfn(${num})">${num}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${boardPager.curBlock <= boardPager.totBlock }">
 					<li class="paginate_button next" id="example1_next">
-						<a href="javascript:adminUserListAjaxfn(${boardPager.nextPage})">Next</a>
+						<a href="javascript:adminRunUserListAjaxfn(${boardPager.nextPage})">Next</a>
 					</li>
 				</c:if>
 			</ul>
