@@ -67,7 +67,14 @@ public class UserInfoDaoImpl implements UserInfoDao {
 		return session.selectOne(queryprefix+"adminUserSelectOne", u_id);
 	}
 	
+	//사용자 정보 수정(사용자)
+	@Override
+	public UserInfo myPageUserInfo(UserInfo uDto) {
+		System.out.println("uDto = "+uDto);
+		return session.selectOne(queryprefix+"myPageUserInfo", uDto);
+	}
 	
+
 	//사용자 정보 수정(관리자)
 	@Override
 	public UserInfo adminUserUpdateResult(UserInfo uDto) {

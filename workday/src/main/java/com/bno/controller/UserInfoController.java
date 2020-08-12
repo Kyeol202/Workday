@@ -109,6 +109,24 @@ public class UserInfoController {
 		return "redirect:/user/userSignUp";
 	}
 	
+	//사용자 myPageForm
+	@RequestMapping(value = "myPage/myUserInfo")
+	public String myUserInfo(HttpSession session, Model model) {
+		
+		UserInfo user = (UserInfo) session.getAttribute("loginUser");
+		model.addAttribute("user", user);
+		
+		return "user/myPageUserInfo";
+	}
+	
+	@RequestMapping(value = "userMyPage/myUserInfoResult")
+	public String myUserInfoResult(UserInfo uDto) {
+		
+		service.myPageUserInfo(uDto);
+		
+		return "redirect:/user/userlogin";
+	}
+	
 //------------------------------------------------------------------관리자-----------------------------------------------------	
 	
 	//부서원 리스트
