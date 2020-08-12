@@ -40,6 +40,13 @@
 	)
 	</insert>
 	
+<!-- 	출퇴근 전체 리스트 -->
+	<select id="inOutAllList" resultType="WorkRecord">
+	SELECT *
+	FROM WORK_RECORD
+	</select>
+	
+	
 	<select id="selectUserAllList" resultType="JoinDto" parameterType="BoardPager">
 		<include refid="pagingHeader"></include>
 		SELECT W.W_ID, W.W_IN, W.W_OUT, W.W_TIME, W.D_ID, U.U_ID, U.U_NAME,W_STATUS
@@ -88,5 +95,14 @@
 	SET W_STATUS = #{w_status}, W_REASON = #{w_reason}
 	WHERE W_ID = #{w_id}
 	</update>
+	
+<!-- 	사용자 근무기록 삭제 -->
+	<delete id="userWorkDelete" parameterType="int">
+	DELETE FROM WORK_RECORD
+	WHERE W_ID = #{w_id}
+	
+	</delete>
+	
+	
 	
 </mapper>

@@ -89,6 +89,7 @@ $(document).ready(function() {
 								</div>
 							</div>
 							<div>
+							
 							<form id="userWorkInCheck" method="post">
 							<input type="hidden" name="u_id" value="${loginUser.u_id }">
 							<input type="hidden" name="d_id" value="${loginUser.d_id }">
@@ -96,6 +97,7 @@ $(document).ready(function() {
 							<input type="hidden" name="u_position" value="${loginUser.u_position }">
 							<input type="button" class="btn btn-success" id="userWorkIn" value="출근">					
 							</form>
+							
 							</div>
 							
 

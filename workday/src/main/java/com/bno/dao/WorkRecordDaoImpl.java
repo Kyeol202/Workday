@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
+import com.bno.dto.UserInfo;
 import com.bno.dto.WorkRecord;
 
 @Repository
@@ -21,6 +22,16 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 	private String queryprefix = "WorkRecord.";
 	
 	
+	//출퇴근 전체 리스트
+	@Override
+	public List<WorkRecord> inOutAllList(WorkRecord wDto) {
+		
+		List<WorkRecord> inOutAllList = new ArrayList<WorkRecord>();
+		inOutAllList = session.selectList(queryprefix+"inOutAllList", wDto);
+		
+		return inOutAllList;
+	}
+
 	//사용자 출근 입력
 	@Override
 	public void userWorkIn(WorkRecord dto) {
@@ -36,7 +47,7 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 		return session.selectOne(queryprefix+"selectUserCount", searchDto);
 	}
 
-	//출퇴근 전체 조회
+	//전체 출퇴근 조회(페이징)
 	@Override
 	public List<JoinDto> selectUserAllList(BoardPager boardPager) {
 		
@@ -75,6 +86,14 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 	System.out.println("wDto = "+wDto);
 	
 	return session.selectOne(queryprefix+"statusReasonUpdate", wDto);	
+	}
+	
+	
+	//사용자 근무기록 삭제
+	@Override
+	public void userWorkDelete(int w_id) {
+		
+		session.delete(queryprefix+"userWorkDelete", w_id);
 	}
 	
 	

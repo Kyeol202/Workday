@@ -20,6 +20,17 @@ $(document).ready(function() {
 		else false;		
 	});
 	
+	$("#adminDelete").click(function() {
+		var confirmWork = confirm('기록을 삭제하시겠습니까?');
+		
+		if(confirmWork == true) {
+		var url = "<%=contextPath%>"+"/admin/userWorkDelete";
+		$("#userWorkOutCheck").attr("action", url);
+		$("#userWorkOutCheck").submit();
+		}
+		else false;		
+	});
+	
 
 	$("#statusReasonUpdate").click(function() {
 		var confirmE = confirm('조퇴 하시겠습니까?');
@@ -31,6 +42,7 @@ $(document).ready(function() {
 		}
 		else false;		
 	});
+	
 	
 });
 
@@ -76,7 +88,10 @@ $(document).ready(function() {
             <input type="hidden" name="u_name" value="${user.u_name }">
             <input type="hidden" name="u_position" value="${user.u_position }">
             <input type="hidden" name="w_id" value="${workRecord.w_id }">
-              <input type="button" id="workOut" value="퇴근" class="btn btn-danger">
+              <input type="button" id="workOut" value="퇴근" class="btn btn-info">
+              <c:if test="${user.u_id eq 1 }">
+              <input type="button" id="adminDelete" value="삭제" class="btn btn-danger">
+              </c:if>
             </form>
 			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-warning">
                 조퇴

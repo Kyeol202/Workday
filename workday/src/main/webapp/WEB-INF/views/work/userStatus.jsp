@@ -13,13 +13,13 @@
 
 	$(function () {
 		// 페이지 처음 접근시 리스트 표시 좌표
-		statusListAjaxfn(1);	//현재 page =1 ->기본시작, 접근하는 순간 시작
+		userStatusAjaxfn(1);	//현재 page =1 ->기본시작, 접근하는 순간 시작
 	})
 
 	// 리스트 Ajax 처리
-	function statusListAjaxfn(cPage) {
+	function userStatusAjaxfn(cPage) {
 		$.ajax({
-			url: "<c:url value="/"/>user/userStatusListAjax",
+			url: "<c:url value="/"/>user/userstatusListAjax",
 			data: {
 				"cPage": cPage,
 				"searchSort": searchSort,
@@ -27,7 +27,7 @@
 			},
 			dataType: "html",
 			success: function (data) {
-				$('#user_approvalList').html(data); // 키값
+				$('#userApprovalAjax').html(data); // 키값
 			}
 		})
 	}
@@ -36,7 +36,7 @@
 	function searchBoxFn() {
 		searchSort = $('#searchSort').val();
 		searchVal = $('#searchVal').val();
-		statusListAjaxfn(1);
+		userStatusAjaxfn(1);
 	}
 
 </script>
@@ -126,7 +126,7 @@ $(document).ready(function() {
 										</div>
 									</div>
 
-									<div id="user_approvalList"></div>
+									<div id="userApprovalAjax"></div>
 
 								</div>
 							</div>

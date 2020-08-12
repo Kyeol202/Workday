@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.bno.dto.Approval;
 import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
+import com.bno.dto.SearchDto;
 
 @Repository
 public class ApprovalDaoImpl implements ApprovalDao {
@@ -49,9 +50,5 @@ public class ApprovalDaoImpl implements ApprovalDao {
 		System.out.println("apv_id = "+apv_id);
 		return session.selectOne(queryprefix+"updateStatus", apv_id);
 	}
-	
-	
-	
-	
-	
+
 }//class end

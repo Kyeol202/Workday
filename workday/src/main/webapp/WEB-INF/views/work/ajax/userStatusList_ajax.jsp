@@ -92,7 +92,7 @@
 			<ul class="pagination">
 				<c:if test="${boardPager.curBlock > 1 }">
 					<li class="paginate_button previous disabled"><a
-							href="javascript:statusListAjaxfn(${boardPager.prevPage})">Previous</a>
+							href="javascript:userStatusAjaxfn(${boardPager.prevPage})">Previous</a>
 					</li>
 				</c:if>
 				<c:forEach var="num" begin="${boardPager.blockBegin }" end="${boardPager.blockEnd }">
@@ -102,13 +102,13 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="paginate_button"><a href="javascript:statusListAjaxfn(${num})">${num}</a></li>
+							<li class="paginate_button"><a href="javascript:userStatusAjaxfn(${num})">${num}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${boardPager.curBlock <= boardPager.totBlock }">
 					<li class="paginate_button next" id="example1_next">
-						<a href="javascript:statusListAjaxfn(${boardPager.nextPage})">Next</a>
+						<a href="javascript:userStatusAjaxfn(${boardPager.nextPage})">Next</a>
 					</li>
 				</c:if>
 			</ul>

@@ -1,5 +1,7 @@
 package com.bno.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -42,23 +44,47 @@ public class WorkRecordController {
 	
 	//사용자 출근
 	@RequestMapping(value = "user/userWorkIn")
-	public String userWorkIn(HttpSession session, WorkRecord dto) {
+	public String userWorkIn(HttpSession session, WorkRecord wDto) {
 	logger.info("this is a userWorkIn method");
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		String path = "";
 		
-		if(user != null) {
-			service.userWorkIn(dto);
-			path = "redirect:/user/userWorkList";
+		//날짜형식 yyyy-mm-dd
+		SimpleDateFormat workin = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		String today = workin.format(cal.getTime()).substring(0, 10); 
+		
+		//현재시간
+		SimpleDateFormat currentTime = new SimpleDateFormat("yyyyMMddHHmm");
+		String late = currentTime.format(cal.getTime());
+		System.out.println(today);
+		
+		List<WorkRecord> inOutList = service.inOutAllList(wDto);
+		for(int i =0; i < inOutList.size(); i++) {
+			
+			System.out.println(inOutList.get(i).getW_in());
+			
+			if(user != null) {
+				if(inOutList.get(i).getW_in() == null ){
+					
+					service.userWorkIn(wDto);
+					path = "redirect:/user/userWorkList";
+					
+				} else if (inOutList.get(i).getW_in() !=null || inOutList.get(i).getW_in().substring(0, 10).equals(today)) {
+					
+					
+					path = "work/userWorkList";
+				}
+					
+				}
+				else path = "redirect:/user/userlogin";
+			
 		}
-		else path = "redirect:/user/userlogin";
-		
-		
 		
 		return path;
 	}
 	
-	//근태관리 리스트
+	//근태관리 전체 출퇴근 조회(페이징)
 	@RequestMapping(value = "user/userworkListAjax")
 	public String userworkListAjax(@RequestParam(value = "cPage", defaultValue = "1")int cPage,
 			@RequestParam(value = "searchSort", defaultValue = "")String searchSort,
@@ -85,7 +111,7 @@ public class WorkRecordController {
 		boardPager.setSearchSort(searchSort);
 		boardPager.setSearchVal(searchVal);
 		
-		//전체 리스트 출력
+		//전체 출퇴근 조회(페이징)
 		List<JoinDto> workAllList = service.selectUserAllList(boardPager);
 		model.addAttribute("workAllList", workAllList);
 		model.addAttribute("boardPager", boardPager);
@@ -100,7 +126,7 @@ public class WorkRecordController {
 		public String WorkRecordSelectOne(int w_id, Model model, HttpSession session) {
 			
 			UserInfo user = (UserInfo) session.getAttribute("loginUser");
-			model.addAttribute(user);
+			model.addAttribute("user", user);
 			
 			WorkRecord workRecord = service.workRecordSelectOne(w_id);
 			model.addAttribute("workRecord", workRecord);
@@ -147,6 +173,15 @@ public class WorkRecordController {
 			service.userWorkOut(wDto.getW_id());
 			service.updateWTime(wDto.getW_id());
 			
+			return "redirect:/user/userWorkList";
+		}
+		
+//-----------------------------------------------------------------------관리자-----------------------------------------------------------
+		
+		//사용자 근무기록 삭제
+		@RequestMapping(value = "admin/userWorkDelete")
+		public String userWorkDelete(int w_id) {
+			service.userWorkDelete(w_id);
 			return "redirect:/user/userWorkList";
 		}
 	

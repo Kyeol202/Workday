@@ -9,6 +9,7 @@ import com.bno.dao.WorkRecordDao;
 import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
+import com.bno.dto.UserInfo;
 import com.bno.dto.WorkRecord;
 
 @Service
@@ -19,6 +20,13 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 	private WorkRecordDao dao;
 	
 	
+	//출퇴근 전체 리스트
+	@Override
+	public List<WorkRecord> inOutAllList(WorkRecord wDto) {
+		
+		return dao.inOutAllList(wDto);
+	}
+
 	//사용자 출근 입력
 	@Override
 	public void userWorkIn(WorkRecord dto) {
@@ -33,7 +41,7 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 		return dao.selectUserCount(searchDto);
 	}
 
-	//출퇴근 전체 리스트
+	//전체 출퇴근 조회(페이징)
 	@Override
 	public List<JoinDto> selectUserAllList(BoardPager boardPager) {
 	
@@ -66,6 +74,13 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 	public WorkRecord statusReasonUpdate(WorkRecord wDto) {
 //		System.out.println(wDto);
 		return dao.statusReasonUpdate(wDto);
+	}
+	
+	//사용자 근무기록 삭제
+	@Override
+	public void userWorkDelete(int w_id) {
+		
+		dao.userWorkDelete(w_id);
 	}
 	
 	
