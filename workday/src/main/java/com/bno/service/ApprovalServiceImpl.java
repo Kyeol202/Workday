@@ -9,6 +9,7 @@ import com.bno.dao.ApprovalDao;
 import com.bno.dto.Approval;
 import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
+import com.bno.dto.SearchDto;
 
 @Service
 public class ApprovalServiceImpl implements ApprovalService{
@@ -21,6 +22,13 @@ public class ApprovalServiceImpl implements ApprovalService{
 	public void approvalIn(Approval dto) {
 		// TODO Auto-generated method stub
 		dao.approvalIn(dto);
+	}
+	
+	// 결재정보 전체 레코드 갯수
+	@Override
+	public int selectStatusCount(SearchDto searchDto) {
+		
+		return dao.selectStatusCount(searchDto);
 	}
 
 	// 결재정보 전체 조회
