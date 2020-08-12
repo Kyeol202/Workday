@@ -60,13 +60,36 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return dao.adminUserSelectOne(u_id);
 	}
 	
-	
+	//사용자 정보 수정(사용자)
+	@Override
+	public UserInfo myPageUserInfo(UserInfo uDto) {
+		
+		return dao.myPageUserInfo(uDto);
+	}
+
 	//사용자 정보 수정(관리자)
 	@Override
 	public UserInfo adminUserUpdateResult(UserInfo uDto) {
 	
 		return dao.adminUserUpdateResult(uDto);
 	}
+	
+	
+	//사용자 숨김(퇴사)
+	@Override
+	public UserInfo adminUserRun(UserInfo uDto) {
+		
+		return dao.adminUserRun(uDto);
+	}
+	
+	
+	//사용자 정보 완전삭제(Delete)
+	@Override
+	public void adminUserDelete(int u_id) {
+		
+		dao.adminUserDelete(u_id);
+	}
+	
 	
 	
 	

@@ -67,12 +67,35 @@ public class UserInfoDaoImpl implements UserInfoDao {
 		return session.selectOne(queryprefix+"adminUserSelectOne", u_id);
 	}
 	
+	//사용자 정보 수정(사용자)
+	@Override
+	public UserInfo myPageUserInfo(UserInfo uDto) {
+		System.out.println("uDto = "+uDto);
+		return session.selectOne(queryprefix+"myPageUserInfo", uDto);
+	}
 	
+
 	//사용자 정보 수정(관리자)
 	@Override
 	public UserInfo adminUserUpdateResult(UserInfo uDto) {
 		System.out.println("uDto = "+uDto);
 		return session.selectOne(queryprefix+"adminUserUpdateResult", uDto);
+	}
+	
+	
+	//사용자 숨김(퇴사)
+	@Override
+	public UserInfo adminUserRun(UserInfo uDto) {
+		
+		return session.selectOne(queryprefix+"adminUserRun", uDto);
+	}
+	
+	
+	//사용자 정보 완전 삭제(Delete)
+	@Override
+	public void adminUserDelete(int u_id) {
+		
+		session.delete(queryprefix+"adminUserDelete", u_id);
 	}
 	
 	

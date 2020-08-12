@@ -27,7 +27,16 @@ public interface UserInfoService {
 	//사용자 상세보기
 	public UserInfo adminUserSelectOne(int u_id);
 	
+	//사용자 정보 수정(사용자)
+	public UserInfo myPageUserInfo(UserInfo uDto);
+	
 	//사용자 정보 수정(관리자)
 	public UserInfo adminUserUpdateResult(UserInfo uDto);
+	
+	//사용자 숨김(퇴사)
+	public UserInfo adminUserRun(UserInfo uDto);
+	
+	//사용자 정보 완전 삭제(Delete)
+	public void adminUserDelete(int u_id);
 	
 }//interface end

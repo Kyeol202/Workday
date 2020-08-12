@@ -20,8 +20,19 @@ $(document).ready(function() {
 		else false;		
 	});
 
+	$("#adminUserRun").click(function() {
+		var confirmDelete = confirm('퇴사처리 하시겠습니까? 퇴사처리한 인원은 복구가 불가능 합니다');
+		
+		if(confirmDelete == true) {
+		var url = "<%=contextPath%>"+"/admin/adminUserRun";
+		$("#adminUserUpdateDelete").attr("action", url);
+		$("#adminUserUpdateDelete").submit();
+		}
+		else false;		
+	});
+	
 	$("#adminUserDelete").click(function() {
-		var confirmDelete = confirm('삭제 하시겠습니까?');
+		var confirmDelete = confirm('완전 삭제하시겠 습니까? 완전 삭제된 정보는 복구가 불가능 합니다');
 		
 		if(confirmDelete == true) {
 		var url = "<%=contextPath%>"+"/admin/adminUserDelete";
@@ -77,8 +88,13 @@ $(document).ready(function() {
             <input type="hidden" name="u_position" value="${userInfo.u_position }">
             <input type="hidden" name="u_phone" value="${userInfo.u_phone }">
             <input type="hidden" name="u_status" value="${userInfo.u_status }">
-              <input type="button" id="adminUserUpdate" value="수정" class="btn btn-warning">
-              <input type="button" id="adminUserDelete" value="삭제" class="btn btn-danger">
+            	<c:if test="${userInfo.u_status eq 'Y' }">
+              <input type="button" id="adminUserUpdate" value="사용자 정보수정" class="btn btn-warning">
+              <input type="button" id="adminUserRun" value="퇴사" class="btn btn-danger">
+              </c:if>
+              <c:if test="${userInfo.u_status eq 'N' }">
+              <input type="button" id="adminUserDelete" value="사용자 정보삭제" class="btn btn-danger">
+              </c:if>
             </form>
         </div>
 
