@@ -217,7 +217,7 @@ public class WorkRecordController {
 				service.statusReasonUpdate(wDto);
 				for (int i = 0; i < inOutList.size(); i++) {
 					
-					if(inOutList.get(i).getW_status().equals("E")) {
+					if(inOutList.get(i).getW_status().equals("E") || inOutList.get(i).getW_status().equals("A")) {
 						
 						service.userWorkOut(wDto.getW_id());
 						service.updateWTime(wDto.getW_id());
