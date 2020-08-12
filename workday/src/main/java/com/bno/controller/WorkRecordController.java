@@ -63,7 +63,7 @@ public class WorkRecordController {
 		List<WorkRecord> inOutList = service.inOutAllList(wDto);
 		for(int i =0; i < inOutList.size(); i++) {
 			
-			System.out.println(inOutList.get(i).getW_in());
+//			System.out.println(inOutList.get(i).getW_in());
 			//유저 세션이 null이 아니고 출근날짜 리스트에 출근시간이 null이면 출근 insert
 			if(user != null) {
 				if(inOutList.get(i).getW_in() == null ){
@@ -140,14 +140,40 @@ public class WorkRecordController {
 		
 		//사용자 퇴튼
 		@RequestMapping(value ="user/userWorkOut")
-		public String userWorkOut(@RequestParam("w_id")int w_id, HttpSession session) {
+		public String userWorkOut(@RequestParam("w_id")int w_id, HttpSession session, WorkRecord wDto) {
 			
 			UserInfo user = (UserInfo) session.getAttribute("loginUser");
 			String path = "";
+			
+			//날짜형식 yyyy-mm-dd
+			SimpleDateFormat workin = new SimpleDateFormat("yyyy-MM-dd");
+			Calendar cal = Calendar.getInstance();
+			String today = workin.format(cal.getTime()).substring(0, 10); 
+			
+			//현재시간
+			SimpleDateFormat currentTime = new SimpleDateFormat("yyyyMMddHHmm");
+			String late = currentTime.format(cal.getTime());
+			System.out.println(today);
+			
+			//근태관리 출근 날짜 리스트 출력
+			List<WorkRecord> inOutList = service.inOutAllList(wDto);
+			
 			if(user != null) {
-				service.userWorkOut(w_id);
+			for(int i = 0; i < inOutList.size(); i++) {
 				
-				path = "forward:/user/userwTime";
+				if(inOutList.get(i).getW_out() == null) {
+					service.userWorkOut(w_id);
+					path = "forward:/user/userwTime";
+				} else if (inOutList.get(i).getW_out() !=null || inOutList.get(i).getW_out().substring(0, 10).equals(today)) {
+					
+					
+					path = "work/userWorkList";
+				}
+				
+			}
+				
+				
+				
 			}
 			else path = "redirect:/user/userlogin";
 			
@@ -168,13 +194,46 @@ public class WorkRecordController {
 		
 		//사용자 상태 업데이트(조퇴)
 		@RequestMapping(value = "user/userStatusReasonUpdate")
-		public String userStatusReasonUpdate(WorkRecord wDto, RedirectAttributes redirectAttribute) {
-
-			service.statusReasonUpdate(wDto);
-			service.userWorkOut(wDto.getW_id());
-			service.updateWTime(wDto.getW_id());
+		public String userStatusReasonUpdate(WorkRecord wDto, 
+				RedirectAttributes redirectAttribute, HttpSession session) {
 			
-			return "redirect:/user/userWorkList";
+			UserInfo user = (UserInfo) session.getAttribute("loginUser");
+			String path = "";
+			
+			//날짜형식 yyyy-mm-dd
+			SimpleDateFormat workin = new SimpleDateFormat("yyyy-MM-dd");
+			Calendar cal = Calendar.getInstance();
+			String today = workin.format(cal.getTime()).substring(0, 10); 
+			
+			//현재시간
+			SimpleDateFormat currentTime = new SimpleDateFormat("yyyyMMddHHmm");
+			String late = currentTime.format(cal.getTime());
+			System.out.println(today);
+			
+			//근태관리 출근 날짜 리스트 출력
+			List<WorkRecord> inOutList = service.inOutAllList(wDto);
+			
+			if(user !=null) {
+				service.statusReasonUpdate(wDto);
+				for (int i = 0; i < inOutList.size(); i++) {
+					
+					if(inOutList.get(i).getW_status().equals("E")) {
+						
+						service.userWorkOut(wDto.getW_id());
+						service.updateWTime(wDto.getW_id());
+						path =  "redirect:/user/userWorkList";
+					}else if (inOutList.get(i).getW_out() !=null || inOutList.get(i).getW_out().substring(0, 10).equals(today)) {
+						
+						
+						path = "work/userWorkList";
+					
+				}
+			} 
+
+			}else path = "redirect:/user/userlogin";
+			
+			
+			return path;
 		}
 		
 //-----------------------------------------------------------------------관리자-----------------------------------------------------------
