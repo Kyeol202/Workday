@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="WorkRecord">
-	
+	<!--#######공통 부분 start######## -->
 	<sql id="pagingHeader">
 	SELECT * FROM (
 	SELECT ROWNUM AS rn, A.* FROM (
@@ -22,6 +22,7 @@
 		</when>
 		</choose>
 	</sql>
+	<!--#######공통 부분 end######## -->
 	
 	<insert id="userWorkIn" parameterType="WorkRecord">
 	INSERT INTO WORK_RECORD(
@@ -46,7 +47,7 @@
 	FROM WORK_RECORD
 	</select>
 	
-	
+	<!-- 전체 리스트 (페이징) -->
 	<select id="selectUserAllList" resultType="JoinDto" parameterType="BoardPager">
 		<include refid="pagingHeader"></include>
 		SELECT W.W_ID, W.W_IN, W.W_OUT, W.W_TIME, W.D_ID, U.U_ID, U.U_NAME,W_STATUS
@@ -59,6 +60,7 @@
 		<include refid="pagingFooter"></include>
 	</select>
 	
+	<!-- 레코드 총 갯수 -->
 	<select id="selectUserCount" parameterType="SearchDto" resultType="int">
 	SELECT COUNT(*)
 	FROM WORK_RECORD
@@ -66,12 +68,14 @@
 	<include refid="search"></include>
 	</select>
 	
+	<!-- 상세보기 -->
 	<select id="workRecordSelectOne" parameterType="int" resultType="WorkRecord">
 	SELECT W_IN, W_OUT, W_TIME, W_STATUS, W_REASON, W_ID
 	FROM WORK_RECORD
 	WHERE W_ID = #{w_id}
 	</select>
 	
+	<!-- 퇴근시간 입력 -->
 	<update id="userWorkOut" parameterType="WorkRecord">
 	UPDATE WORK_RECORD
 	SET W_OUT = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI')
@@ -79,6 +83,7 @@
 	
 	</update>
 	
+	<!-- 근무시간 계산 -->
 	<update id="updateWTime" parameterType="WorkRecord">
 	UPDATE WORK_RECORD
 	SET W_TIME = (SELECT (
@@ -90,6 +95,7 @@
 	WHERE W_ID = #{w_id}
 	</update>
 	
+	<!-- 사용자 상태 업데이트 -->
 	<update id="statusReasonUpdate" parameterType="WorkRecord">
 	UPDATE WORK_RECORD
 	SET W_STATUS = #{w_status}, W_REASON = #{w_reason}
