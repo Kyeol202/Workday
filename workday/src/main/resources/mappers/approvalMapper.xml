@@ -24,20 +24,24 @@
 	
 	<!-- 결재정보 접수 -->
 	<insert id="approvalIn" parameterType="Approval">
-	INSERT INTO WORK_RECORD(
+	INSERT INTO APPROVAL(
 	APV_ID,
+	U_ID,
+	D_ID,
 	APV_DIV,
 	APV_OK,
 	APV_START,
 	APV_END,
-	APV_APLY,
-	APV_APLYDATE
+	APV_APLY
 	)
 	VALUES(
-	WORK_RECORD_SEQ.NEXTVAL,
+	APPROVAL_SEQ.NEXTVAL,
 	#{u_id},
 	#{d_id},
-	TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
+	#{apv_div},
+	DEFAULT,
+	#{apv_start},
+	#{apv_end},
 	DEFAULT
 	)
 	</insert>
@@ -58,7 +62,7 @@
 	<!-- 결재정보 전체 레코드 갯수 -->
 	<select id="selectStatusCount" parameterType="SearchDto" resultType="int">
 	SELECT COUNT(*)
-	FROM WORK_RECORD
+	FROM APPROVAL
 	WHERE 1 = 1
 	<include refid="search"></include>
 	</select>
