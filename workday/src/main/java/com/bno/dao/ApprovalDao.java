@@ -22,6 +22,6 @@ public interface ApprovalDao {
 	public Approval approvalSelectOne(int apv_id);
 		
 	// 결재승인
-	public Approval updateStatus(int apv_id);
+	public Approval updateStatus(Approval apv_id);
 	
 }//interface end

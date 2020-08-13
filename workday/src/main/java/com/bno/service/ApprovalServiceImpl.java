@@ -47,9 +47,9 @@ public class ApprovalServiceImpl implements ApprovalService{
 
 	// 결재승인
 	@Override
-	public Approval updateStatus(int apv_id) {
+	public Approval updateStatus(Approval aDto) {
 		// TODO Auto-generated method stub
-		return dao.updateStatus(apv_id);
+		return dao.updateStatus(aDto);
 	}
 	
 	// 결재정보 등록
