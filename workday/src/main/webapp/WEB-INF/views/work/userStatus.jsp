@@ -27,7 +27,7 @@
 			},
 			dataType: "html",
 			success: function (data) {
-				$('#userApprovalAjax').html(data); // 키값
+				$('#user_approvalList').html(data); // 키값
 			}
 		})
 	}
@@ -48,14 +48,14 @@ $(document).ready(function() {
 	
 	
 	$("#userWorkIn").click(function() {
-		var confirmWork = confirm('승인하시겠습니까?');
+//		var confirmWork = confirm('승인하시겠습니까?');
 		
-		if(confirmWork == true) {
-		var url = "<%=contextPath%>"+"/user/approvalIn";
+//		if(confirmWork == true) {
+		var url = "<%=contextPath%>"+"/user/userStatusRequest";
 		$("#userWorkInCheck").attr("action", url);
 		$("#userWorkInCheck").submit();
-		}
-		else false;
+//		}
+//		else false;
 	})
 
 
@@ -126,7 +126,7 @@ $(document).ready(function() {
 										</div>
 									</div>
 
-									<div id="userApprovalAjax"></div>
+									<div id="user_approvalList"></div>
 
 								</div>
 							</div>

@@ -9,7 +9,7 @@
 
 $(document).ready(function() {
 	
-	승인
+	// 승인
 	$("#workOut").click(function() {
 		var confirmWork = confirm('승인 하시겠습니까?');
 		

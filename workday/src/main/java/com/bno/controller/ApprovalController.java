@@ -104,6 +104,7 @@ public class ApprovalController {
 		
 		//전체 리스트 출력
 		List<JoinDto> statusAllList = service.selectAllApprovalList(boardPager);
+		System.out.println(statusAllList);
 		model.addAttribute("statusAllList", statusAllList);
 		model.addAttribute("boardPager", boardPager);
 		
