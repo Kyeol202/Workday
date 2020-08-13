@@ -51,6 +51,12 @@ public class ApprovalServiceImpl implements ApprovalService{
 		// TODO Auto-generated method stub
 		return dao.updateStatus(apv_id);
 	}
+
+	@Override
+	public void userRequestInsert(Approval request) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

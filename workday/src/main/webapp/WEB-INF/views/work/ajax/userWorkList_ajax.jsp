@@ -45,6 +45,8 @@
 												</thead>
 			<tbody>
 				<c:forEach var="workAllList" items="${workAllList }">
+				<c:choose>
+				<c:when test="${workAllList.u_id eq user.u_id }">
 					<tr role="row">
 						<td class="">${workAllList.u_id }</td>
 						<td onclick="javascript:location.href='<c:url value="/"/>user/WorkRecordSelectOne?w_id=${workAllList.w_id }'">
@@ -68,7 +70,8 @@
 						<td>지각</td>
 						</c:if>
 					</tr>
-
+					</c:when>
+				</c:choose>
 				</c:forEach>
 
 			</tbody>

@@ -38,7 +38,7 @@ public class ApprovalController {
 	}
 	
 	//결재 정보 접수
-	@RequestMapping(value = "user/userRequest")
+	@RequestMapping(value = "user/userRequest1")
 	public String userWorkIn(HttpSession session, Approval dto) {
 	logger.info("this is a approvalIn method");
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
