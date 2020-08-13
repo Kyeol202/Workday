@@ -32,7 +32,7 @@ public class ApprovalDaoImpl implements ApprovalDao {
 	@Override
 	public int selectStatusCount(SearchDto searchDto) {
 		// TODO Auto-generated method stub
-		return session.selectOne(queryprefix+"selectUserCount", searchDto);
+		return session.selectOne(queryprefix+"selectStatusCount", searchDto);
 	}
 
 	// 결재정보 전체 조회

@@ -10,7 +10,7 @@
 	</sql>
 	
 	<sql id="pagingFooter">
-	)  A
+	)  B
 	) WHERE rn BETWEEN #{start} AND #{end}
 	</sql>
 	
