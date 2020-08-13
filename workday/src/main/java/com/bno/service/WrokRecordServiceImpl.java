@@ -27,11 +27,18 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 		return dao.inOutAllList(wDto);
 	}
 
-	//사용자 출근 입력
+	//사용자 출근 입력(정상)
 	@Override
 	public void userWorkIn(WorkRecord dto) {
 		
 		dao.userWorkIn(dto);
+	}
+	
+	//사용자 출근 입력(지각)
+	@Override
+	public void userWorkLate(WorkRecord dto) {
+		
+		dao.userWorkLate(dto);
 	}
 
 	//출퇴근 전체 레코드 갯수

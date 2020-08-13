@@ -23,6 +23,7 @@
 		</choose>
 	</sql>
 	
+<!-- 	출근 입력(정상) -->
 	<insert id="userWorkIn" parameterType="WorkRecord">
 	INSERT INTO WORK_RECORD(
 	W_ID,
@@ -40,13 +41,33 @@
 	)
 	</insert>
 	
+<!-- 	출근 입력(지각) -->
+	<insert id="userWorkLate" parameterType="WorkRecord">
+	INSERT INTO WORK_RECORD(
+	W_ID,
+	U_ID,
+	D_ID,
+	W_IN,
+	W_STATUS
+	)
+	VALUES(
+	WORK_RECORD_SEQ.NEXTVAL,
+	#{u_id},
+	#{d_id},
+	TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
+	'L'
+	)
+	
+	</insert>
+	
+	
 <!-- 	출퇴근 전체 리스트 -->
 	<select id="inOutAllList" resultType="WorkRecord">
 	SELECT *
 	FROM WORK_RECORD
 	</select>
 	
-	
+<!-- 	출근 전체 리스트(페이징) -->
 	<select id="selectUserAllList" resultType="JoinDto" parameterType="BoardPager">
 		<include refid="pagingHeader"></include>
 		SELECT W.W_ID, W.W_IN, W.W_OUT, W.W_TIME, W.D_ID, U.U_ID, U.U_NAME,W_STATUS

@@ -54,33 +54,41 @@ public class WorkRecordController {
 		Calendar cal = Calendar.getInstance();
 		String today = workin.format(cal.getTime()).substring(0, 10); 
 		
+		//9시 기준
+		SimpleDateFormat standardTime = new SimpleDateFormat("yyyyMMdd0900");
+		String standard = standardTime.format(cal.getTime());
+		
 		//현재시간
 		SimpleDateFormat currentTime = new SimpleDateFormat("yyyyMMddHHmm");
-		String late = currentTime.format(cal.getTime());
+		String current = currentTime.format(cal.getTime());
 		System.out.println(today);
+		
+		int result = standard.compareTo(current);
 		
 		//근태관리 출근 날짜 리스트 출력
 		List<WorkRecord> inOutList = service.inOutAllList(wDto);
-		for(int i =0; i < inOutList.size(); i++) {
+//		for(int i =0; i < inOutList.size(); i++) {
 			
 //			System.out.println(inOutList.get(i).getW_in());
-			//유저 세션이 null이 아니고 출근날짜 리스트에 출근시간이 null이면 출근 insert
-			if(user != null) {
-				if(inOutList.get(i).getW_in() == null ){
-					
+//			System.out.println(inOutList.get(i).getU_id());
+//			유저 세션이 null이 아니고 출근날짜 리스트에 출근시간이 null이면 출근 insert
+			if(user != null && result >= 0) {
+//				if(inOutList.get(i).getW_in() == null) {
 					service.userWorkIn(wDto);
 					path = "redirect:/user/userWorkList";
+//				}
+//				 else if (inOutList.get(i).getW_in().substring(0, 10).equals(today)) {
+//					
+//					path = "redirect:/user/userWorkList";
+//				}
 					
-				} else if (inOutList.get(i).getW_in() !=null || inOutList.get(i).getW_in().substring(0, 10).equals(today)) {
-					
-					
-					path = "work/userWorkList";
 				}
-					
-				}
+				else if(user != null &&result < 0) {
+					service.userWorkLate(wDto);
+					path = "redirect:/user/userWorkList";
+				} 
 				else path = "redirect:/user/userlogin";
-			
-		}
+//		}
 		
 		return path;
 	}
@@ -159,23 +167,21 @@ public class WorkRecordController {
 			List<WorkRecord> inOutList = service.inOutAllList(wDto);
 			
 			if(user != null) {
-			for(int i = 0; i < inOutList.size(); i++) {
-				
-				if(inOutList.get(i).getW_out() == null) {
+		
 					service.userWorkOut(w_id);
 					path = "forward:/user/userwTime";
-				} else if (inOutList.get(i).getW_out() !=null || inOutList.get(i).getW_out().substring(0, 10).equals(today)) {
+			
 					
 					
-					path = "work/userWorkList";
+					
 				}
 				
-			}
+	
 				
 				
 				
-			}
-			else path = "redirect:/user/userlogin";
+			
+			else path = "work/userWorkList";
 			
 			
 			
@@ -214,23 +220,16 @@ public class WorkRecordController {
 			List<WorkRecord> inOutList = service.inOutAllList(wDto);
 			
 			if(user !=null) {
-				service.statusReasonUpdate(wDto);
-				for (int i = 0; i < inOutList.size(); i++) {
-					
-					if(inOutList.get(i).getW_status().equals("E") || inOutList.get(i).getW_status().equals("A")) {
-						
+				
+						service.statusReasonUpdate(wDto);
 						service.userWorkOut(wDto.getW_id());
 						service.updateWTime(wDto.getW_id());
 						path =  "redirect:/user/userWorkList";
-					}else if (inOutList.get(i).getW_out() !=null || inOutList.get(i).getW_out().substring(0, 10).equals(today)) {
+					}
 						
 						
 						path = "work/userWorkList";
-					
-				}
-			} 
-
-			}else path = "redirect:/user/userlogin";
+;
 			
 			
 			return path;
