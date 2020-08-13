@@ -27,10 +27,10 @@
 			</thead>
 			<tbody>
 				<c:forEach var="statusAllList" items="${statusAllList }">
-					<tr role="row">
-						<td class="">${statusAllList.u_id }</td>
+					<tr role="row">		
 						<td onclick="javascript:location.href='<c:url value="/"/>
 						user/StatusRecordSelectOne?apv_id=${statusAllList.apv_id }'">${statusAllList.u_name }</td>
+						<td class="">${statusAllList.u_id }</td>
 						<c:if test="${statusAllList.d_id eq 1 }">
 							<td>경영지원</td>
 						</c:if>
@@ -38,16 +38,17 @@
 							<td>연구소</td>
 						</c:if>
 						<td>${statusAllList.apv_div }</td>
-						<td>${statusAllList.apv_start }</td>
-						<td>${statusAllList.apv_end }</td>
-						<td>${statusAllList.apv_aply }</td>
-						<td>${statusAllList.apv_aplydate }</td>
 						<c:if test="${statusAllList.apv_ok eq 'Y' }">
 							<td>승인</td>
 						</c:if>
 						<c:if test="${statusAllList.apv_ok eq 'E' }">
 							<td>반려</td>
 						</c:if>
+						<td>${statusAllList.apv_start }</td>
+						<td>${statusAllList.apv_end }</td>
+						<td>${statusAllList.apv_aply }</td>
+						<td>${statusAllList.apv_aplydate }</td>
+
 					</tr>
 
 				</c:forEach>
