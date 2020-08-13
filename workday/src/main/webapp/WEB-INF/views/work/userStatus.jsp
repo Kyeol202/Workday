@@ -6,10 +6,9 @@
 
 <%@ include file="../common/head.jsp"%>
 
-
 <script>
-	var searchSort = "";	// 변수 초기화
-	var searchVal = "";		// 변수 초기화
+	var searchSort = "";	//변수 초기화
+	var searchVal = "";		//변수 초기화
 
 	$(function () {
 		// 페이지 처음 접근시 리스트 표시 좌표
@@ -27,7 +26,7 @@
 			},
 			dataType: "html",
 			success: function (data) {
-				$('#userApprovalAjax').html(data); // 키값
+				$('#userApprovalAjax').html(data);
 			}
 		})
 	}
@@ -40,7 +39,6 @@
 	}
 
 </script>
-
 <script>
 //jQuery 함수
 
@@ -48,10 +46,10 @@ $(document).ready(function() {
 	
 	
 	$("#userWorkIn").click(function() {
-		var confirmWork = confirm('승인하시겠습니까?');
+		var confirmWork = confirm('출근 하시겠습니까?');
 		
 		if(confirmWork == true) {
-		var url = "<%=contextPath%>"+"/user/approvalIn";
+		var url = "<%=contextPath%>"+"/user/userWorkIn";
 		$("#userWorkInCheck").attr("action", url);
 		$("#userWorkInCheck").submit();
 		}
@@ -60,8 +58,9 @@ $(document).ready(function() {
 
 
 });
-</script>
 
+
+</script>
 <body class="hold-transition skin-blue sidebar-mini">
 	<div class="wrapper">
 
@@ -83,20 +82,22 @@ $(document).ready(function() {
 							<div class="box-header">
 								<div class="row">
 									<div class="col flexBox" style="justify-content: flex-start; padding: 0 16px;">
-										<h3 class="box-title">휴가신청 시스템</h3>
+										<h3 class="box-title">근태관리</h3>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										
 									</div>
 								</div>
 							</div>
 							<div>
+							
 							<form id="userWorkInCheck" method="post">
 							<input type="hidden" name="u_id" value="${loginUser.u_id }">
 							<input type="hidden" name="d_id" value="${loginUser.d_id }">
 							<input type="hidden" name="u_name" value="${loginUser.u_name }">
 							<input type="hidden" name="u_position" value="${loginUser.u_position }">
-							<input type="button" class="btn btn-success" id="userWorkIn" value="휴가/반차 신청">					
+							<input type="button" class="btn btn-success" id="userWorkIn" value="출근">					
 							</form>
+							
 							</div>
 							
 

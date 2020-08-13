@@ -38,8 +38,10 @@ public class ApprovalController {
 	}
 	
 	//결재 정보 접수
-	@RequestMapping(value = "user/userRequest1")
-	public String userWorkIn(HttpSession session, Approval dto) {
+
+	@RequestMapping(value = "user/userRequest")
+	public String userRequest(HttpSession session, Approval dto) {
+
 	logger.info("this is a approvalIn method");
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		String path = "";
@@ -53,6 +55,26 @@ public class ApprovalController {
 		
 		
 		return path;
+	}
+	
+	// 결재 신청 화면
+	@RequestMapping(value = "user/userStatusRequest")
+	public String userStatusRequest(HttpSession session, Model model) {
+		UserInfo user = (UserInfo) session.getAttribute("loginUser");
+		model.addAttribute("user", user);
+		
+		
+		return"work/userStatusRequest";
+	}
+	
+	// 결재 신청 등록
+	@RequestMapping(value = "user/userRequestResult")
+	public String userRequest(Approval request) {
+		logger.info("this is a userRequest method");
+		
+		service.userRequestInsert(request);
+		
+		return "redirect:/user/userStatus";
 	}
 	
 	// 승인 리스트
@@ -90,25 +112,6 @@ public class ApprovalController {
 		
 		
 		return "work/ajax/userStatusList_ajax";
-	}
-	
-	// 결재 신청 화면
-	@RequestMapping(value = "user/userStatusRequest")
-	public String userStatusRequest() {
-		
-		
-		
-		return"work/userStatusRequest";
-	}
-	
-	// 결재 신청 등록
-	@RequestMapping(value = "user/userRequest")
-	public String userRequest(Approval request) {
-		logger.info("this is a userRequest method");
-		
-		service.userRequestInsert(request);
-		
-		return "user/userStatusRequest";
 	}
 	
 	
