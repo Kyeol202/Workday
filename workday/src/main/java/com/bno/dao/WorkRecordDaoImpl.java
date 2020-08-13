@@ -32,12 +32,19 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 		return inOutAllList;
 	}
 
-	//사용자 출근 입력
+	//사용자 출근 입력(정상)
 	@Override
 	public void userWorkIn(WorkRecord dto) {
 		
-//		System.out.println("사용자 정보 = "+dto);
+		System.out.println("사용자 정보 = "+dto);
 		session.insert(queryprefix+"userWorkIn", dto);
+	}
+	
+	//사용자 출근 입력(지각)
+	@Override
+	public void userWorkLate(WorkRecord dto) {
+		System.out.println(dto);
+		session.insert(queryprefix+"userWorkLate", dto);
 	}
 
 	//출퇴근 전체 레코드 갯수

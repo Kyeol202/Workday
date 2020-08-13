@@ -13,8 +13,11 @@ public interface WorkRecordDao {
 	//출퇴근 전체 리스트
 	public List<WorkRecord> inOutAllList(WorkRecord wDto);
 	
-	//사용자 출근 입력
+	//사용자 출근 입력(정상)
 	public void userWorkIn(WorkRecord dto);
+	
+	//사용자 출근 입력(지각)
+	public void userWorkLate(WorkRecord dto);
 	
 	//출퇴근 전체 레코드 갯수
 	public int selectUserCount(SearchDto searchDto);

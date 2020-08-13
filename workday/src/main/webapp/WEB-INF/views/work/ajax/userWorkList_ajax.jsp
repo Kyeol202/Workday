@@ -64,6 +64,9 @@
 						<c:if test="${workAllList.w_status eq 'E' }">
 						<td>조퇴</td>
 						</c:if>
+						<c:if test="${workAllList.w_status eq 'L' }">
+						<td>지각</td>
+						</c:if>
 					</tr>
 
 				</c:forEach>
