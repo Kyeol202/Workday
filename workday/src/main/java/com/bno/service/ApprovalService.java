@@ -26,6 +26,7 @@ public interface ApprovalService {
 	public Approval approvalSelectOne(int apv_id);
 		
 	// 결재승인
-	public Approval updateStatus(int apv_id);
+	public Approval updateStatus(Approval aDto);
+
 	
 }//interface end

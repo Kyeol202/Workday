@@ -53,9 +53,9 @@ public class ApprovalDaoImpl implements ApprovalDao {
 
 	// 결재승인
 	@Override
-	public Approval updateStatus(int apv_id) {
-		System.out.println("apv_id = "+apv_id);
-		return session.selectOne(queryprefix+"updateStatus", apv_id);
+	public Approval updateStatus(Approval aDto) {
+		System.out.println("apv_id = "+aDto);
+		return session.selectOne(queryprefix+"updateStatus", aDto);
 	}
 
 
