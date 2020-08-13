@@ -68,6 +68,16 @@
 									}
 
 								});
+				
+				$("#userRequestOk").click(function() {
+					var url = "<%=contextPath%>"+"/user/userRequestResult";
+					$("#userRequest").attr("action", url);
+					$("#userRequest").submit();
+					
+						
+				});
+				
+				
 			});
 </script>
 </head>
@@ -104,7 +114,7 @@
 
 
 							<div class="register-box-body">
-								<form action="<%=contextPath%>/user/userRequestResult" method="post" name="form">
+								<form id="userRequest" " method="post" name="form">
 								<input type="hidden" value="${user.u_id }" name="u_id">
 								<input type="hidden" value="${user.d_id }" name="d_id">
 									<br> <select class="form-control" name="apv_div">

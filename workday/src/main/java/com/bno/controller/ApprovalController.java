@@ -70,8 +70,8 @@ public class ApprovalController {
 	public String userRequest(Approval request) {
 		logger.info("this is a userRequest method");
 		
-		service.userRequestInsert(request);
-		
+		service.approvalIn(request);
+
 		return "redirect:/user/userStatus";
 	}
 	
