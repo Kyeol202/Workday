@@ -52,6 +52,13 @@ public class ApprovalServiceImpl implements ApprovalService{
 		return dao.updateStatus(apv_id);
 	}
 	
+	// 결재정보 등록
+	@Override
+	public void userRequestInsert(Approval request) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 	

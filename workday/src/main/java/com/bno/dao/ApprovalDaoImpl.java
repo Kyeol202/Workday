@@ -24,7 +24,7 @@ public class ApprovalDaoImpl implements ApprovalDao {
 	// 결재정보 접수
 	@Override
 	public void approvalIn(Approval dto) {
-		// TODO Auto-generated method stub
+		System.out.println("dto = "+dto);
 		session.insert(queryprefix+"approvalIn", dto);
 	}
 
