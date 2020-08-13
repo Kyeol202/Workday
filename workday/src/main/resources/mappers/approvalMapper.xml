@@ -23,7 +23,7 @@
 	</sql>
 	
 	<!-- 결재정보 접수 -->
-	<insert id="approvalIn" parameterType="Approval">
+	<insert id="approvalIn" parameterType="Approval"> 
 	INSERT INTO APPROVAL(
 	APV_ID,
 	U_ID,
