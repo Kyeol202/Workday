@@ -7,25 +7,12 @@
 <script>
 
 $(document).ready(function() {
-	
-	// 승인
-	$("#workOut").click(function() {
-		var confirmWork = confirm('승인 하시겠습니까?');
-		
-		if(confirmWork == true) {
-		var url = "<%=contextPath%>"+"/user/userWorkOut";
-		$("#userWorkOutCheck").attr("action", url);
-		$("#userWorkOutCheck").submit();
-		}
-		else false;		
-	});
-	
-	// 반려
+	//승인 반려
 	$("#statusReasonUpdate").click(function() {
 
 		
 
-		var url = "<%=contextPath%>"+"/user/userApprovalUpdate"; 
+		var url = "<%=contextPath%>"+"/admin/adminUserApprovalUpdate"; 
 				$("#statusReasonUpdateForm").attr("action", url);
 				$("#statusReasonUpdateForm").submit();
 
@@ -66,7 +53,9 @@ $(document).ready(function() {
 								<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 								<li><a href="#">내 출퇴근</a></li>
 								<li class="active">출근 입력</li>
-							</ol>						
+							</ol>
+							
+							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-warning">결재</button>
 
 							<div class="modal modal-warning fade" id="modal-warning">
 								<div class="modal-dialog">
@@ -92,6 +81,7 @@ $(document).ready(function() {
 									</div>
 									<!-- /.modal-content -->
 								</div>
+								</form>
 								<!-- /.modal-dialog -->
 
 							</div>

@@ -38,6 +38,15 @@
 									<li><a href="javascript:location.href='<c:url value="/"/>admin/adminWorkList'">부서원 출퇴근관리</a></li>
 								</ul>
 							</li>
+							<li class="myGpx treeview">
+								<a href="#">
+									<i class="fa fa-circle-o"></i> 상태 관리
+									<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+								</a>
+								<ul class="treeview-menu" style="display: none;">
+									<li><a href="javascript:location.href='<c:url value="/"/>admin/adminUserStatus'">결재 승인 관리</a></li>
+								</ul>
+							</li>
 
 						</ul>
 					</li>
