@@ -125,7 +125,7 @@ $(document).ready(function() {
 															<td>휴가</td>
 														</c:if>
 														<c:if test="${approval.apv_div eq 'A' }">
-															<td>휴가</td>
+															<td>반차</td>
 														</c:if>
 														<c:if test="${approval.apv_ok eq 'Y' }">
 															<td>승인</td>
