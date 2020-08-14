@@ -12,7 +12,7 @@
 		<table id="gpxBoard" class="table table-bordered table-hover dataTable" role="grid">
 								<thead>※출퇴근 시간을 지킵시다※<br>
 							                         ※퇴근 하려면 이름을 클릭하세요※
-													<tr role="row">
+													<tr role="row">  
 														<th class="sorting_asc" tabindex="0" aria-controls="example1"
 															rowspan="1" colspan="1" aria-sort="ascending"
 															aria-label="Rendering engine: activate to sort column descending"
@@ -42,9 +42,11 @@
 															aria-label="CSS grade: activate to sort column ascending"
 															style="width: 115px;">근무상태</th>
 													</tr>
-												</thead>
+												</thead> 
 			<tbody>
 				<c:forEach var="workAllList" items="${workAllList }">
+				<c:choose>
+				<c:when test="${workAllList.u_id eq user.u_id }">
 					<tr role="row">
 						<td class="">${workAllList.u_id }</td>
 						<td onclick="javascript:location.href='<c:url value="/"/>user/WorkRecordSelectOne?w_id=${workAllList.w_id }'">
@@ -68,7 +70,8 @@
 						<td>지각</td>
 						</c:if>
 					</tr>
-
+					</c:when>
+				</c:choose>
 				</c:forEach>
 
 			</tbody>
