@@ -34,6 +34,21 @@ public class ApprovalController {
 
 		return "work/userStatus";
 	}
+	
+	// 휴가내역 상세보기
+	@RequestMapping(value = "user/StatusRecordSelectOne")
+	public String statusRecordSelectOne(int apv_id, Model model, 
+			HttpSession session) {
+
+		UserInfo user = (UserInfo) session.getAttribute("loginUser");
+		model.addAttribute("user", user);
+
+		Approval approval = service.approvalSelectOne(apv_id);
+		System.out.println(approval);
+		model.addAttribute("approval", approval);
+
+		return "work/userStatusRecordSelectOne";
+	}
 
 	// 결재 정보 접수
 	@RequestMapping(value = "user/userRequest")
@@ -105,8 +120,64 @@ public class ApprovalController {
 		return "work/ajax/userStatusList_ajax";
 	}
 
+
+	
+	
+	//----------------------------------------관리자-------------------------------------------//
+
+	// 결재리스트화면
+	@RequestMapping(value = "admin/adminUserStatus")
+	public String adminUserStatus() {
+
+		return "admin/adminUserStatus";
+	}
+	
+	// 승인 리스트
+	@RequestMapping(value = "admin/adminUserstatusListAjax")
+	public String adminUserstatusListAjax(@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "searchSort", defaultValue = "") String searchSort,
+			@RequestParam(value = "searchVal", defaultValue = "") String searchVal, Model model, HttpSession session) {
+		logger.info("this is a userStatusListAjax method");
+
+		UserInfo user = (UserInfo) session.getAttribute("loginUser");
+		model.addAttribute("user", user);
+
+		// 검색 객체 값 넣기
+		SearchDto searchDto = new SearchDto(searchSort, searchVal);
+
+		// 총 레코드 가져오기
+		int nCount = service.selectStatusCount(searchDto);
+
+		// 현재 출력 페이지
+		int curPage = cPage;
+
+		// 페이지 객체에 값 저장
+		BoardPager boardPager = new BoardPager(nCount, curPage);
+
+		// 페이지 겍체에 검색 정보 저장
+		boardPager.setSearchSort(searchSort);
+		boardPager.setSearchVal(searchVal);
+
+		// 전체 리스트 출력
+		List<JoinDto> statusAllList = service.selectAllApprovalList(boardPager);
+		System.out.println(statusAllList);
+		model.addAttribute("statusAllList", statusAllList);
+		model.addAttribute("boardPager", boardPager);
+
+		return "admin/ajax/adminUserStatusList_ajax";
+	}
+	
+	// 결재 승인/반려
+	@RequestMapping(value = "admin/adminUserApprovalUpdate")
+	public String userApprovalUpdate(Approval aDto) {
+		
+		service.updateStatus(aDto);
+		
+		return "redirect:/admin/adminUserStatus";
+	}
+	
 	// 휴가내역 상세보기
-	@RequestMapping(value = "user/StatusRecordSelectOne")
+	@RequestMapping(value = "admin/adminStatusRecordSelectOne")
 	public String StatusRecordSelectOne(int apv_id, Model model, 
 			HttpSession session) {
 
@@ -117,18 +188,7 @@ public class ApprovalController {
 		System.out.println(approval);
 		model.addAttribute("approval", approval);
 
-		return "work/userStatusRecordSelectOne";
+		return "admin/adminUserStatusRecordSelectOne";
 	}
 	
-	// 결재 승인/반려
-	@RequestMapping(value = "user/userApprovalUpdate")
-	public String userApprovalUpdate(Approval aDto) {
-		
-		service.updateStatus(aDto);
-		
-		return "redirect:/user/userStatus";
-	}
-	
-	
-
 }// class end
