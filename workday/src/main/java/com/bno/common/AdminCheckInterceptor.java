@@ -17,7 +17,7 @@ public class AdminCheckInterceptor extends HandlerInterceptorAdapter{
 		if(user == null) {
 			String msg="세션이 만료되었습니다";
 			request.setAttribute("msg",msg);
-			request.setAttribute("loc","/userHome");
+			request.setAttribute("loc","/user/userlogin");
 			request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp").forward(request, response);
 			return false;
 		}
@@ -25,7 +25,7 @@ public class AdminCheckInterceptor extends HandlerInterceptorAdapter{
 		{
 			String msg="권한이 없습니다";
 			request.setAttribute("msg",msg);
-			request.setAttribute("loc","/userHome");
+			request.setAttribute("loc","/user/userlogin");
 			request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp").forward(request, response);
 			return false;
 		}

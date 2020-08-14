@@ -42,6 +42,6 @@ public interface WorkRecordService {
 	public void userWorkDelete(int w_id);
 	
 	//인서트 중복방지
-	
+	public WorkRecord insertCheck(WorkRecord wDto);
 	
 }//interface end

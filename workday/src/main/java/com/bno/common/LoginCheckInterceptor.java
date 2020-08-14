@@ -14,7 +14,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 		if(request.getSession().getAttribute("loginUser") == null) {
 			String msg="로그인 후 이용해 주세요";
 			request.setAttribute("msg",msg);
-			request.setAttribute("loc","/userHome");
+			request.setAttribute("loc","/user/userlogin");
 			request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp").forward(request, response);
 			return false;
 		}
