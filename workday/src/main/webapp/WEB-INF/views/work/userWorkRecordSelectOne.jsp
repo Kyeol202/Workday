@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%@ include file="../common/head.jsp"%>
+
 <script>
 
 $(document).ready(function() {
@@ -164,8 +165,16 @@ $(document).ready(function() {
                 <tr role="row" class="odd">
                   <td class="sorting_1">${workRecord.w_in }</td>
                   <td>${workRecord.w_out }</td>
-                  <td>${workRecord.w_time }</td>
-                  <td>${workRecord.w_status }</td>
+                  <td>${workRecord.w_time /60}시간</td>
+                  <c:if test="${workRecord.w_status eq 'Y' }">
+						<td>정상출근</td>
+						</c:if>
+						<c:if test="${workRecord.w_status eq 'E' }">
+						<td>조퇴</td>
+						</c:if>
+                  <c:if test="${workRecord.w_status eq 'L' }">
+						<td>지각</td>
+						</c:if>
                   <td>${workRecord.w_reason }</td>
                 </tr>
 

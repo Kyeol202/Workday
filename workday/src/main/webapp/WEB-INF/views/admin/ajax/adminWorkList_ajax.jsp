@@ -10,7 +10,8 @@
 <div class="row">
 	<div class="col-sm-12">
 		<table id="gpxBoard" class="table table-bordered table-hover dataTable" role="grid">
-								<thead>※관리자 화면입니다※
+								<thead>※출퇴근 시간을 지킵시다※<br>
+							                         ※퇴근 하려면 이름을 클릭하세요※
 													<tr role="row">
 														<th class="sorting_asc" tabindex="0" aria-controls="example1"
 															rowspan="1" colspan="1" aria-sort="ascending"
@@ -27,52 +28,47 @@
 														<th class="sorting" tabindex="0" aria-controls="example1"
 															rowspan="1" colspan="1"
 															aria-label="Engine version: activate to sort column ascending"
-															style="width: 158px;">이메일</th>
+															style="width: 158px;">출근시간</th>
+														<th class="sorting" tabindex="0" aria-controls="example1"
+															rowspan="1" colspan="1"
+															aria-label="CSS grade: activate to sort column ascending"
+															style="width: 115px;">퇴근시간</th>
 															<th class="sorting" tabindex="0" aria-controls="example1"
 															rowspan="1" colspan="1"
 															aria-label="CSS grade: activate to sort column ascending"
-															style="width: 115px;">직급</th>
+															style="width: 115px;">근무시간</th>
 															<th class="sorting" tabindex="0" aria-controls="example1"
 															rowspan="1" colspan="1"
 															aria-label="CSS grade: activate to sort column ascending"
-															style="width: 115px;">핸드폰번호</th>
-															<th class="sorting" tabindex="0" aria-controls="example1"
-															rowspan="1" colspan="1"
-															aria-label="CSS grade: activate to sort column ascending"
-															style="width: 115px;">재직</th>
+															style="width: 115px;">근무상태</th>
 													</tr>
 												</thead>
 			<tbody>
-				<c:forEach var="adminUserAllList" items="${adminUserAllList }">
-				<c:choose>
-					<c:when test="${adminUserAllList.u_status eq 'Y' }">
+				<c:forEach var="workAllList" items="${workAllList }">
+
 					<tr role="row">
-						<td>${adminUserAllList.u_id }</td>
-						<td onclick="javascript:location.href='<c:url value="/"/>admin/adminUserSelectOne?u_id=${adminUserAllList.u_id }'">${adminUserAllList.u_name }</td>
-					 	<c:if test="${adminUserAllList.d_id eq 1 }">
+						<td class="">${workAllList.u_id }</td>
+						<td onclick="javascript:location.href='<c:url value="/"/>user/WorkRecordSelectOne?w_id=${workAllList.w_id }'">
+						${workAllList.u_name }</td>
+						<c:if test="${workAllList.d_id eq 1 }">
 						<td>경영지원</td>
 						</c:if>
-						<c:if test="${adminUserAllList.d_id eq 2 }">
+						<c:if test="${workAllList.d_id eq 2 }">
 						<td>연구소</td>
 						</c:if>
-						<td>${adminUserAllList.u_email }</td>
-						<td>${adminUserAllList.u_position }</td>
-						<td>${adminUserAllList.u_phone }</td>
-						<c:if test="${adminUserAllList.u_status eq 'Y' }">
-						<td>재직중</td>
+						<td>${workAllList.w_in }</td>
+						<td>${workAllList.w_out }</td>
+						<td>${workAllList.w_time /60}시간</td>
+						<c:if test="${workAllList.w_status eq 'Y' }">
+						<td>정상출근</td>
+						</c:if>
+						<c:if test="${workAllList.w_status eq 'E' }">
+						<td>조퇴</td>
+						</c:if>
+						<c:if test="${workAllList.w_status eq 'L' }">
+						<td>지각</td>
 						</c:if>
 					</tr>
-					</c:when>
-					<c:otherwise>
-					<td hidden>${adminUserAllList.u_id }</td>
-						<td hidden>${adminUserAllList.u_name }</td>
-						<td hidden>${adminUserAllList.d_id }</td>
-						<td hidden>${adminUserAllList.u_email }</td>
-						<td hidden>${adminUserAllList.u_position }</td>
-						<td hidden>${adminUserAllList.u_phone }</td>
-						<td hidden>${adminUserAllList.u_status }</td>
-					</c:otherwise>
-					</c:choose>
 				</c:forEach>
 
 			</tbody>
@@ -88,7 +84,7 @@
 			<ul class="pagination">
 				<c:if test="${boardPager.curBlock > 1 }">
 					<li class="paginate_button previous disabled"><a
-							href="javascript:adminUserListAjaxfn(${boardPager.prevPage})">Previous</a>
+							href="javascript:adminWorkListAjaxfn(${boardPager.prevPage})">Previous</a>
 					</li>
 				</c:if>
 				<c:forEach var="num" begin="${boardPager.blockBegin }" end="${boardPager.blockEnd }">
@@ -98,16 +94,16 @@
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="paginate_button"><a href="javascript:adminUserListAjaxfn(${num})">${num}</a></li>
+							<li class="paginate_button"><a href="javascript:adminWorkListAjaxfn(${num})">${num}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${boardPager.curBlock <= boardPager.totBlock }">
 					<li class="paginate_button next" id="example1_next">
-						<a href="javascript:adminUserListAjaxfn(${boardPager.nextPage})">Next</a>
+						<a href="javascript:adminWorkListAjaxfn(${boardPager.nextPage})">Next</a>
 					</li>
 				</c:if>
 			</ul>
 		</div>
 	</div>
-</div>
+</div> 

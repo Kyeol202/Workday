@@ -93,7 +93,7 @@
 	
 	<!-- 상세보기 -->
 	<select id="workRecordSelectOne" parameterType="int" resultType="WorkRecord">
-	SELECT W_IN, W_OUT, W_TIME, W_STATUS, W_REASON, W_ID
+	SELECT W_IN, W_OUT, ROUND(W_TIME, 2) AS W_TIME, W_STATUS, W_REASON, W_ID
 	FROM WORK_RECORD
 	WHERE W_ID = #{w_id}
 	</select>
@@ -132,6 +132,13 @@
 	
 	</delete>
 	
+	
+<!-- 	인서트 중복 방지 -->
+	<select id="insertCheck" resultType="WorkRecord">
+	SELECT *
+	FROM WORK_RECORD
+	WHERE W_ID = #{w_id} AND U_ID = #{u_id}
+	</select>
 	
 	
 </mapper>

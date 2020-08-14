@@ -89,6 +89,12 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 		
 		dao.userWorkDelete(w_id);
 	}
+
+	@Override
+	public WorkRecord insertCheck(WorkRecord wDto) {
+		
+		return dao.insertCheck(wDto);
+	}
 	
 	
 	

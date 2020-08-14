@@ -104,6 +104,15 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 	}
 	
 	
+
+	//인서트 중복 방지
+	@Override
+	public WorkRecord insertCheck(WorkRecord wDto) {
+
+		return session.selectOne(queryprefix+"insertCheck", wDto);
+	}
+	
+
 	
 	
 	

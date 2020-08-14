@@ -37,8 +37,7 @@ public class WorkRecordController {
 	@RequestMapping(value = "user/userWorkList")
 	public String userWorkList() {
 		
-		
-		
+
 		return"work/userWorkList";
 	}
 	
@@ -65,13 +64,12 @@ public class WorkRecordController {
 		
 		int result = standard.compareTo(current);
 		
+
 		//근태관리 출근 날짜 리스트 출력
 		List<WorkRecord> inOutList = service.inOutAllList(wDto);
 //		for(int i =0; i < inOutList.size(); i++) {
-			
-//			System.out.println(inOutList.get(i).getW_in());
-//			System.out.println(inOutList.get(i).getU_id());
-//			유저 세션이 null이 아니고 출근날짜 리스트에 출근시간이 null이면 출근 insert
+
+//			유저 세션이 null이 아니고 9시 이전 출근 이면 정상출근
 			if(user != null && result >= 0) {
 //				if(inOutList.get(i).getW_in() == null) {
 					service.userWorkIn(wDto);
@@ -83,10 +81,12 @@ public class WorkRecordController {
 //				}
 					
 				}
+				//유저 세션이 null이 아니고 9시 이후 출근이면 지각
 				else if(user != null &&result < 0) {
 					service.userWorkLate(wDto);
 					path = "redirect:/user/userWorkList";
 				} 
+			
 				else path = "redirect:/user/userlogin";
 //		}
 		
@@ -146,7 +146,7 @@ public class WorkRecordController {
 		}
 	
 		
-		//사용자 퇴튼
+		//사용자 퇴근
 		@RequestMapping(value ="user/userWorkOut")
 		public String userWorkOut(@RequestParam("w_id")int w_id, HttpSession session, WorkRecord wDto) {
 			
@@ -243,6 +243,54 @@ public class WorkRecordController {
 			service.userWorkDelete(w_id);
 			return "redirect:/user/userWorkList";
 		}
-	
+		
+		
+		//출근리스트 관리자 화면
+				@RequestMapping(value = "admin/adminWorkList")
+				public String adminWorkList() {
+
+
+
+					return"admin/adminWorkList";
+				}
+
+
+				//근태관리 전체 출퇴근 조회(페이징)
+				@RequestMapping(value = "admin/adminworkListAjax")
+				public String adminworkListAjax(@RequestParam(value = "cPage", defaultValue = "1")int cPage,
+						@RequestParam(value = "searchSort", defaultValue = "")String searchSort,
+						@RequestParam(value ="searchVal", defaultValue = "") String searchVal,
+						Model model, HttpSession session) {
+					logger.info("this is a userWorkListAjax method");
+
+					UserInfo user = (UserInfo) session.getAttribute("loginUser");
+					model.addAttribute("user", user);
+
+					//검색 객체 값 넣기
+					SearchDto searchDto = new SearchDto(searchSort, searchVal);
+
+					//총 레코드 가져오기
+					int nCount = service.selectUserCount(searchDto);
+
+					//현재 출력 페이지
+					int curPage = cPage;
+
+					//페이지 객체에 값 저장
+					BoardPager boardPager = new BoardPager(nCount, curPage);
+
+					//페이지 겍체에 검색 정보 저장
+					boardPager.setSearchSort(searchSort);
+					boardPager.setSearchVal(searchVal);
+
+					//전체 출퇴근 조회(페이징)
+					List<JoinDto> workAllList = service.selectUserAllList(boardPager);
+					model.addAttribute("workAllList", workAllList);
+					model.addAttribute("boardPager", boardPager);
+
+
+
+					return "admin/ajax/adminWorkList_ajax";
+				}
+				
 	
 }//class end!

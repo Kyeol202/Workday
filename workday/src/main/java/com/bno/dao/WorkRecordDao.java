@@ -40,5 +40,7 @@ public interface WorkRecordDao {
 	//사용자 근무기록 삭제
 	public void userWorkDelete(int w_id);
 	
+	//인서트 중복 방지
+	public WorkRecord insertCheck(WorkRecord wDto);
 	
 }//interface end
