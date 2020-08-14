@@ -27,7 +27,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="statusAllList" items="${statusAllList }">
-					<tr role="row">		
+					<tr role="row">
 						<td>${statusAllList.u_name }</td>
 						<td onclick="javascript:location.href='<c:url value="/"/>
 						user/StatusRecordSelectOne?apv_id=${statusAllList.apv_id }'">${statusAllList.u_id }</td>
