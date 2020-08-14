@@ -89,7 +89,6 @@ $(document).ready(function() {
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">닫기</button>
-												<!--                 <button type="button" class="btn btn-outline" id="reasonText">조퇴사유 입력</button> -->
 												<button type="button" class="btn btn-default" id="statusReasonUpdate">저장</button>
 											</div>
 									</div>
@@ -141,6 +140,9 @@ $(document).ready(function() {
 														</c:if>
 														<c:if test="${approval.apv_ok eq 'E' }">
 															<td>반려</td>
+														</c:if>
+														<c:if test="${approval.apv_ok eq 'W' }">
+															<td>대기</td>
 														</c:if>
 														<td>${approval.apv_start }</td>
 														<td>${approval.apv_end }</td>

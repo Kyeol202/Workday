@@ -42,7 +42,7 @@
 	DEFAULT,
 	#{apv_start},
 	#{apv_end},
-	DEFAULT
+	TO_CHAR(SYSDATE,'YYYY-MM-DD')
 	)
 	</insert>
 	
@@ -77,7 +77,7 @@
 	<!-- 결재정보 업데이트(승인/반려) -->
 	<update id="updateStatus" parameterType="Approval">
 	UPDATE APPROVAL
-	SET APV_OK = #{apv_ok}, APV_APLYDATE = SYSDATE
+	SET APV_OK = #{apv_ok}, APV_APLYDATE = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
 	WHERE APV_ID = #{apv_id}
 	</update>
 	
