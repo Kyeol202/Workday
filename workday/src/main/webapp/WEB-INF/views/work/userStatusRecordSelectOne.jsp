@@ -142,7 +142,7 @@ $(document).ready(function() {
 														<c:if test="${approval.apv_ok eq 'E' }">
 															<td>반려</td>
 														</c:if>
-														<td>${statusAllList.apv_start }</td>
+														<td>${approval.apv_start }</td>
 														<td>${approval.apv_end }</td>
 														<td>${approval.apv_aply }</td>
 														<td>${approval.apv_aplydate }</td>
