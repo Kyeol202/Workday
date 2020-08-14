@@ -121,7 +121,12 @@ $(document).ready(function() {
 														<c:if test="${approval.d_id eq 2 }">
 															<td>연구소</td>
 														</c:if>
-														<td>${approval.apv_div }</td>
+														<c:if test="${approval.apv_div eq 'V' }">
+															<td>휴가</td>
+														</c:if>
+														<c:if test="${approval.apv_div eq 'A' }">
+															<td>휴가</td>
+														</c:if>
 														<c:if test="${approval.apv_ok eq 'Y' }">
 															<td>승인</td>
 														</c:if>
