@@ -12,7 +12,7 @@
 		<table id="gpxBoard" class="table table-bordered table-hover dataTable" role="grid">
 								<thead>※출퇴근 시간을 지킵시다※<br>
 							                         ※퇴근 하려면 이름을 클릭하세요※
-													<tr role="row"> 
+													<tr role="row">  
 														<th class="sorting_asc" tabindex="0" aria-controls="example1"
 															rowspan="1" colspan="1" aria-sort="ascending"
 															aria-label="Rendering engine: activate to sort column descending"
