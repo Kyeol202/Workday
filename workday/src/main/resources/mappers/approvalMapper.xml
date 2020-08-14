@@ -69,11 +69,16 @@
 	
 	<!-- 결재정보 상세보기 -->
 	<select id="approvalSelectOne" parameterType="int" resultType="Approval">
-	SELECT U_ID, D_ID, APV_DIV, APV_OK, APV_START, APV_END, APV_APPLY, APV_APLYDATE
-	FROM WORK_RECORD
+	SELECT APV_ID, U_ID, D_ID, APV_DIV, APV_OK, APV_START, APV_END, APV_APLY, APV_APLYDATE
+	FROM APPROVAL
 	WHERE APV_ID = #{apv_id}
 	</select>
 	
-	
+	<!-- 결재정보 업데이트(승인/반려) -->
+	<update id="updateStatus" parameterType="Approval">
+	UPDATE APPROVAL
+	SET APV_OK = #{apv_ok}, APV_APLYDATE = SYSDATE
+	WHERE APV_ID = #{apv_id}
+	</update>
 	
 </mapper>
