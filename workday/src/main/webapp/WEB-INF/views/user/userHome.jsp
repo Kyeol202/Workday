@@ -5,7 +5,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%@ include file="../common/head.jsp"%>
+<style>
 
+.cursor {
+
+	cursor: pointer;
+}
+
+</style>
 
 
 
@@ -30,19 +37,26 @@
 							<div class="box-header">
 								<div class="row">
 									<div class="col flexBox" style="justify-content: flex-start; padding: 0 16px;">
-										<h3 class="box-title">근태관리</h3>
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										
+										<h2 class="box-title">근태관리</h2>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
 									</div>
-								</div>
-							</div>
-			<div>
-			<img src="<c:url value='/img/inout.jpg'/>">
-			<br>
-			<input type="button" class="btn btn-success" value="근태관리" id="workList" 
-			onclick="javascript:location.href='<c:url value = '/'/>user/userWorkList'">
-			</div>
+									
+									
 
+			<div class="cursor">
+			<img name="workInOut" class="col-xs-6" src="<c:url value='/img/inout.jpg'/>"
+			id="workList" onclick="javascript:location.href='<c:url value = '/'/>user/userWorkList'" align="left">
+			</div>
+			<div class="cursor">
+			<img name="workInOut" class="col-xs-6" src="<c:url value='/img/vacation.jpg'/>"
+			id="workList" onclick="javascript:location.href='<c:url value = '/'/>user/userStatus'" align="left">
+			</div>
+			</div>
+			<button type="button" class="btn btn-danger col-xs-6" onclick="javascript:location.href='<c:url value = '/'/>user/userWorkList'">출퇴근을 꼭 체크 합시다</button>
+			<button type="button" class="btn btn-info col-xs-6" onclick="javascript:location.href='<c:url value = '/'/>user/userStatus'">휴가/반차 신청</button>
+			</div>
+			
+		
 
 								
 
