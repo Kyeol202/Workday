@@ -67,7 +67,7 @@ $(document).ready(function() {
 								<li><a href="#">내 출퇴근</a></li>
 								<li class="active">출근 입력</li>
 							</ol>
-
+							
 							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-warning">결재</button>
 
 							<div class="modal modal-warning fade" id="modal-warning">
@@ -89,7 +89,6 @@ $(document).ready(function() {
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">닫기</button>
-												<!--                 <button type="button" class="btn btn-outline" id="reasonText">조퇴사유 입력</button> -->
 												<button type="button" class="btn btn-default" id="statusReasonUpdate">저장</button>
 											</div>
 									</div>
@@ -142,7 +141,10 @@ $(document).ready(function() {
 														<c:if test="${approval.apv_ok eq 'E' }">
 															<td>반려</td>
 														</c:if>
-														<td>${statusAllList.apv_start }</td>
+														<c:if test="${approval.apv_ok eq 'W' }">
+															<td>대기</td>
+														</c:if>
+														<td>${approval.apv_start }</td>
 														<td>${approval.apv_end }</td>
 														<td>${approval.apv_aply }</td>
 														<td>${approval.apv_aplydate }</td>

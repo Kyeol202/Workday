@@ -120,6 +120,7 @@ public class ApprovalController {
 		return "work/userStatusRecordSelectOne";
 	}
 	
+	// 결재 승인/반려
 	@RequestMapping(value = "user/userApprovalUpdate")
 	public String userApprovalUpdate(Approval aDto) {
 		
