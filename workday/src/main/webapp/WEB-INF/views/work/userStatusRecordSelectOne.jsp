@@ -67,7 +67,7 @@ $(document).ready(function() {
 								<li><a href="#">내 출퇴근</a></li>
 								<li class="active">출근 입력</li>
 							</ol>
-
+							
 							<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-warning">결재</button>
 
 							<div class="modal modal-warning fade" id="modal-warning">
