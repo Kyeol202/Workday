@@ -42,7 +42,7 @@
 															aria-label="CSS grade: activate to sort column ascending"
 															style="width: 115px;">근무상태</th>
 													</tr>
-												</thead>
+												</thead> 
 			<tbody>
 				<c:forEach var="workAllList" items="${workAllList }">
 				<c:choose>
