@@ -141,11 +141,21 @@ $(document).ready(function() {
                 <tr role="row" class="odd">
                   <td class="sorting_1">${userInfo.u_id }</td>
                   <td>${userInfo.u_name }</td>
-                  <td>${userInfo.d_id }</td>
+                  <c:if test="${userInfo.d_id eq 1 }">
+						<td>경영지원</td>
+						</c:if>
+						<c:if test="${userInfo.d_id eq 2 }">
+						<td>연구소</td>
+						</c:if>
                   <td>${userInfo.u_email }</td>
                   <td>${userInfo.u_position }</td>
                    <td>${userInfo.u_phone }</td>
-                    <td>${userInfo.u_status }</td>
+                   <c:if test="${userInfo.u_status eq 'N' }">
+					<td>퇴사</td>
+					</c:if>
+					<c:if test="${userInfo.u_status eq 'Y' }">
+					<td>재직</td>
+					</c:if>
                 </tr>
 
                 </tbody>
