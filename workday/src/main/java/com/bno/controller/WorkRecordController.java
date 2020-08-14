@@ -67,12 +67,9 @@ public class WorkRecordController {
 
 		//근태관리 출근 날짜 리스트 출력
 		List<WorkRecord> inOutList = service.inOutAllList(wDto);
-		for(int i =0; i < inOutList.size(); i++) {
-			
-			System.out.println(inOutList.get(i).getW_out());
-			System.out.println(inOutList.get(i).getU_id());
-		}
-//			유저 세션이 null이 아니고 출근날짜 리스트에 출근시간이 null이면 출근 insert
+//		for(int i =0; i < inOutList.size(); i++) {
+
+//			유저 세션이 null이 아니고 9시 이전 출근 이면 정상출근
 			if(user != null && result >= 0) {
 //				if(inOutList.get(i).getW_in() == null) {
 					service.userWorkIn(wDto);
@@ -84,10 +81,12 @@ public class WorkRecordController {
 //				}
 					
 				}
+				//유저 세션이 null이 아니고 9시 이후 출근이면 지각
 				else if(user != null &&result < 0) {
 					service.userWorkLate(wDto);
 					path = "redirect:/user/userWorkList";
 				} 
+			
 				else path = "redirect:/user/userlogin";
 //		}
 		
@@ -292,5 +291,6 @@ public class WorkRecordController {
 
 					return "admin/ajax/adminWorkList_ajax";
 				}
+				
 	
 }//class end!

@@ -59,7 +59,7 @@
 						</c:if>
 						<td>${workAllList.w_in }</td>
 						<td>${workAllList.w_out }</td>
-						<td>${workAllList.w_time }분</td>
+						<td>${workAllList.w_time /60}시간</td>
 						<c:if test="${workAllList.w_status eq 'Y' }">
 						<td>정상출근</td>
 						</c:if>
