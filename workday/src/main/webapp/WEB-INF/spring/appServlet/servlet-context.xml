@@ -36,6 +36,22 @@
 	
 	<context:component-scan base-package="com.bno" />
 	
-	
+		<interceptors>
+		<!-- 세션이없으면 로그인하세요 처리 -->
+		<interceptor>
+			<mapping path="/user/userWorkList" />
+			<mapping path="/user/WorkRecordSelectOne"/>
+			<mapping path="/user/userStatus"/>
+			<mapping path="/user/userStatusRequest"/>
+			<mapping path="/user/StatusRecordSelectOne" />
+			<beans:bean id="loggerInterceptor" class="com.bno.common.LoginCheckInterceptor" />
+		</interceptor>
+		
+				<!-- 관리자가 아니면 권한 없음 처리 -->
+		<interceptor>		
+			<mapping path="/admin/**" />
+			<beans:bean id="adminInterceptor" class="com.bno.common.AdminCheckInterceptor" />
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>
