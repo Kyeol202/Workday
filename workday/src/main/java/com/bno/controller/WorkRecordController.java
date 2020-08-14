@@ -146,7 +146,7 @@ public class WorkRecordController {
 		}
 	
 		
-		//사용자 퇴튼
+		//사용자 퇴근
 		@RequestMapping(value ="user/userWorkOut")
 		public String userWorkOut(@RequestParam("w_id")int w_id, HttpSession session, WorkRecord wDto) {
 			

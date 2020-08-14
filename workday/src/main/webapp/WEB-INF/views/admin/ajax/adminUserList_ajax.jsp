@@ -49,11 +49,18 @@
 					<tr role="row">
 						<td>${adminUserAllList.u_id }</td>
 						<td onclick="javascript:location.href='<c:url value="/"/>admin/adminUserSelectOne?u_id=${adminUserAllList.u_id }'">${adminUserAllList.u_name }</td>
-						<td>${adminUserAllList.d_id }</td>
+					 	<c:if test="${adminUserAllList.d_id eq 1 }">
+						<td>경영지원</td>
+						</c:if>
+						<c:if test="${adminUserAllList.d_id eq 2 }">
+						<td>연구소</td>
+						</c:if>
 						<td>${adminUserAllList.u_email }</td>
 						<td>${adminUserAllList.u_position }</td>
 						<td>${adminUserAllList.u_phone }</td>
-						<td>${adminUserAllList.u_status }</td>
+						<c:if test="${adminUserAllList.u_status eq 'Y' }">
+						<td>재직중</td>
+						</c:if>
 					</tr>
 					</c:when>
 					<c:otherwise>
