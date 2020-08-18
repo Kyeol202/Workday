@@ -37,7 +37,12 @@
 						<c:if test="${statusAllList.d_id eq 2 }">
 							<td>연구소</td>
 						</c:if>
-						<td>${statusAllList.apv_div }</td>
+							<c:if test="${statusAllList.apv_div eq 'V' }">
+							<td>휴가</td>
+						</c:if>
+						<c:if test="${statusAllList.apv_div eq 'A' }">
+							<td>반차</td>
+						</c:if>
 						<c:if test="${statusAllList.apv_ok eq 'Y' }">
 							<td>승인</td>
 						</c:if>
