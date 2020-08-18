@@ -26,6 +26,14 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 		
 		return dao.inOutAllList(wDto);
 	}
+	
+	//사용자 출근 중복 체크
+	@Override
+	public int userWorkInCheck(int u_id) {
+		
+		return dao.userWorkInCheck(u_id);
+	}
+
 
 	//사용자 출근 입력(정상)
 	@Override

@@ -13,6 +13,9 @@ public interface WorkRecordDao {
 	//출퇴근 전체 리스트
 	public List<WorkRecord> inOutAllList(WorkRecord wDto);
 	
+	//사용자 출근 중복체크
+	public int userWorkInCheck(int u_id);
+	
 	//사용자 출근 입력(정상)
 	public void userWorkIn(WorkRecord dto);
 	

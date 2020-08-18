@@ -31,6 +31,14 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 		
 		return inOutAllList;
 	}
+	
+	//사용자 출근 중복 체크
+	@Override
+	public int userWorkInCheck(int u_id) {
+			
+		return session.selectOne(queryprefix+"userWorkInCheck", u_id);
+	}
+
 
 	//사용자 출근 입력(정상)
 	@Override
@@ -90,7 +98,7 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 	//사용자 상태 및 조퇴사유
 	@Override
 	public WorkRecord statusReasonUpdate(WorkRecord wDto) {
-	System.out.println("wDto = "+wDto);
+//	System.out.println("wDto = "+wDto);
 	
 	return session.selectOne(queryprefix+"statusReasonUpdate", wDto);	
 	}

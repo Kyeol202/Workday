@@ -42,6 +42,14 @@
 	)
 	</insert>
 	
+<!-- 	출근 중복 체크 -->
+	<select id="userWorkInCheck" parameterType="WorkRecord" resultType="int">
+	SELECT COUNT(*)
+	FROM WORK_RECORD
+	WHERE U_ID = #{u_id} AND W_IN LIKE TO_CHAR(SYSDATE, 'YYYY-MM-DD%')
+	
+	</select>
+	
 <!-- 	출근 입력(지각) -->
 	<insert id="userWorkLate" parameterType="WorkRecord">
 	INSERT INTO WORK_RECORD(

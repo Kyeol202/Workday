@@ -41,9 +41,25 @@ public class WorkRecordController {
 		return"work/userWorkList";
 	}
 	
+	//출근 중복 테스트
+	@RequestMapping(value = "user/workInCheck")
+	public String workInCheck(int u_id) {
+		
+		String path = "";
+		
+		int result = service.userWorkInCheck(u_id);
+		System.out.println(result);
+		if (result <= 0) {
+			
+			path = "forward:/user/userWorkIn";
+		}
+		else path = "work/userWorkList";
+		return path;
+	}
+	
 	//사용자 출근
 	@RequestMapping(value = "user/userWorkIn")
-	public String userWorkIn(HttpSession session, WorkRecord wDto) {
+	public String userWorkIn(HttpSession session, WorkRecord wDto, Model model) {
 	logger.info("this is a userWorkIn method");
 		UserInfo user = (UserInfo) session.getAttribute("loginUser");
 		String path = "";
@@ -61,24 +77,18 @@ public class WorkRecordController {
 		SimpleDateFormat currentTime = new SimpleDateFormat("yyyyMMddHHmm");
 		String current = currentTime.format(cal.getTime());
 		System.out.println(today);
-		
+		System.out.println(today.substring(0, 10));
 		int result = standard.compareTo(current);
 		
 
 		//근태관리 출근 날짜 리스트 출력
-		List<WorkRecord> inOutList = service.inOutAllList(wDto);
-//		for(int i =0; i < inOutList.size(); i++) {
-
 //			유저 세션이 null이 아니고 9시 이전 출근 이면 정상출근
 			if(user != null && result >= 0) {
-//				if(inOutList.get(i).getW_in() == null) {
+
+
 					service.userWorkIn(wDto);
-					path = "redirect:/user/userWorkList";
-//				}
-//				 else if (inOutList.get(i).getW_in().substring(0, 10).equals(today)) {
-//					
-//					path = "redirect:/user/userWorkList";
-//				}
+					path = "work/userWorkList";
+
 					
 				}
 				//유저 세션이 null이 아니고 9시 이후 출근이면 지각
@@ -197,6 +207,9 @@ public class WorkRecordController {
 			
 			return "redirect:/user/userWorkList";
 		}
+		
+
+		
 		
 		//사용자 상태 업데이트(조퇴)
 		@RequestMapping(value = "user/userStatusReasonUpdate")
