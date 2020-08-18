@@ -156,7 +156,19 @@ public class WorkRecordController {
 		}
 		
 		//퇴근 중복 테스트
-		
+		@RequestMapping(value = "user/userWorkOutCheck")
+		public String userWorkOutCheck(int u_id) {
+			String path = "";
+			int result = service.userWorkOutCheck(u_id);
+			System.out.println(result);
+			if (result<=0) {
+				
+				path = "forward:/user/userWorkOut";
+			} else path = "work/userWorkList";
+			
+			
+			return path;
+		}
 		
 		//사용자 퇴근
 		@RequestMapping(value ="user/userWorkOut")

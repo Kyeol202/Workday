@@ -70,6 +70,13 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 		return dao.workRecordSelectOne(w_id);
 	}
 	
+	//사용자 퇴근 중복 테스트
+	@Override
+	public int userWorkOutCheck(int u_id) {
+		
+		return dao.userWorkOutCheck(u_id);
+	}
+
 	//사용자 퇴근
 	@Override
 	public void userWorkOut(int w_id) {

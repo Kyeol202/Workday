@@ -80,6 +80,13 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 	}
 	
 	
+	//사용자 퇴근 중복방지 테스트
+	@Override
+	public int userWorkOutCheck(int u_id) {
+		
+		return session.selectOne(queryprefix+"userWorkOutCheck", u_id);
+	}
+
 	//사용자 퇴근
 	@Override
 	public void userWorkOut(int w_id) {

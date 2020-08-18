@@ -106,6 +106,13 @@
 	WHERE W_ID = #{w_id}
 	</select>
 	
+<!-- 	퇴근 중복방지 테스트 -->
+	<select id="userWorkOutCheck" parameterType="WorkRecord" resultType="int">
+	SELECT COUNT(*)
+	FROM WORK_RECORD
+	WHERE U_ID = #{u_id} AND W_OUT LIKE TO_CHAR(SYSDATE, 'YYYY-MM-DD%')
+	</select>	
+	
 	<!-- 퇴근시간 입력 -->
 	<update id="userWorkOut" parameterType="WorkRecord">
 	UPDATE WORK_RECORD

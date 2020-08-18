@@ -32,6 +32,9 @@ public interface WorkRecordService {
 	//상세조회
 	public WorkRecord workRecordSelectOne(int w_id);
 	
+	//사용자 퇴근 중복 테스트
+	public int userWorkOutCheck(int u_id);
+	
 	//사용자 퇴근
 	public void userWorkOut(int w_id);
 	

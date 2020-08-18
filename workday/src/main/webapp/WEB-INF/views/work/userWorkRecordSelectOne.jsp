@@ -14,7 +14,7 @@ $(document).ready(function() {
 		var confirmWork = confirm('퇴근 하시겠습니까?');
 		
 		if(confirmWork == true) {
-		var url = "<%=contextPath%>"+"/user/userWorkOut";
+		var url = "<%=contextPath%>"+"/user/userWorkOutCheck";
 		$("#userWorkOutCheck").attr("action", url);
 		$("#userWorkOutCheck").submit();
 		}
