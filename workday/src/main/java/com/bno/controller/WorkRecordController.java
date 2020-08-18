@@ -154,7 +154,9 @@ public class WorkRecordController {
 			
 			return "work/userWorkRecordSelectOne";
 		}
-	
+		
+		//퇴근 중복 테스트
+		
 		
 		//사용자 퇴근
 		@RequestMapping(value ="user/userWorkOut")
