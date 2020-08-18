@@ -153,13 +153,7 @@
 	SET 	W_OUT = #{w_out}
 	WHERE W_ID = #{w_id}
 	</update>
-	
-<!-- 	인서트 중복 방지 -->
-	<select id="insertCheck" resultType="WorkRecord">
-	SELECT *
-	FROM WORK_RECORD
-	WHERE W_ID = #{w_id} AND U_ID = #{u_id}
-	</select>
+
 	
 	
 </mapper>

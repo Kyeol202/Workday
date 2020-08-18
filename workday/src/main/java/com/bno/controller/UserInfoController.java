@@ -32,6 +32,8 @@ public class UserInfoController {
 	public String userHome(Model model, HttpSession session) {
 		logger.info("this is userHome method");
 
+		
+		
 		return "user/userHome";
 	}
 	

@@ -38,8 +38,10 @@
 								<div class="row">
 									<div class="col flexBox" style="justify-content: flex-start; padding: 0 16px;">
 										<h2 class="box-title">근태관리</h2>
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+													
 									</div>
+									
 									
 									
 
@@ -55,8 +57,10 @@
 			<button type="button" class="btn btn-danger col-xs-6" onclick="javascript:location.href='<c:url value = '/'/>user/userWorkList'">출퇴근을 꼭 체크 합시다</button>
 			<button type="button" class="btn btn-info col-xs-6" onclick="javascript:location.href='<c:url value = '/'/>user/userStatus'">휴가/반차 신청</button>
 			</div>
+			<div>
 			
-		
+			
+			</div>
 
 								
 

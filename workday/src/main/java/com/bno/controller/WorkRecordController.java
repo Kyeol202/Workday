@@ -288,9 +288,8 @@ public class WorkRecordController {
 
 			service.userTimeUpdateOk(wDto);
 			service.updateWTime(wDto.getW_id());
-
 			
-			return "redirect:/admin/adminWorkList";
+			return "redirect:/user/userWorkList";
 		}
 		
 		
