@@ -126,7 +126,7 @@
 									</div>
 
 									<div class="form-group has-feedback">
-										<label>퇴근 날짜 : 기본 18시</label> <input type="text" name="w_out"  id="w_out" class="form-control">
+										<label>퇴근 날짜 : 기본 18시</label> <input type="text" value="${workRecord.w_out }"  name="w_out"  id="w_out" class="form-control">
 									</div>
 									<input type="button" id="userTimeUpdateOk" value="최종수정" class="btn btn-info">
 								</form>

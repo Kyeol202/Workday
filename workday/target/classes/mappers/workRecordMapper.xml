@@ -151,7 +151,7 @@
 	<update id="userTimeUpdateOk" parameterType="WorkRecord">
 	UPDATE WORK_RECORD
 	SET 	W_OUT = #{w_out}
-	WHERE W_ID = #{w_id} AND U_ID = #{u_id}
+	WHERE W_ID = #{w_id}
 	</update>
 	
 <!-- 	인서트 중복 방지 -->

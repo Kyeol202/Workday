@@ -284,12 +284,13 @@ public class WorkRecordController {
 		//사용자 근무기록 수정 완료
 		@RequestMapping(value = "admin/userTimeUpdateOk")
 		public String userTimeUpdateOk(WorkRecord wDto, RedirectAttributes redirectAttributes) {
-			System.out.println("service 전 = "+wDto.getW_out());
+			String w = wDto.getW_out();
+
 			service.userTimeUpdateOk(wDto);
-			System.out.println("service 후 = "+wDto);
-			redirectAttributes.addAttribute(wDto.getW_id());
+			service.updateWTime(wDto.getW_id());
+
 			
-			return "";
+			return "redirect:/admin/adminWorkList";
 		}
 		
 		
