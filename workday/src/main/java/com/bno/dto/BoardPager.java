@@ -30,7 +30,7 @@ public class BoardPager {
     // 검색 변수 추가
     private String searchSort;
     private String searchVal;
-   private int u_id;
+    private int u_id;
     
     
     // 생성자

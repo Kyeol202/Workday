@@ -57,10 +57,7 @@
 			<button type="button" class="btn btn-danger col-xs-6" onclick="javascript:location.href='<c:url value = '/'/>user/userWorkList'">출퇴근을 꼭 체크 합시다</button>
 			<button type="button" class="btn btn-info col-xs-6" onclick="javascript:location.href='<c:url value = '/'/>user/userStatus'">휴가/반차 신청</button>
 			</div>
-			<div>
-			
-			
-			</div>
+
 
 								
 

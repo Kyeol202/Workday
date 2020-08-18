@@ -20,7 +20,7 @@
 			
 			<c:choose>
 				<c:when test="${loginUser != null}">
-					<c:if test="${loginUser.u_position eq '대표이사'}">
+					<c:if test="${loginUser.u_id eq 1}">
 					<li class="myPage treeview">
 						<a href="#">
 							<i class="fa fa-user"></i> <span>부서 페이지</span>
@@ -53,7 +53,10 @@
 					</c:if>
 					</c:when>
 			</c:choose>
-			<li class="gpx treeview">
+			<c:choose>
+				<c:when test="${loginUser != null}">
+					<c:if test="${loginUser.u_id eq 1}">
+			<li class="gpx treeview" hidden>
 				<a href="#">
 					<i class="fa fa-map"></i>
 					<span>출퇴근</span>
@@ -63,7 +66,7 @@
 					<li><a href="javascript:location.href='<c:url value="/"/>user/userWorkList'">출퇴근 입력</a></li>
 				</ul>
 			</li>
-			<li class="community treeview">
+			<li class="community treeview" hidden>
 				<a href="#">
 					<i class="fa fa-commenting"></i>
 					<span>상태관리</span>
@@ -73,7 +76,9 @@
 					<li><a href="javascript:location.href='<c:url value="/"/>user/userStatus'">조퇴/반차/휴가</a></li>
 				</ul>
 			</li>
-
+			</c:if>
+			</c:when>
+			</c:choose>
 		</ul>
 		<!-- /.sidebar-menu -->
 	</section>

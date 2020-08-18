@@ -16,7 +16,9 @@ import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
 import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
+import com.bno.dto.WorkRecord;
 import com.bno.service.UserInfoService;
+import com.bno.service.WorkRecordService;
 
 @Controller
 public class UserInfoController {
@@ -26,10 +28,12 @@ public class UserInfoController {
 	@Autowired
 	private UserInfoService service;
 	
+	@Autowired
+	private WorkRecordService workService;
 	
 	//사용자 홈 화면
 	@RequestMapping(value = "userHome")
-	public String userHome(Model model, HttpSession session) {
+	public String userHome() {
 		logger.info("this is userHome method");
 
 		
