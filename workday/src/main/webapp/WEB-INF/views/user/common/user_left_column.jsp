@@ -77,7 +77,7 @@
 			</li>
 			</c:when>
 			<c:otherwise>
-			<li class="gpx treeview">
+			<li class="gpx treeview"> 
 				<a href="#">
 					<i class="fa fa-map"></i>
 					<span>출퇴근</span>
