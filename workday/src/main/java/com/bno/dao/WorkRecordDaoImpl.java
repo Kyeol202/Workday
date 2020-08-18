@@ -118,14 +118,13 @@ public class WorkRecordDaoImpl implements WorkRecordDao {
 		session.delete(queryprefix+"userWorkDelete", w_id);
 	}
 	
-	
-
-	//인서트 중복 방지
+	//사용자 근무시간 수정
 	@Override
-	public WorkRecord insertCheck(WorkRecord wDto) {
-
-		return session.selectOne(queryprefix+"insertCheck", wDto);
+	public WorkRecord userTimeUpdateOk(WorkRecord wDto) {
+		System.out.println("근무시간 수정 데이터 = "+wDto);
+		return session.selectOne(queryprefix+"userTimeUpdateOk", wDto);
 	}
+	
 	
 
 	

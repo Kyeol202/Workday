@@ -101,7 +101,7 @@
 	
 	<!-- 상세보기 -->
 	<select id="workRecordSelectOne" parameterType="int" resultType="WorkRecord">
-	SELECT W_IN, W_OUT, ROUND(W_TIME, 2) AS W_TIME, W_STATUS, W_REASON, W_ID
+	SELECT W_IN, W_OUT, ROUND(W_TIME, 2) AS W_TIME, W_STATUS, W_REASON, W_ID, U_ID
 	FROM WORK_RECORD
 	WHERE W_ID = #{w_id}
 	</select>
@@ -124,10 +124,10 @@
 	<!-- 근무시간 계산 -->
 	<update id="updateWTime" parameterType="WorkRecord">
 	UPDATE WORK_RECORD
-	SET W_TIME = (SELECT (
+	SET W_TIME = (SELECT ROUND( (
 	TO_DATE(W_OUT, 'YYYY-MM-DD HH24:MI') -
 	TO_DATE(W_IN, 'YYYY-MM-DD HH24:MI')
-	)*24*60
+	),2) *24*60
 	FROM WORK_RECORD
 	WHERE W_ID = #{w_id} )
 	WHERE W_ID = #{w_id}
@@ -137,16 +137,22 @@
 	<update id="statusReasonUpdate" parameterType="WorkRecord">
 	UPDATE WORK_RECORD
 	SET W_STATUS = #{w_status}, W_REASON = #{w_reason}
-	WHERE W_ID = #{w_id}
+	WHERE W_ID = #{w_id} 
 	</update>
 	
 <!-- 	사용자 근무기록 삭제 -->
 	<delete id="userWorkDelete" parameterType="int">
 	DELETE FROM WORK_RECORD
-	WHERE W_ID = #{w_id}
+	WHERE W_ID = #{w_id} 
 	
 	</delete>
 	
+<!-- 	사용자 근무시간 수정 -->
+	<update id="userTimeUpdateOk" parameterType="WorkRecord">
+	UPDATE WORK_RECORD
+	SET 	W_OUT = #{w_out}
+	WHERE W_ID = #{w_id} AND U_ID = #{u_id}
+	</update>
 	
 <!-- 	인서트 중복 방지 -->
 	<select id="insertCheck" resultType="WorkRecord">

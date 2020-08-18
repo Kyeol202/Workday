@@ -256,7 +256,7 @@ public class WorkRecordController {
 						
 						
 						path = "work/userWorkList";
-;
+
 			
 			
 			return path;
@@ -270,6 +270,29 @@ public class WorkRecordController {
 			service.userWorkDelete(w_id);
 			return "redirect:/user/userWorkList";
 		}
+		
+		//사용자 근무기록 수정 폼
+		@RequestMapping(value = "admin/userWorkUpdateForm")
+		public String userWorkUpdate(int w_id, Model model) {
+			
+			WorkRecord workRecord = service.workRecordSelectOne(w_id);
+			model.addAttribute("workRecord", workRecord);
+			
+			return "admin/adminUserWorkUpdateForm";
+		}
+		
+		//사용자 근무기록 수정 완료
+		@RequestMapping(value = "admin/userTimeUpdateOk")
+		public String userTimeUpdateOk(WorkRecord wDto, RedirectAttributes redirectAttributes) {
+			System.out.println("service 전 = "+wDto.getW_out());
+			service.userTimeUpdateOk(wDto);
+			System.out.println("service 후 = "+wDto);
+			redirectAttributes.addAttribute(wDto.getW_id());
+			
+			return "";
+		}
+		
+		
 		
 		
 		//출근리스트 관리자 화면
@@ -318,6 +341,8 @@ public class WorkRecordController {
 
 					return "admin/ajax/adminWorkList_ajax";
 				}
+				
+				
 				
 	
 }//class end!

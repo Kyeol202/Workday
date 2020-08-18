@@ -47,7 +47,8 @@ public interface WorkRecordService {
 	//사용자 근무기록 삭제
 	public void userWorkDelete(int w_id);
 	
-	//인서트 중복방지
-	public WorkRecord insertCheck(WorkRecord wDto);
+	//사용자 근무시간 수정
+	public WorkRecord userTimeUpdateOk(WorkRecord wDto);
+	
 	
 }//interface end

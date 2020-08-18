@@ -104,14 +104,14 @@ public class WrokRecordServiceImpl implements WorkRecordService {
 		
 		dao.userWorkDelete(w_id);
 	}
-
+	
+	//사용자 근무시간 수정
 	@Override
-	public WorkRecord insertCheck(WorkRecord wDto) {
+	public WorkRecord userTimeUpdateOk(WorkRecord wDto) {
 		
-		return dao.insertCheck(wDto);
+		return dao.userTimeUpdateOk(wDto);
 	}
-	
-	
+
 	
 	
 }//class end
