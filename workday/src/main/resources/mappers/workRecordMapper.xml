@@ -150,7 +150,7 @@
 <!-- 	사용자 근무시간 수정 -->
 	<update id="userTimeUpdateOk" parameterType="WorkRecord">
 	UPDATE WORK_RECORD
-	SET 	W_OUT = #{w_out}
+	SET W_OUT= #{w_out}
 	WHERE W_ID = #{w_id}
 	</update>
 
