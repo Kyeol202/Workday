@@ -34,6 +34,8 @@
 	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/jqGrid/ui.jqgrid.css" />
 	<!-- axGrid -->
 	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/AXJ.css" />
+	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/AXJ.min.css" />
+	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/page.css" />
 	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/AXButton.css" />
 	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/AXGrid.css" />
 	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/AXInput.css" />
@@ -85,6 +87,8 @@
 	<script type="text/javascript" src="<%= contextPath %>/bower_components/axGrid/AXInput.js"></script>
 	<script type="text/javascript" src="<%= contextPath %>/bower_components/axGrid/AXSelect.js"></script>
 	<script type="text/javascript" src="<%= contextPath %>/bower_components/axGrid/AXProgress.js"></script>
+<%-- 	<script type="text/javascript" src="<%= contextPath %>/bower_components/axGrid/page.js"></script> --%>
+<%-- 	<script type="text/javascript" src="<%= contextPath %>/bower_components/axGrid/pageTab.js"></script> --%>
 	<!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
