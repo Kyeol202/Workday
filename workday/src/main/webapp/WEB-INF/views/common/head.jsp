@@ -6,6 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <% String contextPath = request.getContextPath(); %>
 
+
 <!DOCTYPE html>
 <html>
 
@@ -27,6 +28,19 @@
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<%= contextPath %>/dist/css/AdminLTE.min.css">
 	<link rel="stylesheet" href="<%= contextPath %>/dist/css/skins/skin-blue.min.css">
+	<!-- 	jqGrid -->
+	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/jqGrid/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/jqGrid/ui.multiselect.css" />
+	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/jqGrid/ui.jqgrid.css" />
+	<!-- axGrid -->
+	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/AXJ.css" />
+	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/AXButton.css" />
+	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/AXGrid.css" />
+	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/AXInput.css" />
+	<link rel="stylesheet" type="text/css" href="<%= contextPath %>/bower_components/axGrid/AXSelect.css" />
+	
+
+
 	
 	<!-- datatables style -->
 	<link rel="stylesheet" href="<%= contextPath %>/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
@@ -42,8 +56,8 @@
 	
 	<!-- REQUIRED JS SCRIPTS -->
 	<!-- jQuery 3 -->
-	<script src="<%=contextPath%>/js/jquery-3.3.1.min.js"></script>
-	<script src="<%=contextPath%>/jquery/dist/jquery.js"></script>
+	<script src="<%=contextPath%>/jQuery/jquery-3.3.1.min.js"></script>
+	<script src="<%=contextPath%>/bower_components/jquery/dist/jquery.js"></script>
 	<script src="<%= contextPath %>/bower_components/jquery/dist/jquery.min.js"></script>
 	<!-- FullCalendar -->
 	<script src="<%=contextPath%>/moment/min/moment.min.js"></script>
@@ -60,10 +74,17 @@
 	<script src="<%= contextPath %>/bower_components/chart.js/Chart.js"></script>
 	<!-- FastClick -->
 	<script src="<%= contextPath %>/bower_components/fastclick/lib/fastclick.js"></script>
-
-
-
-
+	<!-- jqGrid -->
+	<script type="text/javascript" src="<%= contextPath %>/bower_components/jqGrid/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="<%= contextPath %>/bower_components/jqGrid/grid.locale-kr.js"></script>
+	<script type="text/javascript" src="<%= contextPath %>/bower_components/jqGrid/jquery-ui.js"></script>
+	<script type="text/javascript" src="<%= contextPath %>/bower_components/jqGrid/jquery.jqGrid.min.js"></script>
+	<!-- axGrid -->
+	<script type="text/javascript" src="<%= contextPath %>/bower_components/axGrid/AXJ.js"></script>
+	<script type="text/javascript" src="<%= contextPath %>/bower_components/axGrid/AXGrid.js"></script>
+	<script type="text/javascript" src="<%= contextPath %>/bower_components/axGrid/AXInput.js"></script>
+	<script type="text/javascript" src="<%= contextPath %>/bower_components/axGrid/AXSelect.js"></script>
+	<script type="text/javascript" src="<%= contextPath %>/bower_components/axGrid/AXProgress.js"></script>
 	<!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->

@@ -262,6 +262,12 @@ public class WorkRecordController {
 			return path;
 		}
 		
+		@RequestMapping(value = "user/userGrid")
+		public String userGrid() {
+			
+			return "work/test";
+		}
+		
 //-----------------------------------------------------------------------관리자-----------------------------------------------------------
 		
 		//사용자 근무기록 삭제

@@ -21,13 +21,20 @@
 	<resources mapping="/dist/**" location="/resources/adminLTE/dist/" />
 	<resources mapping="/css/**" location="/resources/css/" />
 	
+
+	
 	
 
 		<!-- js파일 저장 경로 설정 -->
 	<resources mapping="/js/**" location="/resources/js/" />
 	<!-- img파일 저장경로 -->
 	<resources mapping="/img/**" location="/resources/img/" />	
+	
+	<!-- 	jQuery 저장경로 -->
+	<resources mapping="/jQuery/**" location="/resources/jQuery/" />	
 
+	
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
