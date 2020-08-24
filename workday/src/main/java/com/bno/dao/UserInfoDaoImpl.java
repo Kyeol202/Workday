@@ -1,5 +1,6 @@
 package com.bno.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -96,6 +97,17 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	public void adminUserDelete(int u_id) {
 		
 		session.delete(queryprefix+"adminUserDelete", u_id);
+	}
+	
+	
+	//그리드 테스트
+	@Override
+	public List<UserInfo> gridTest(UserInfo uDto) {
+		
+		List<UserInfo> gridList = new ArrayList<UserInfo>();
+		gridList = session.selectList(queryprefix+"gridTest", uDto);
+		System.out.println("그리드 테스트 = "+gridList);
+		return gridList;
 	}
 	
 	

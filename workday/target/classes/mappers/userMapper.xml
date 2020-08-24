@@ -121,5 +121,11 @@
 	WHERE U_ID = #{u_id} AND U_STATUS = 'N'
 	
 	</delete>
+	
+	<!-- 그리드 테스트 -->
+	<select id="gridTest" resultType="UserInfo">
+	SELECT *
+	FROM USER_INFO
+	</select>
 		
 </mapper>

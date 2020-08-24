@@ -91,6 +91,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 	
 	
+	//그리드 테스트
+	@Override
+	public List<UserInfo> gridTest(UserInfo uDto) {
+		
+		return dao.gridTest(uDto);
+	}
+	
+	
 	
 	
 	

@@ -22,6 +22,8 @@
 	<resources mapping="/css/**" location="/resources/css/" />
 	
 
+	<resources mapping="/fullcalendar/**" location="/resources/calendar/fullcalendar/" />
+	<resources mapping="/moment/**" location="/resources/calendar/moment/" />
 	
 	
 

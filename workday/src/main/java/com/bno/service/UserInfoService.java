@@ -39,4 +39,7 @@ public interface UserInfoService {
 	//사용자 정보 완전 삭제(Delete)
 	public void adminUserDelete(int u_id);
 	
+	//그리드 테스트
+	public List<UserInfo> gridTest(UserInfo uDto);
+	
 }//interface end

@@ -1,7 +1,15 @@
 package com.bno.controller;
 
-import java.util.List;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -9,11 +17,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bno.common.JsonUtil;
 import com.bno.dto.BoardPager;
 import com.bno.dto.JoinDto;
+import com.bno.dto.JqGrid;
 import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
 import com.bno.dto.WorkRecord;
@@ -131,6 +144,37 @@ public class UserInfoController {
 		service.myPageUserInfo(uDto);
 		
 		return "redirect:/user/userlogin";
+	}
+	
+	
+	@RequestMapping(value = "user/userGrid2")
+	public String userGrid2(UserInfo uDto, Model model) {
+		
+		List<UserInfo> gridList = new ArrayList<UserInfo>();
+		gridList = service.gridTest(uDto);
+		
+		model.addAttribute("gridList", gridList);
+		
+		return "work/test2";
+	}
+	
+	@RequestMapping(value = "user/userGridTest")
+	@ResponseBody
+	public String userGridTest(@RequestParam(value="page", required=false, defaultValue="1") String page,
+			@RequestParam(value="rows", required=false, defaultValue="") String rows) {
+		
+		System.out.println(page);
+//		List<UserInfo> list = service.gridTest(uDto);
+//		System.out.println(list);
+		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+
+//		JsonObj totalCnt = service.getCount();
+
+		HashMap<String, Object> tempMap = new HashMap<String, Object>();
+		System.out.println(page);
+	        
+		
+		return "";
 	}
 	
 //------------------------------------------------------------------관리자-----------------------------------------------------	
