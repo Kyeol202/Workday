@@ -179,11 +179,20 @@ public class UserInfoController {
 					
 					tempMap.put("u_id"		, list.get(i).getU_id());
 					tempMap.put("u_name"	, list.get(i).getU_name());
-					tempMap.put("d_id"	, list.get(i).getD_id());
+					if(list.get(i).getD_id() == 1) {
+						tempMap.put("d_id"	,"경영지원");
+					} else if(list.get(i).getD_id() == 2) {
+						tempMap.put("d_id"	,"연구소");
+					}
 					tempMap.put("u_email"	, list.get(i).getU_email());
 					tempMap.put("u_position"		, list.get(i).getU_position());
 					tempMap.put("u_phone"		, list.get(i).getU_phone());
-					tempMap.put("u_status"		, list.get(i).getU_status());
+					if(list.get(i).getU_status().equals("Y")) {
+						tempMap.put("u_status"		, "재직중");
+					} else if(list.get(i).getU_status().equals("N")) {
+						tempMap.put("u_status"		, "퇴사");
+					}
+					
 					
 
 					resultList.add(tempMap);
