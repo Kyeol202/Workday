@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.bno.dao.UserInfoDao;
 import com.bno.dto.BoardPager;
+import com.bno.dto.JqGrid;
 import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
 @Service
@@ -90,17 +91,20 @@ public class UserInfoServiceImpl implements UserInfoService {
 		dao.adminUserDelete(u_id);
 	}
 	
-	
 	//그리드 테스트
 	@Override
-	public List<UserInfo> gridTest(UserInfo uDto) {
+	public List<UserInfo> gridTest(String page, String rows) {
 		
-		return dao.gridTest(uDto);
+		return dao.gridTest(page, rows);
 	}
 	
-	
-	
-	
+	//그리드 카운트
+	@Override
+	public JqGrid gridCount() {
+		
+		return dao.gridCount();
+	}
+
 	
 	
 }//class end

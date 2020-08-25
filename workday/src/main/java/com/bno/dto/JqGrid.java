@@ -8,7 +8,8 @@ public class JqGrid {
 	
 	private int page;
 	private int records;
-	private List<Map<String, Object>> ros = new ArrayList<Map<String,Object>>();
+	private int total;
+	private List<Map<String, Object>> rows = new ArrayList<Map<String,Object>>();
 	
 	
 	
@@ -18,11 +19,12 @@ public class JqGrid {
 
 
 
-	public JqGrid(int page, int records, List<Map<String, Object>> ros) {
+	public JqGrid(int page, int records, List<Map<String, Object>> rows, int total) {
 		super();
 		this.page = page;
 		this.records = records;
-		this.ros = ros;
+		this.rows = rows;
+		this.total = total;
 	}
 
 
@@ -51,25 +53,35 @@ public class JqGrid {
 
 
 
-	public List<Map<String, Object>> getRos() {
-		return ros;
+	public List<Map<String, Object>> getrows() {
+		return rows;
 	}
 
 
 
-	public void setRos(List<Map<String, Object>> ros) {
-		this.ros = ros;
+	public void setrows(List<Map<String, Object>> rows) {
+		this.rows = rows;
+	}
+
+
+
+	public int getTotal() {
+		return total;
+	}
+
+
+
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "JqGrid [page=" + page + ", records=" + records + ", ros=" + ros + "]";
+		return "JqGrid [page=" + page + ", records=" + records + ", total=" + total + ", rows=" + rows + "]";
 	}
-	
-	
-	
+
 	
 	
 	

@@ -1,6 +1,7 @@
 package com.bno.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.bno.dto.BoardPager;
+import com.bno.dto.JqGrid;
 import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
 
@@ -102,13 +104,21 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	
 	//그리드 테스트
 	@Override
-	public List<UserInfo> gridTest(UserInfo uDto) {
+	public List<UserInfo> gridTest(String page, String rows) {
 		
-		List<UserInfo> gridList = new ArrayList<UserInfo>();
-		gridList = session.selectList(queryprefix+"gridTest", uDto);
-		System.out.println("그리드 테스트 = "+gridList);
-		return gridList;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		map.put("rows", rows);	
+		return session.selectList(queryprefix+"gridTest", map);
 	}
+	
+	//그리드 카운트
+	@Override
+	public JqGrid gridCount() {
+		
+		return session.selectOne(queryprefix+"gridCount");
+	}
+
 	
 	
 	

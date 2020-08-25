@@ -127,5 +127,10 @@
 	SELECT *
 	FROM USER_INFO
 	</select>
-		
+	
+	<!-- 그리드 카운트 -->
+	<select id="gridCount" resultType="com.bno.dto.JqGrid">
+	SELECT COUNT(*)
+	FROM USER_INFO
+	</select>	
 </mapper>

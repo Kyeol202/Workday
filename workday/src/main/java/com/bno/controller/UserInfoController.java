@@ -150,10 +150,7 @@ public class UserInfoController {
 	@RequestMapping(value = "user/userGrid2")
 	public String userGrid2(UserInfo uDto, Model model) {
 		
-		List<UserInfo> gridList = new ArrayList<UserInfo>();
-		gridList = service.gridTest(uDto);
-		
-		model.addAttribute("gridList", gridList);
+
 		
 		return "work/test2";
 	}
@@ -164,15 +161,38 @@ public class UserInfoController {
 			@RequestParam(value="rows", required=false, defaultValue="") String rows) {
 		
 		System.out.println(page);
-//		List<UserInfo> list = service.gridTest(uDto);
-//		System.out.println(list);
+		List<UserInfo> list = service.gridTest(page, rows);
+		System.out.println(list);
 		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
 
-//		JsonObj totalCnt = service.getCount();
+		JqGrid totalCnt = service.gridCount();
 
 		HashMap<String, Object> tempMap = new HashMap<String, Object>();
 		System.out.println(page);
-	        
+	    
+		//List 형식으로 된 데이터의 크기를 구함
+		int size = list.size();
+		System.out.println(size);
+		
+		for(int i = 0; i < size; i++) {
+			tempMap.put("u_id", list.get(i).getU_id());
+			tempMap.put("u_name", list.get(i).getU_name());
+			tempMap.put("d_id", list.get(i).getD_id());
+			tempMap.put("u_email", list.get(i).getU_email());
+			tempMap.put("u_position", list.get(i).getU_position());
+			tempMap.put("u_phone", list.get(i).getU_phone());
+			tempMap.put("u_status", list.get(i).getU_status());
+			
+			resultList.add(tempMap);
+			
+			tempMap = new HashMap<String, Object>();
+		}
+		
+		JqGrid jqGrid = new JqGrid();
+//		jqGrid.setTotal(totalCnt.getTotalPage());
+		
+		
+		
 		
 		return "";
 	}

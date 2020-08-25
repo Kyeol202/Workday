@@ -3,6 +3,7 @@ package com.bno.dao;
 import java.util.List;
 
 import com.bno.dto.BoardPager;
+import com.bno.dto.JqGrid;
 import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
 
@@ -40,7 +41,9 @@ public interface UserInfoDao {
 	public void adminUserDelete(int u_id);
 	
 	//그리드 테스트
-	public List<UserInfo> gridTest(UserInfo uDto);
+	public List<UserInfo> gridTest(String page,  String rows);
 	
+	//그리드 카운트
+	public JqGrid gridCount();
 	
 }//interface end

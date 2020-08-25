@@ -26,7 +26,8 @@ var jqgridTable =
 
 			$jqGrid.jqGrid({
 				url: "<c:url value="/"/>user/userGridTest",
-				datatype	:	"local",
+				mtype: "post",
+				datatype	:	"json",
 				colNames	:	cnames,
 				colModel	:	[
 					{name	: 	"u_id" , index : "user_id", width : 50 },

@@ -3,6 +3,7 @@ package com.bno.service;
 import java.util.List;
 
 import com.bno.dto.BoardPager;
+import com.bno.dto.JqGrid;
 import com.bno.dto.SearchDto;
 import com.bno.dto.UserInfo;
 import com.bno.dto.WorkRecord;
@@ -40,6 +41,9 @@ public interface UserInfoService {
 	public void adminUserDelete(int u_id);
 	
 	//그리드 테스트
-	public List<UserInfo> gridTest(UserInfo uDto);
+	public List<UserInfo> gridTest(String page,  String rows);
+	
+	//그리드 테스트 카운트
+	public JqGrid gridCount();
 	
 }//interface end
