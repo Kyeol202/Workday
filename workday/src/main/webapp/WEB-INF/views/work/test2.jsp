@@ -18,25 +18,37 @@ $(document).ready(function() {
 	jqgridTable.navGrid();
 })
 
+// onCellSelect: function(rowId, colId, val, e) {
+// 												//rowId : 현재 row의 id
+// 												//colId : cell의 인덱스, 선택된 컬럼의 순서
+// 												//val : 선택된 cell의 값
+// 												//e : 클릭한 객체
+				
+// 					var seq = $("#jqGrid").getCell(rowId, 'seq');
+					
+// 				}
+
 var jqgridTable =
 {
 		init : function () {
 			  var cnames = ['사번','이름','부서','이메일','직급','핸드폰번호', '재직상태'];
 				$jqGrid = $("#jqGrid");
 
+				
 			$jqGrid.jqGrid({
 				url: "<c:url value="/"/>user/userGridTest",
 				mtype: "post",
 				datatype	:	"json",
 				colNames	:	cnames,
 				colModel	:	[
-					{name	: 	"u_id" , index : "user_id", width : 50 },
+					{name	: 	"u_id" , index : "u_id", width : 50, key:true},
 					{name	: 	"u_name" , index : "u_name", width : 150 },
-					{name	: 	"d_id" , index : "d_id", width : 150 },
-					{name	: 	"u_email" , index : "u_email", width : 150},
-					{name	: 	"u_position" , index : "u_position", width : 150 },
-					{name	: 	"u_phone" , index : "u_phone", width : 150 },
-					{name	:	"u_status"	, index : "u_status"	, width : 150},
+					{name	: 	"d_id" , index : "d_id", width : 150},
+					{name	: 	"u_email" , index : "u_email", width : 150, editable:true},
+					{name	: 	"u_position" , index : "u_position", width : 150, editable:true },
+					{name	: 	"u_phone" , index : "u_phone", width : 150, editable:true },
+					{name	:	"u_status"	, index : "u_status"	, width : 150, editable:true,
+					},
 				],
 				height		: 480,
 				rowNum		: 10,
@@ -44,6 +56,7 @@ var jqgridTable =
 				pager		: "#jqGridPager",
 				rownumbers	: true,
 				viewrecords : true,
+				editable: true,
 				cellEdit	: true,
 				cellsubmit	: "clientArray",
 				caption		: "사용자 목록",
