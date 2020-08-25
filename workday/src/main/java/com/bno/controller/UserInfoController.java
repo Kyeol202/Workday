@@ -155,46 +155,55 @@ public class UserInfoController {
 		return "work/test2";
 	}
 	
-	@RequestMapping(value = "user/userGridTest")
+	
 	@ResponseBody
-	public String userGridTest(@RequestParam(value="page", required=false, defaultValue="1") String page,
+	@RequestMapping(value = "user/userGridTest")
+	public JqGrid userGridTest(@RequestParam(value="page", required=false, defaultValue="1") String page,
 			@RequestParam(value="rows", required=false, defaultValue="") String rows) {
-		
-		System.out.println(page);
-		List<UserInfo> list = service.gridTest(page, rows);
-		System.out.println(list);
-		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+		System.out.println("컨트롤러 도착");
+		//그리드에 뿌려주려는 데이터를 DB에서나 어디에서 가져온다
+				JqGrid obj = new JqGrid();
+				
+				
+				//그 데이터를 JqGrid에 setter로 세팅해준다.
+				//이 때 jqgrid가 알아먹을 수 있는 형태의 json으로 보내주어야 한다.
+				List<UserInfo> list = service.gridTest(page, rows);
+				List<Map<String, Object>> resultList = new ArrayList<Map<String,Object>>();
+				int int_page = Integer.parseInt(page);
+				int perPageNum = (int)Double.parseDouble(rows);
+				int size = list.size();
+				HashMap<String, Object> tempMap = new HashMap<String, Object>();
+				//DB에서 가져온 데이터의 갯수가 10개라고 가정하고 임의로 수행한다. 그럼 이 키 값들을 멤버로 하는 클래스를 가지고 있어야 한다.
+				for(int i=0; i<size; i++){
+					tempMap = new HashMap<String, Object>();
+					
+					tempMap.put("u_id"		, list.get(i).getU_id());
+					tempMap.put("u_name"	, list.get(i).getU_name());
+					tempMap.put("d_id"	, list.get(i).getD_id());
+					tempMap.put("u_email"	, list.get(i).getU_email());
+					tempMap.put("u_position"		, list.get(i).getU_position());
+					tempMap.put("u_phone"		, list.get(i).getU_phone());
+					tempMap.put("u_status"		, list.get(i).getU_status());
+					
 
-		JqGrid totalCnt = service.gridCount();
+					resultList.add(tempMap);
+				}//for end
+				
+				System.out.println(resultList);
+				//Jqgrid를 리턴해주면 @ResponseBody 어노테이션 그리고 Jackson 라이브러리에 의해
+				//json타입으로 페이지에 데이터가 뿌려진다.
+				obj.setrows(resultList);//list<map>형태의 받아온 데이터를 가공해서 셋(그리드에 뿌려줄 행 데이터들)
+				obj.setPage(int_page);//현재 페이지를 매개변수로 넘어온 page로 지정
+				obj.setRecords(resultList.size());//보여지는 데이터 갯수
+				
+				//total은 rows에 의한 총 페이지 수
+				//총 페이지 갯수는 (데이터갯수 / 한 페이지에 보여줄 갯수)
+				int totalPage = (int)Math.ceil(resultList.size()/Double.parseDouble(rows));
+				obj.setTotal(totalPage);
 
-		HashMap<String, Object> tempMap = new HashMap<String, Object>();
-		System.out.println(page);
-	    
-		//List 형식으로 된 데이터의 크기를 구함
-		int size = list.size();
-		System.out.println(size);
+				System.out.println(obj);
 		
-		for(int i = 0; i < size; i++) {
-			tempMap.put("u_id", list.get(i).getU_id());
-			tempMap.put("u_name", list.get(i).getU_name());
-			tempMap.put("d_id", list.get(i).getD_id());
-			tempMap.put("u_email", list.get(i).getU_email());
-			tempMap.put("u_position", list.get(i).getU_position());
-			tempMap.put("u_phone", list.get(i).getU_phone());
-			tempMap.put("u_status", list.get(i).getU_status());
-			
-			resultList.add(tempMap);
-			
-			tempMap = new HashMap<String, Object>();
-		}
-		
-		JqGrid jqGrid = new JqGrid();
-//		jqGrid.setTotal(totalCnt.getTotalPage());
-		
-		
-		
-		
-		return "";
+		return obj;
 	}
 	
 //------------------------------------------------------------------관리자-----------------------------------------------------	

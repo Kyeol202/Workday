@@ -46,7 +46,10 @@ var jqgridTable =
 				viewrecords : true,
 				cellEdit	: true,
 				cellsubmit	: "clientArray",
-				caption		: "사용자 목록"
+				caption		: "사용자 목록",
+				jsonReader: {
+					repeatitems:false
+				}
 			})
 		},
 
