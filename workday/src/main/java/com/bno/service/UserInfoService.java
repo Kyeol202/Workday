@@ -46,4 +46,7 @@ public interface UserInfoService {
 	//그리드 테스트 카운트
 	public JqGrid gridCount();
 	
+	//그리드 테스트 업데이트
+
+	
 }//interface end

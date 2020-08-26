@@ -61,22 +61,24 @@ var jqgridTable =
 				viewrecords : true,
 				editable: true,
 				cellEdit	: true,
-				cellsubmit	: "remote",	//데이터 전송 방식
-				cellurl : "<c:url value="/"/>user/userGridTestUpdate",
-				beforeSubmitCell : function(rowid, cellname, value) {	//submit 전 데이터
-					
-					return {"id" : rowid, "cellName" : cellname, "cellValue" : value}
-				},
+				cellsubmit : "clientArray",
 				
-				afterSubmitCell : function(res) {	//submit 후 데이터
+// 				cellsubmit	: "remote",	//데이터 전송 방식
+// 				cellurl : "<c:url value="/"/>user/userGridTestUpdate",
+// 				beforeSubmitCell : function(rowid, cellname, value) {	//submit 전 데이터
 					
-					var aResult = $.parseJSON(res.responseText);
-					var userMSG = "";
-					if((aResult.msg == "success")) {
-						userMSG = "데이터가 변경되었습니다."
-					}
-					return [(aResult.msg == "success") ? true : false, userMSG];
-				},
+// 					return {"id" : rowid, "cellName" : cellname, "cellValue" : value}
+// 				},
+				
+// 				afterSubmitCell : function(res) {	//submit 후 데이터
+					
+// 					var aResult = $.parseJSON(res.responseText);
+// 					var userMSG = "";
+// 					if((aResult.msg == "success")) {
+// 						userMSG = "데이터가 변경되었습니다."
+// 					}
+// 					return [(aResult.msg == "success") ? true : false, userMSG];
+// 				},
 				
 				caption		: "사용자 목록",		//그리드 위에 표시되는 text
 				jsonReader: {					
