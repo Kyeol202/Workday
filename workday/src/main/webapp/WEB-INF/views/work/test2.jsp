@@ -18,6 +18,7 @@ $(document).ready(function() {
 	jqgridTable.navGrid();
 })
 
+
 // onCellSelect: function(rowId, colId, val, e) {
 // 												//rowId : 현재 row의 id
 // 												//colId : cell의 인덱스, 선택된 컬럼의 순서
@@ -41,6 +42,7 @@ var jqgridTable =
 				datatype	:	"json",
 				colNames	:	cnames,
 				colModel	:	[
+				
 					{name	: 	"u_id" , index : "u_id", width : 50, key:true},
 					{name	: 	"u_name" , index : "u_name", width : 150 },
 					{name	: 	"d_id" , index : "d_id", width : 150},
@@ -48,6 +50,7 @@ var jqgridTable =
 					{name	: 	"u_position" , index : "u_position", width : 150, editable:true },
 					{name	: 	"u_phone" , index : "u_phone", width : 150, editable:true },
 					{name	:	"u_status"	, index : "u_status"	, width : 150, editable:true,
+						
 					},
 				],
 				height		: 480,
@@ -58,13 +61,34 @@ var jqgridTable =
 				viewrecords : true,
 				editable: true,
 				cellEdit	: true,
-				cellsubmit	: "clientArray",
-				caption		: "사용자 목록",
-				jsonReader: {
+				cellsubmit	: "remote",	//데이터 전송 방식
+				cellurl : "<c:url value="/"/>user/userGridTestUpdate",
+				beforeSubmitCell : function(rowid, cellname, value) {	//submit 전 데이터
+					
+					return {"id" : rowid, "cellName" : cellname, "cellValue" : value}
+				},
+				
+				afterSubmitCell : function(res) {	//submit 후 데이터
+					
+					var aResult = $.parseJSON(res.responseText);
+					var userMSG = "";
+					if((aResult.msg == "success")) {
+						userMSG = "데이터가 변경되었습니다."
+					}
+					return [(aResult.msg == "success") ? true : false, userMSG];
+				},
+				
+				caption		: "사용자 목록",		//그리드 위에 표시되는 text
+				jsonReader: {					
 					repeatitems:false
 				}
-			})
+				
+
+				
+				
+			})//jqgrid end
 		},
+
 
 		search : function () {
 			$("#jqGrid").setGridParam({
@@ -137,7 +161,8 @@ var jqgridTable =
 </select>
 <span><a href="#" onclick="javascript:search();">검색</a></span>
 </div>
-			
+
+
 <div class="row"> 
     <div>
         <table id="jqGrid"></table>
